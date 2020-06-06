@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using HarmonyLib;
+﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Localization;
@@ -7,7 +6,7 @@ using TaleWorlds.Localization;
 namespace UnlimitLord
 {
     [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyPrisonerSizeLimit")]
-    internal class PrisonerAmountLimitOverride
+    internal static class PrisonerAmountLimitOverride
     {
         [HarmonyPostfix]
         public static int Postfix(int result, PartyBase party, StatExplainer explanation)

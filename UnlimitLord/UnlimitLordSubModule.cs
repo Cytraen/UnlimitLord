@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -11,9 +12,13 @@ namespace UnlimitLord
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
+
 #if !mcmMode
+
             new Harmony("com.unlimitLord.patch").PatchAll();
+
 #endif
+
         }
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
@@ -22,6 +27,7 @@ namespace UnlimitLord
             InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
 
 #if mcmMode
+
             ApplyPatches(McmSettings.Instance);
         }
 
@@ -49,7 +55,12 @@ namespace UnlimitLord
                 patcher.Patch(typeof(DefaultWorkshopModel).GetMethod("GetMaxWorkshopCountForPlayer"),
                     postfix: new HarmonyMethod(typeof(WorkshopAmountLimitOverride).GetMethod("Postfix")));
 
+            if (mcmSettings.DisableClanPartiesEating)
+                patcher.Patch(typeof(DefaultMobilePartyFoodConsumptionModel).GetMethod("DoesPartyConsumeFood"),
+                    postfix: new HarmonyMethod(typeof(PartyDoesNotEatOverride).GetMethod("Postfix")));
+
 #endif
+
         }
     }
 }

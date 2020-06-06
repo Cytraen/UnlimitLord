@@ -5,7 +5,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 namespace UnlimitLord
 {
     [HarmonyPatch(typeof(DefaultClanTierModel), "GetPartyLimitForTier")]
-    internal class PartyAmountLimitOverride
+    internal static class PartyAmountLimitOverride
     {
         [HarmonyPostfix]
         public static int Postfix(int result, Clan clan)

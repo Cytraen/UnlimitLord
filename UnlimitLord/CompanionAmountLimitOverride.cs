@@ -4,7 +4,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 namespace UnlimitLord
 {
     [HarmonyPatch(typeof(DefaultClanTierModel), "GetCompanionLimitForTier")]
-    internal class CompanionAmountLimitOverride
+    internal static class CompanionAmountLimitOverride
     {
         public static int Postfix(int result)
         {

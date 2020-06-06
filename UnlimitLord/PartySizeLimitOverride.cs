@@ -6,7 +6,7 @@ namespace UnlimitLord
 {
 
     [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
-    internal class PartySizeLimitOverride
+    internal static class PartySizeLimitOverride
     {
         public static int Postfix(int result, PartyBase party)
         {
