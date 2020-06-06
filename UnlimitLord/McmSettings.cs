@@ -18,6 +18,7 @@ namespace UnlimitLord
         private bool _disablePrisonerAmount = true;
         private bool _disableWorkshopAmount = true;
         private bool _disableClanPartiesEating = true;
+        private bool _disableItemWeight = true;
 
         [SettingPropertyBool("Disable Companion Limit", Order = 1, RequireRestart = true)]
         public bool DisableCompanionAmount
@@ -87,6 +88,18 @@ namespace UnlimitLord
             {
                 if (_disableClanPartiesEating == value) return;
                 _disableClanPartiesEating = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [SettingPropertyBool("All Items Weightless", Order = 7, RequireRestart = true)]
+        public bool DisableItemWeight
+        {
+            get => _disableItemWeight;
+            set
+            {
+                if (_disableItemWeight == value) return;
+                _disableItemWeight = value;
                 OnPropertyChanged();
             }
         }
