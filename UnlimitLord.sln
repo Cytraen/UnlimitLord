@@ -19,8 +19,8 @@ Global
 		{55A71128-7708-4CB9-838A-328682885AE3}.mcmRelease|Any CPU.Build.0 = mcmRelease|Any CPU
 		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmDebug|Any CPU.ActiveCfg = noMcmDebug|Any CPU
 		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmDebug|Any CPU.Build.0 = noMcmDebug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.ActiveCfg = noMcmDebug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.Build.0 = noMcmDebug|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.ActiveCfg = noMcmRelease|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.Build.0 = noMcmRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
