@@ -48,10 +48,8 @@ namespace UnlimitLord
             if (mcmSettings.DisableWorkshopAmount)
                 patcher.Patch(typeof(DefaultWorkshopModel).GetMethod("GetMaxWorkshopCountForPlayer"),
                     postfix: new HarmonyMethod(typeof(WorkshopAmountLimitOverride).GetMethod("Postfix")));
-        }
 
 #endif
-
         }
     }
 }
