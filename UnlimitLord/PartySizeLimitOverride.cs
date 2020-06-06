@@ -4,7 +4,6 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 
 namespace UnlimitLord
 {
-
     [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
     internal static class PartySizeLimitOverride
     {

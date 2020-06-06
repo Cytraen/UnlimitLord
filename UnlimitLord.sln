@@ -7,20 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnlimitLord", "UnlimitLord\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		McmDebug|Any CPU = McmDebug|Any CPU
-		McmRelease|Any CPU = McmRelease|Any CPU
-		StandaloneDebug|Any CPU = StandaloneDebug|Any CPU
-		StandaloneRelease|Any CPU = StandaloneRelease|Any CPU
+		McmDebug|x64 = McmDebug|x64
+		McmRelease|x64 = McmRelease|x64
+		StandaloneDebug|x64 = StandaloneDebug|x64
+		StandaloneRelease|x64 = StandaloneRelease|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{03256707-FF9B-40F5-B303-40E477333D9E}.McmDebug|Any CPU.ActiveCfg = McmDebug|Any CPU
-		{03256707-FF9B-40F5-B303-40E477333D9E}.McmDebug|Any CPU.Build.0 = McmDebug|Any CPU
-		{03256707-FF9B-40F5-B303-40E477333D9E}.McmRelease|Any CPU.ActiveCfg = McmRelease|Any CPU
-		{03256707-FF9B-40F5-B303-40E477333D9E}.McmRelease|Any CPU.Build.0 = McmRelease|Any CPU
-		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneDebug|Any CPU.ActiveCfg = StandaloneDebug|Any CPU
-		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneDebug|Any CPU.Build.0 = StandaloneDebug|Any CPU
-		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneRelease|Any CPU.ActiveCfg = StandaloneRelease|Any CPU
-		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneRelease|Any CPU.Build.0 = StandaloneRelease|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmDebug|x64.ActiveCfg = McmDebug|x64
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmDebug|x64.Build.0 = McmDebug|x64
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmRelease|x64.ActiveCfg = McmRelease|x64
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmRelease|x64.Build.0 = McmRelease|x64
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneDebug|x64.ActiveCfg = StandaloneDebug|x64
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneDebug|x64.Build.0 = StandaloneDebug|x64
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneRelease|x64.ActiveCfg = StandaloneRelease|x64
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneRelease|x64.Build.0 = StandaloneRelease|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

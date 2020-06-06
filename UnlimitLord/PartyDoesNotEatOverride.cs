@@ -9,7 +9,7 @@ namespace UnlimitLord
     {
         public static bool Postfix(bool result, MobileParty mobileParty)
         {
-            return mobileParty.Leader == CharacterObject.PlayerCharacter || (mobileParty.LeaderHero.Clan == Clan.PlayerClan);
+            return !(mobileParty.Leader == CharacterObject.PlayerCharacter || mobileParty.LeaderHero?.Clan == Clan.PlayerClan);
         }
     }
 }
