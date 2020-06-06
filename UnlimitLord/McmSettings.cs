@@ -20,7 +20,7 @@ namespace UnlimitLord
         private bool _disableClanPartiesEating = true;
         private bool _disableItemWeight = true;
 
-        [SettingPropertyBool("Disable Companion Limit", Order = 1, RequireRestart = true)]
+        [SettingPropertyBool("Disable Companion Limit", Order = 1, RequireRestart = false)]
         public bool DisableCompanionAmount
         {
             get => _disableCompanionAmount;
@@ -32,7 +32,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("Disable Clan Party Limit", Order = 2, RequireRestart = true)]
+        [SettingPropertyBool("Disable Clan Party Limit", Order = 2, RequireRestart = false)]
         public bool DisablePartyAmount
         {
             get => _disablePartyAmount;
@@ -44,7 +44,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("Disable Party Size Limit", Order = 3, RequireRestart = true)]
+        [SettingPropertyBool("Disable Party Size Limit", Order = 3, RequireRestart = false)]
         public bool DisablePartySize
         {
             get => _disablePartySize;
@@ -56,7 +56,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("Disable Prisoner Limit", Order = 4, RequireRestart = true)]
+        [SettingPropertyBool("Disable Prisoner Limit", Order = 4, RequireRestart = false)]
         public bool DisablePrisonerAmount
         {
             get => _disablePrisonerAmount;
@@ -68,7 +68,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("Disable Workshop Limit", Order = 5, RequireRestart = true)]
+        [SettingPropertyBool("Disable Workshop Limit", Order = 5, RequireRestart = false)]
         public bool DisableWorkshopAmount
         {
             get => _disableWorkshopAmount;
@@ -80,7 +80,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("Disable Party Food Consumption", Order = 6, RequireRestart = true)]
+        [SettingPropertyBool("Disable Party Food Consumption", Order = 6, RequireRestart = false)]
         public bool DisableClanPartiesEating
         {
             get => _disableClanPartiesEating;
@@ -92,7 +92,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("All Items Weightless", Order = 7, RequireRestart = true)]
+        [SettingPropertyBool("All Items Weightless", Order = 7, RequireRestart = false)]
         public bool DisableItemWeight
         {
             get => _disableItemWeight;

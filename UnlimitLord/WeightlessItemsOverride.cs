@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
@@ -20,7 +20,7 @@ namespace UnlimitLord
     [HarmonyPatch(typeof(DefaultPartySpeedCalculatingModel), "AddCargoStats")]
     internal static class WeightlessItemsOverridePt2
     {
-        public static void Postfix(MobileParty mobileParty, ref int numberOfAvailableMounts, ref float totalWeightCarried, ref int herdSize)
+        public static void Postfix(MobileParty mobileParty, ref float totalWeightCarried)
         {
             if (mobileParty.Leader == CharacterObject.PlayerCharacter || mobileParty.LeaderHero?.Clan == Clan.PlayerClan)
                 totalWeightCarried = 0;

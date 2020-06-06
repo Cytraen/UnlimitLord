@@ -1,5 +1,7 @@
-﻿using System.Reflection;
+using System.ComponentModel;
+using System.Reflection;
 using HarmonyLib;
+using MCM.Abstractions.Settings.Base;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
@@ -18,50 +20,80 @@ namespace UnlimitLord
 
             new Harmony("com.unlimitLord.patch").PatchAll();
 
-#endif
-
             InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
+
+#endif
 
 #if mcmMode
 
+            if (McmSettings.Instance != null)
+                McmSettings.Instance.PropertyChanged += MCMSettings_PropertyChanged;
+
             ApplyPatches(McmSettings.Instance);
+
+            InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
+        }
+
+        private static void MCMSettings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender is McmSettings settings && e.PropertyName == BaseSettings.SaveTriggered)
+            {
+                ApplyPatches(settings);
+            }
         }
 
         private static void ApplyPatches(McmSettings mcmSettings)
         {
-            var patcher = new Harmony("com.unlimitLord.patch");
+            var harmony = new Harmony("com.unlimitLord.patch");
+            if (Harmony.HasAnyPatches("com.unlimitLord.patch"))
+            {
+                harmony.UnpatchAll("com.unlimitLord.patch");
+            }
 
             if (mcmSettings.DisableCompanionAmount)
-                patcher.Patch(typeof(DefaultClanTierModel).GetMethod("GetCompanionLimitForTier"),
+            {
+                harmony.Patch(typeof(DefaultClanTierModel).GetMethod("GetCompanionLimitForTier"),
                     postfix: new HarmonyMethod(typeof(CompanionAmountLimitOverride).GetMethod("Postfix")));
+            }
 
             if (mcmSettings.DisablePartyAmount)
-                patcher.Patch(typeof(DefaultClanTierModel).GetMethod("GetPartyLimitForTier"),
+            {
+                harmony.Patch(typeof(DefaultClanTierModel).GetMethod("GetPartyLimitForTier"),
                     postfix: new HarmonyMethod(typeof(PartyAmountLimitOverride).GetMethod("Postfix")));
+            }
 
             if (mcmSettings.DisablePartySize)
-                patcher.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyMemberSizeLimit"),
+            {
+                harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyMemberSizeLimit"),
                     postfix: new HarmonyMethod(typeof(PartySizeLimitOverride).GetMethod("Postfix")));
+            }
 
             if (mcmSettings.DisablePrisonerAmount)
-                patcher.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyPrisonerSizeLimit"),
+            {
+                harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyPrisonerSizeLimit"),
                     postfix: new HarmonyMethod(typeof(PrisonerAmountLimitOverride).GetMethod("Postfix")));
+            }
 
             if (mcmSettings.DisableWorkshopAmount)
-                patcher.Patch(typeof(DefaultWorkshopModel).GetMethod("GetMaxWorkshopCountForPlayer"),
+            {
+                harmony.Patch(typeof(DefaultWorkshopModel).GetMethod("GetMaxWorkshopCountForPlayer"),
                     postfix: new HarmonyMethod(typeof(WorkshopAmountLimitOverride).GetMethod("Postfix")));
+            }
 
             if (mcmSettings.DisableClanPartiesEating)
-                patcher.Patch(typeof(DefaultMobilePartyFoodConsumptionModel).GetMethod("DoesPartyConsumeFood"),
+            {
+                harmony.Patch(typeof(DefaultMobilePartyFoodConsumptionModel).GetMethod("DoesPartyConsumeFood"),
                     postfix: new HarmonyMethod(typeof(PartyDoesNotEatOverride).GetMethod("Postfix")));
+            }
 
             if (mcmSettings.DisableItemWeight)
-                patcher.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("GetTotalWeightOfItems", BindingFlags.NonPublic | BindingFlags.Static),
+            {
+                harmony.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("GetTotalWeightOfItems", BindingFlags.NonPublic | BindingFlags.Static),
                     postfix: new HarmonyMethod(typeof(WeightlessItemsOverridePt1).GetMethod("Postfix")));
 
-            if (mcmSettings.DisableItemWeight)
-                patcher.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("AddCargoStats", BindingFlags.NonPublic | BindingFlags.Static),
+                harmony.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("AddCargoStats", BindingFlags.NonPublic | BindingFlags.Static),
                     postfix: new HarmonyMethod(typeof(WeightlessItemsOverridePt2).GetMethod("Postfix")));
+            }
 
 #endif
 
