@@ -9,9 +9,9 @@ namespace UnlimitLord
 {
     internal class UnlimitLordSubModule : MBSubModuleBase
     {
-        protected override void OnSubModuleLoad()
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            base.OnSubModuleLoad();
+            base.OnBeforeInitialModuleScreenSetAsRoot();
 
 #if !mcmMode
 
@@ -19,11 +19,6 @@ namespace UnlimitLord
 
 #endif
 
-        }
-
-        protected override void OnBeforeInitialModuleScreenSetAsRoot()
-        {
-            base.OnBeforeInitialModuleScreenSetAsRoot();
             InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
 
 #if mcmMode
