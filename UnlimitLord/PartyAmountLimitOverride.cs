@@ -7,7 +7,6 @@ namespace UnlimitLord
     [HarmonyPatch(typeof(DefaultClanTierModel), "GetPartyLimitForTier")]
     internal static class PartyAmountLimitOverride
     {
-        [HarmonyPostfix]
         public static int Postfix(int result, Clan clan)
         {
             return clan.Leader.IsHumanPlayerCharacter ? 100000 : result;

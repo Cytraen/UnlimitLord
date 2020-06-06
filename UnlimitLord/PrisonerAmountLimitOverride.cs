@@ -8,7 +8,6 @@ namespace UnlimitLord
     [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyPrisonerSizeLimit")]
     internal static class PrisonerAmountLimitOverride
     {
-        [HarmonyPostfix]
         public static int Postfix(int result, PartyBase party, StatExplainer explanation)
         {
             if (party.LeaderHero == null || party.LeaderHero != Hero.MainHero)
