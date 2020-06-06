@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnlimitLord", "UnlimitLord\UnlimitLord.csproj", "{55A71128-7708-4CB9-838A-328682885AE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnlimitLord", "UnlimitLord\UnlimitLord.csproj", "{03256707-FF9B-40F5-B303-40E477333D9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		mcmDebug|Any CPU = mcmDebug|Any CPU
-		mcmRelease|Any CPU = mcmRelease|Any CPU
-		noMcmDebug|Any CPU = noMcmDebug|Any CPU
-		noMcmRelease|Any CPU = noMcmRelease|Any CPU
+		McmDebug|Any CPU = McmDebug|Any CPU
+		McmRelease|Any CPU = McmRelease|Any CPU
+		StandaloneDebug|Any CPU = StandaloneDebug|Any CPU
+		StandaloneRelease|Any CPU = StandaloneRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{55A71128-7708-4CB9-838A-328682885AE3}.mcmDebug|Any CPU.ActiveCfg = mcmDebug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.mcmDebug|Any CPU.Build.0 = mcmDebug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.mcmRelease|Any CPU.ActiveCfg = mcmRelease|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.mcmRelease|Any CPU.Build.0 = mcmRelease|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmDebug|Any CPU.ActiveCfg = noMcmDebug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmDebug|Any CPU.Build.0 = noMcmDebug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.ActiveCfg = noMcmRelease|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.Build.0 = noMcmRelease|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmDebug|Any CPU.ActiveCfg = McmDebug|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmDebug|Any CPU.Build.0 = McmDebug|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmRelease|Any CPU.ActiveCfg = McmRelease|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.McmRelease|Any CPU.Build.0 = McmRelease|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneDebug|Any CPU.ActiveCfg = StandaloneDebug|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneDebug|Any CPU.Build.0 = StandaloneDebug|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneRelease|Any CPU.ActiveCfg = StandaloneDebug|Any CPU
+		{03256707-FF9B-40F5-B303-40E477333D9E}.StandaloneRelease|Any CPU.Build.0 = StandaloneDebug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CE06A774-667D-4452-A27B-74C2B445788C}
+		SolutionGuid = {B1100D24-AFCE-467A-B258-1C8BFBCE8F51}
 	EndGlobalSection
 EndGlobal
