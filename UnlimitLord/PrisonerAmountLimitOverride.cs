@@ -10,7 +10,7 @@ namespace UnlimitLord
         [HarmonyPostfix]
         public static int Postfix(int result, PartyBase party)
         {
-            return party.MobileParty.IsMainParty && party.LeaderHero.IsHumanPlayerCharacter ? 100000 : result;
+            return party.MobileParty.IsMainParty && party.LeaderHero.IsHumanPlayerCharacter && !party.MobileParty.IsGarrison ? 100000 : result;
         }
     }
 }

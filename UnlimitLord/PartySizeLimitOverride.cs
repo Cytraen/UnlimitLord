@@ -5,12 +5,12 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 namespace UnlimitLord
 {
 
-    [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "CalculateMobilePartyMemberSizeLimit")]
+    [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
     internal class PartySizeLimitOverride
     {
-        public static int Postfix(int result, MobileParty party)
+        public static int Postfix(int result, PartyBase party)
         {
-            return party.IsMainParty && party.Leader.HeroObject.IsHumanPlayerCharacter ? 100000 : result;
+            return party.MobileParty.IsMainParty && party.LeaderHero.IsHumanPlayerCharacter && !party.MobileParty.IsGarrison ? 100000 : result;
         }
     }
 }

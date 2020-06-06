@@ -7,14 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnlimitLord", "UnlimitLord\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		mcmDebug|Any CPU = mcmDebug|Any CPU
+		mcmRelease|Any CPU = mcmRelease|Any CPU
+		noMcmDebug|Any CPU = noMcmDebug|Any CPU
+		noMcmRelease|Any CPU = noMcmRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{55A71128-7708-4CB9-838A-328682885AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55A71128-7708-4CB9-838A-328682885AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.mcmDebug|Any CPU.ActiveCfg = mcmDebug|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.mcmDebug|Any CPU.Build.0 = mcmDebug|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.mcmRelease|Any CPU.ActiveCfg = mcmRelease|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.mcmRelease|Any CPU.Build.0 = mcmRelease|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmDebug|Any CPU.ActiveCfg = noMcmDebug|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmDebug|Any CPU.Build.0 = noMcmDebug|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.ActiveCfg = noMcmDebug|Any CPU
+		{55A71128-7708-4CB9-838A-328682885AE3}.noMcmRelease|Any CPU.Build.0 = noMcmDebug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
