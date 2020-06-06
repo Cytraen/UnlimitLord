@@ -1,6 +1,8 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
+using TaleWorlds.Localization;
 
 namespace UnlimitLord
 {
@@ -8,9 +10,18 @@ namespace UnlimitLord
     internal class PrisonerAmountLimitOverride
     {
         [HarmonyPostfix]
-        public static int Postfix(int result, PartyBase party)
+        public static int Postfix(int result, PartyBase party, StatExplainer explanation)
         {
-            return party.MobileParty.IsMainParty && party.LeaderHero.IsHumanPlayerCharacter && !party.MobileParty.IsGarrison ? 100000 : result;
+            if (party.LeaderHero == null || party.LeaderHero != Hero.MainHero)
+                return result;
+
+            var explainedNumber = new ExplainedNumber(0.0f, explanation);
+
+            var textObject = new TextObject("UnlimitLord");
+
+            explainedNumber.Add(100000f, textObject);
+
+            return (int)explainedNumber.ResultNumber;
         }
     }
 }
