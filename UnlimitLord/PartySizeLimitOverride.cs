@@ -1,5 +1,4 @@
-﻿using System.Reflection.Emit;
-using HarmonyLib;
+﻿using HarmonyLib;
 using MCM.Abstractions.Settings.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
@@ -12,7 +11,7 @@ namespace UnlimitLord
     {
         public static int Postfix(int result, PartyBase party, StatExplainer explanation)
         {
-            if (!(party.MobileParty.IsMainParty && party.LeaderHero.IsHumanPlayerCharacter && !party.MobileParty.IsGarrison))
+            if (!party.MobileParty.IsMainParty || party.LeaderHero?.IsHumanPlayerCharacter == false || party.MobileParty.IsGarrison)
                 return result;
 
             var explainedNumber = new ExplainedNumber(0.0f, explanation);

@@ -1,10 +1,10 @@
 ﻿using HarmonyLib;
 using MCM.Abstractions.Settings.Base.Global;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TaleWorlds.CampaignSystem;
 
 namespace UnlimitLord
 {
-    [HarmonyPatch(typeof(DefaultClanTierModel), "GetCompanionLimitForTier")]
+    [HarmonyPatch(typeof(Clan), "get_CompanionLimit")]
     internal static class CompanionAmountLimitOverride
     {
         public static int Postfix(int result)

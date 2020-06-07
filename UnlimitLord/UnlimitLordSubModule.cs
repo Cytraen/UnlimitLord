@@ -47,7 +47,7 @@ namespace UnlimitLord
 
             if (mcmSettings.NumOfCompanions != -1)
             {
-                harmony.Patch(typeof(DefaultClanTierModel).GetMethod("GetCompanionLimitForTier"),
+                harmony.Patch(typeof(Clan).GetMethod("get_CompanionLimit"),
                     postfix: new HarmonyMethod(typeof(CompanionAmountLimitOverride).GetMethod("Postfix")));
             }
 
