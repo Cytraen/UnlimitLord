@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Reflection;
 using HarmonyLib;
@@ -15,17 +16,10 @@ namespace UnlimitLord
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
-
 #if !mcmMode
-
             new Harmony("com.unlimitLord.patch").PatchAll();
-
             InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
-
-#endif
-
-#if mcmMode
-
+#else
             if (McmSettings.Instance != null)
                 McmSettings.Instance.PropertyChanged += MCMSettings_PropertyChanged;
 
@@ -80,6 +74,12 @@ namespace UnlimitLord
                     postfix: new HarmonyMethod(typeof(WorkshopAmountLimitOverride).GetMethod("Postfix")));
             }
 
+            if (Math.Abs(mcmSettings.PartyMorale - -1.0f) > 0.005)
+            {
+                harmony.Patch(typeof(DefaultPartyMoraleModel).GetMethod("GetEffectivePartyMorale"),
+                    postfix: new HarmonyMethod(typeof(PartyMoraleOverride).GetMethod("Postfix")));
+            }
+
             if (mcmSettings.DisableClanPartiesEating)
             {
                 harmony.Patch(typeof(DefaultMobilePartyFoodConsumptionModel).GetMethod("DoesPartyConsumeFood"),
@@ -94,9 +94,7 @@ namespace UnlimitLord
                 harmony.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("AddCargoStats", BindingFlags.NonPublic | BindingFlags.Static),
                     postfix: new HarmonyMethod(typeof(WeightlessItemsOverridePt2).GetMethod("Postfix")));
             }
-
 #endif
-
         }
     }
 }
