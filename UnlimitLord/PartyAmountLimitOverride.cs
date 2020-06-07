@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
-using MCM.Abstractions.Settings.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using UnlimitLord.Settings.Mcm;
 
 namespace UnlimitLord
 {
@@ -11,7 +11,10 @@ namespace UnlimitLord
         public static int Postfix(int result, Clan clan)
         {
 #if mcmMode
-            return clan.Leader.IsHumanPlayerCharacter ? GlobalSettings<McmSettings>.Instance.NumOfParties : result;
+            if (!clan.Leader.IsHumanPlayerCharacter) return result;
+            if (result > McmSettings.Instance.MaxNumOfParties) return McmSettings.Instance.MaxNumOfParties;
+            if (result < McmSettings.Instance.MinNumOfParties) return McmSettings.Instance.MinNumOfParties;
+            return result;
 #else
             return clan.Leader.IsHumanPlayerCharacter ? 100000 : result;
 #endif

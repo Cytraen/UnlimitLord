@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
-using MCM.Abstractions.Settings.Base.Global;
 using TaleWorlds.CampaignSystem;
+using UnlimitLord.Settings.Mcm;
 
 namespace UnlimitLord
 {
@@ -10,7 +10,9 @@ namespace UnlimitLord
         public static int Postfix(int result)
         {
 #if mcmMode
-            return GlobalSettings<McmSettings>.Instance.NumOfCompanions;
+            if (result > McmSettings.Instance.MaxNumOfCompanions) return McmSettings.Instance.MaxNumOfCompanions;
+            if (result < McmSettings.Instance.MinNumOfCompanions) return McmSettings.Instance.MinNumOfCompanions;
+            return result;
 #else
             return 100000;
 #endif

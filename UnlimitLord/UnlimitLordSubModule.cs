@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using System.Reflection;
 using HarmonyLib;
@@ -9,6 +8,7 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using UnlimitLord.Settings.Mcm;
 
 namespace UnlimitLord
 {
@@ -45,55 +45,55 @@ namespace UnlimitLord
                 harmony.UnpatchAll("com.unlimitLord.patch");
             }
 
-            if (mcmSettings.NumOfCompanions != -1)
+            if (mcmSettings.CompanionAmountEnabled)
             {
                 harmony.Patch(typeof(Clan).GetMethod("get_CompanionLimit"),
                     postfix: new HarmonyMethod(typeof(CompanionAmountLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.NumOfParties != -1)
+            if (mcmSettings.PartyAmountEnabled)
             {
                 harmony.Patch(typeof(DefaultClanTierModel).GetMethod("GetPartyLimitForTier"),
                     postfix: new HarmonyMethod(typeof(PartyAmountLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.PartySize != -1)
+            if (mcmSettings.PartySizeEnabled)
             {
                 harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyMemberSizeLimit"),
                     postfix: new HarmonyMethod(typeof(PartySizeLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.NumOfPrisoners != -1)
+            if (mcmSettings.PrisonerAmountEnabled)
             {
                 harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyPrisonerSizeLimit"),
                     postfix: new HarmonyMethod(typeof(PrisonerAmountLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.NumOfWorkshops != -1)
+            if (mcmSettings.WorkshopAmountEnabled)
             {
                 harmony.Patch(typeof(DefaultWorkshopModel).GetMethod("GetMaxWorkshopCountForPlayer"),
                     postfix: new HarmonyMethod(typeof(WorkshopAmountLimitOverride).GetMethod("Postfix")));
             }
 
-            if (Math.Abs(mcmSettings.PartyMorale - -1.0f) > 0.005)
+            if (mcmSettings.PartyMoraleEnabled)
             {
                 harmony.Patch(typeof(DefaultPartyMoraleModel).GetMethod("GetEffectivePartyMorale"),
                     postfix: new HarmonyMethod(typeof(PartyMoraleOverride).GetMethod("Postfix")));
             }
 
-            if (Math.Abs(mcmSettings.PartySpeed - -1.0f) > 0.005)
+            if (mcmSettings.PartySpeedEnabled)
             {
                 harmony.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("CalculateFinalSpeed"),
                     postfix: new HarmonyMethod(typeof(PartySpeedOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.DisableClanPartiesEating)
+            if (mcmSettings.FoodlessPartyEnabled)
             {
                 harmony.Patch(typeof(DefaultMobilePartyFoodConsumptionModel).GetMethod("DoesPartyConsumeFood"),
                     postfix: new HarmonyMethod(typeof(PartyDoesNotEatOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.DisableItemWeight)
+            if (mcmSettings.WeightlessItemsEnabled)
             {
                 harmony.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("GetTotalWeightOfItems", BindingFlags.NonPublic | BindingFlags.Static),
                     postfix: new HarmonyMethod(typeof(WeightlessItemsOverridePt1).GetMethod("Postfix")));

@@ -3,6 +3,7 @@ using MCM.Abstractions.Settings.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.Localization;
+using UnlimitLord.Settings.Mcm;
 
 namespace UnlimitLord
 {
@@ -18,7 +19,8 @@ namespace UnlimitLord
 
             var textObject = new TextObject("UnlimitLord");
 #if mcmMode
-            explainedNumber.Clamp(GlobalSettings<McmSettings>.Instance.PartySpeed, McmSettings.Instance.PartySpeed);
+            explainedNumber.Add(result);
+            explainedNumber.Clamp(McmSettings.Instance.MinPartySpeed, McmSettings.Instance.MaxPartySpeed);
 #else
             explainedNumber.LimitMin(6f);
             // explainedNumber.Clamp(7f, 7f);
