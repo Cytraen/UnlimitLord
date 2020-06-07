@@ -17,12 +17,11 @@ namespace UnlimitLord
             if (mobileParty.Leader == null || mobileParty.Leader != CharacterObject.PlayerCharacter || mobileParty.LeaderHero?.Clan != Clan.PlayerClan)
                 return result;
 
-            var explainedNumber = new ExplainedNumber(0.0f, explanation);
-
+            var explainedNumber = new ExplainedNumber(result, explanation);
             var textObject = new TextObject("UnlimitLord");
-            explainedNumber.Add(result, textObject);
+
 #if mcmMode
-            explainedNumber.Clamp(McmSettings.Instance.MinPartyMorale, McmSettings.Instance.MaxPartyMorale);
+            explainedNumber.Add(Helpers.ClampFloat(result, McmSettings.Instance.MinPartyMorale, McmSettings.Instance.MaxPartyMorale) - result, textObject);
 #else
             explainedNumber.Clamp(100f, 100f);
 #endif

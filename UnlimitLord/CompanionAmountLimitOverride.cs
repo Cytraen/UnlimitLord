@@ -13,9 +13,7 @@ namespace UnlimitLord
         public static int Postfix(int result)
         {
 #if mcmMode
-            if (result > McmSettings.Instance.MaxNumOfCompanions) return McmSettings.Instance.MaxNumOfCompanions;
-            if (result < McmSettings.Instance.MinNumOfCompanions) return McmSettings.Instance.MinNumOfCompanions;
-            return result;
+            return Helpers.ClampInt(result, McmSettings.Instance.MinNumOfCompanions, McmSettings.Instance.MinNumOfCompanions);
 #else
             return 100000;
 #endif

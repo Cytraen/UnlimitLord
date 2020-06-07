@@ -17,12 +17,11 @@ namespace UnlimitLord
             if (!party.IsMobile || party.Leader == null || party.Leader != CharacterObject.PlayerCharacter)
                 return result;
 
-            var explainedNumber = new ExplainedNumber(0.0f, explanation);
-
+            var explainedNumber = new ExplainedNumber(result, explanation);
             var textObject = new TextObject("UnlimitLord");
-            explainedNumber.Add(result, textObject);
+
 #if mcmMode
-            explainedNumber.Clamp(McmSettings.Instance.MinNumOfPrisoners, McmSettings.Instance.MaxNumOfPrisoners);
+            explainedNumber.Add(Helpers.ClampInt(result, McmSettings.Instance.MinNumOfPrisoners, McmSettings.Instance.MaxNumOfPrisoners) - result, textObject);
 #else
             explainedNumber.Clamp(100000f, 100000f);
 #endif

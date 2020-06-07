@@ -13,13 +13,11 @@ namespace UnlimitLord
     {
         public static int Postfix(int result, Clan clan)
         {
-#if mcmMode
             if (clan.Leader?.IsHumanPlayerCharacter == false) return result;
-            if (result > McmSettings.Instance.MaxNumOfParties) return McmSettings.Instance.MaxNumOfParties;
-            if (result < McmSettings.Instance.MinNumOfParties) return McmSettings.Instance.MinNumOfParties;
-            return result;
+#if mcmMode
+            return Helpers.ClampInt(result, McmSettings.Instance.MinNumOfParties, McmSettings.Instance.MaxNumOfParties);
 #else
-            return clan.Leader.IsHumanPlayerCharacter ? 100000 : result;
+            return 100000;
 #endif
         }
     }

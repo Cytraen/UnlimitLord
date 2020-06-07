@@ -17,12 +17,11 @@ namespace UnlimitLord
             if (party.MobileParty?.IsMainParty == false || party.LeaderHero?.IsHumanPlayerCharacter == false || party.MobileParty?.IsGarrison == true)
                 return result;
 
-            var explainedNumber = new ExplainedNumber(0.0f, explanation);
-
+            var explainedNumber = new ExplainedNumber(result, explanation);
             var textObject = new TextObject("UnlimitLord");
-            explainedNumber.Add(result, textObject);
+
 #if mcmMode
-            explainedNumber.Clamp(McmSettings.Instance.MinPartySize, McmSettings.Instance.MaxPartySize);
+            explainedNumber.Add(Helpers.ClampInt(result, McmSettings.Instance.MinPartySize, McmSettings.Instance.MaxPartySize) - result, textObject);
 #else
             explainedNumber.Clamp(100000f, 100000f);
 #endif

@@ -12,12 +12,12 @@ namespace UnlimitLord.Settings.Mcm
         public bool PartySpeedEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Army/Movement Speed")]
-        [SettingPropertyFloatingInteger("Min. Speed", 0f, 50f, Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Min. Speed", 0f, 100f, Order = 1, RequireRestart = false)]
         public float MinPartySpeed { get; set; } = 0f;
 
         [SettingPropertyGroup("Army/Movement Speed")]
-        [SettingPropertyFloatingInteger("Max. Speed", 0f, 50f, Order = 2, RequireRestart = false)]
-        public float MaxPartySpeed { get; set; } = 50f;
+        [SettingPropertyFloatingInteger("Max. Speed", 0f, 100f, Order = 2, RequireRestart = false)]
+        public float MaxPartySpeed { get; set; } = 100f;
     }
 }
 
