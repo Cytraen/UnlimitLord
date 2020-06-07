@@ -10,7 +10,7 @@ namespace UnlimitLord
     {
         public static float Postfix(float result, MobileParty mobileParty)
         {
-            if (mobileParty.Leader == CharacterObject.PlayerCharacter || mobileParty.LeaderHero?.Clan == Clan.PlayerClan)
+            if (mobileParty.Leader != null && mobileParty.Leader == CharacterObject.PlayerCharacter && mobileParty.LeaderHero?.Clan == Clan.PlayerClan)
                 return 0;
             return result;
         }
@@ -22,7 +22,7 @@ namespace UnlimitLord
     {
         public static void Postfix(MobileParty mobileParty, ref float totalWeightCarried)
         {
-            if (mobileParty.Leader == CharacterObject.PlayerCharacter || mobileParty.LeaderHero?.Clan == Clan.PlayerClan)
+            if (mobileParty.Leader != null && mobileParty.Leader == CharacterObject.PlayerCharacter && mobileParty.LeaderHero?.Clan == Clan.PlayerClan)
                 totalWeightCarried = 0;
         }
     }

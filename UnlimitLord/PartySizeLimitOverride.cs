@@ -14,13 +14,13 @@ namespace UnlimitLord
     {
         public static int Postfix(int result, PartyBase party, StatExplainer explanation)
         {
-            if (!party.MobileParty.IsMainParty || party.LeaderHero?.IsHumanPlayerCharacter == false || party.MobileParty.IsGarrison)
+            if (party.MobileParty?.IsMainParty == false || party.LeaderHero?.IsHumanPlayerCharacter == false || party.MobileParty?.IsGarrison == true)
                 return result;
 
             var explainedNumber = new ExplainedNumber(0.0f, explanation);
 
             var textObject = new TextObject("UnlimitLord");
-            explainedNumber.Add(result);
+            explainedNumber.Add(result, textObject);
 #if mcmMode
             explainedNumber.Clamp(McmSettings.Instance.MinPartySize, McmSettings.Instance.MaxPartySize);
 #else
