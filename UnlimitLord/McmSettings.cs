@@ -12,70 +12,70 @@ namespace UnlimitLord
         public override string FolderName => "UnlimitLord";
         public override string Format => "json";
 
-        private bool _disableCompanionAmount = true;
-        private bool _disablePartyAmount = true;
-        private bool _disablePartySize = true;
-        private bool _disablePrisonerAmount = true;
-        private bool _disableWorkshopAmount = true;
-        private bool _disableClanPartiesEating = true;
-        private bool _disableItemWeight = true;
+        private int _numOfCompanions = -1;
+        private int _numOfParties = -1;
+        private int _partySize = -1;
+        private int _numOfPrisoners = -1;
+        private int _numOfWorkshops = -1;
+        private bool _disableClanPartiesEating = false;
+        private bool _disableItemWeight = false;
 
-        [SettingPropertyBool("Disable Companion Limit", Order = 1, RequireRestart = false)]
-        public bool DisableCompanionAmount
+        [SettingPropertyInteger("Max. Number of Companions", -1, 1000000, Order = 1, RequireRestart = false, HintText = "-1 will disable this setting.")]
+        public int NumOfCompanions
         {
-            get => _disableCompanionAmount;
+            get => _numOfCompanions;
             set
             {
-                if (_disableCompanionAmount == value) return;
-                _disableCompanionAmount = value;
+                if (_numOfCompanions == value) return;
+                _numOfCompanions = value;
                 OnPropertyChanged();
             }
         }
 
-        [SettingPropertyBool("Disable Clan Party Limit", Order = 2, RequireRestart = false)]
-        public bool DisablePartyAmount
+        [SettingPropertyInteger("Max. Number of Parties in Clan", -1, 1000000, Order = 2, RequireRestart = false, HintText = "-1 will disable this setting.")]
+        public int NumOfParties
         {
-            get => _disablePartyAmount;
+            get => _numOfParties;
             set
             {
-                if (_disablePartyAmount == value) return;
-                _disablePartyAmount = value;
+                if (_numOfParties == value) return;
+                _numOfParties = value;
                 OnPropertyChanged();
             }
         }
 
-        [SettingPropertyBool("Disable Party Size Limit", Order = 3, RequireRestart = false)]
-        public bool DisablePartySize
+        [SettingPropertyInteger("Max. Party Size", -1, 1000000, Order = 3, RequireRestart = false, HintText = "-1 will disable this setting.")]
+        public int PartySize
         {
-            get => _disablePartySize;
+            get => _partySize;
             set
             {
-                if (_disablePartySize == value) return;
-                _disablePartySize = value;
+                if (_partySize == value) return;
+                _partySize = value;
                 OnPropertyChanged();
             }
         }
 
-        [SettingPropertyBool("Disable Prisoner Limit", Order = 4, RequireRestart = false)]
-        public bool DisablePrisonerAmount
+        [SettingPropertyInteger("Max. Number of Prisoners", -1, 1000000, Order = 4, RequireRestart = false, HintText = "-1 will disable this setting.")]
+        public int NumOfPrisoners
         {
-            get => _disablePrisonerAmount;
+            get => _numOfPrisoners;
             set
             {
-                if (_disablePrisonerAmount == value) return;
-                _disablePrisonerAmount = value;
+                if (_numOfPrisoners == value) return;
+                _numOfPrisoners = value;
                 OnPropertyChanged();
             }
         }
 
-        [SettingPropertyBool("Disable Workshop Limit", Order = 5, RequireRestart = false)]
-        public bool DisableWorkshopAmount
+        [SettingPropertyInteger("Max. Number of Workshops", -1, 1000000, Order = 5, RequireRestart = false, HintText = "-1 will disable this setting.")]
+        public int NumOfWorkshops
         {
-            get => _disableWorkshopAmount;
+            get => _numOfWorkshops;
             set
             {
-                if (_disableWorkshopAmount == value) return;
-                _disableWorkshopAmount = value;
+                if (_numOfWorkshops == value) return;
+                _numOfWorkshops = value;
                 OnPropertyChanged();
             }
         }

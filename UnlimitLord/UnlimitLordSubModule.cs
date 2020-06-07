@@ -50,31 +50,31 @@ namespace UnlimitLord
                 harmony.UnpatchAll("com.unlimitLord.patch");
             }
 
-            if (mcmSettings.DisableCompanionAmount)
+            if (mcmSettings.NumOfCompanions != -1)
             {
                 harmony.Patch(typeof(DefaultClanTierModel).GetMethod("GetCompanionLimitForTier"),
                     postfix: new HarmonyMethod(typeof(CompanionAmountLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.DisablePartyAmount)
+            if (mcmSettings.NumOfParties != -1)
             {
                 harmony.Patch(typeof(DefaultClanTierModel).GetMethod("GetPartyLimitForTier"),
                     postfix: new HarmonyMethod(typeof(PartyAmountLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.DisablePartySize)
+            if (mcmSettings.PartySize != -1)
             {
                 harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyMemberSizeLimit"),
                     postfix: new HarmonyMethod(typeof(PartySizeLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.DisablePrisonerAmount)
+            if (mcmSettings.NumOfPrisoners != -1)
             {
                 harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyPrisonerSizeLimit"),
                     postfix: new HarmonyMethod(typeof(PrisonerAmountLimitOverride).GetMethod("Postfix")));
             }
 
-            if (mcmSettings.DisableWorkshopAmount)
+            if (mcmSettings.NumOfWorkshops != -1)
             {
                 harmony.Patch(typeof(DefaultWorkshopModel).GetMethod("GetMaxWorkshopCountForPlayer"),
                     postfix: new HarmonyMethod(typeof(WorkshopAmountLimitOverride).GetMethod("Postfix")));
