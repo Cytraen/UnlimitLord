@@ -1,4 +1,6 @@
-﻿using MCM.Abstractions.Attributes;
+﻿#if mcmMode
+
+using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings.Mcm
@@ -14,3 +16,5 @@ namespace UnlimitLord.Settings.Mcm
         public bool FoodlessPartyEnabled { get; set; } = false;
     }
 }
+
+#endif

@@ -1,14 +1,17 @@
+using HarmonyLib;
+using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade;
+
+#if mcmMode
+using MCM.Abstractions.Settings.Base;
 using System.ComponentModel;
 using System.Reflection;
-using HarmonyLib;
-using MCM.Abstractions.Settings.Base;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
-using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
 using UnlimitLord.Settings.Mcm;
+#endif
 
 namespace UnlimitLord
 {

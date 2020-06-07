@@ -1,4 +1,6 @@
-﻿using MCM.Abstractions.Attributes;
+﻿#if mcmMode
+
+using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings.Mcm
@@ -18,3 +20,5 @@ namespace UnlimitLord.Settings.Mcm
         public float MaxPartyMorale { get; set; } = 100f;
     }
 }
+
+#endif

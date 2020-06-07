@@ -1,6 +1,9 @@
 ﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
+
+#if mcmMode
 using UnlimitLord.Settings.Mcm;
+#endif
 
 namespace UnlimitLord
 {
