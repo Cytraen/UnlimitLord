@@ -234,6 +234,7 @@
     <Compile Include="PartyDoesNotEatOverride.cs" />
     <Compile Include="PartyMoraleOverride.cs" />
     <Compile Include="PartySizeLimitOverride.cs" />
+    <Compile Include="PartySpeedOverride.cs" />
     <Compile Include="PrisonerAmountLimitOverride.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnlimitLordSubModule.cs" />

@@ -19,6 +19,7 @@ namespace UnlimitLord
         private int _numOfPrisoners = -1;
         private int _numOfWorkshops = -1;
         private float _partyMorale = -1;
+        private float _partySpeed = -1;
         private bool _disableClanPartiesEating = false;
         private bool _disableItemWeight = false;
 
@@ -94,7 +95,19 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("Disable Party Food Consumption", Order = 7, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Party Speed", -1.0f, 20.0f, Order = 7, RequireRestart = false, HintText = "-1 will disable this setting.")]
+        public float PartySpeed
+        {
+            get => _partySpeed;
+            set
+            {
+                if (Math.Abs(_partySpeed - value) < 0.0005f) return;
+                _partySpeed = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [SettingPropertyBool("Disable Party Food Consumption", Order = 8, RequireRestart = false)]
         public bool DisableClanPartiesEating
         {
             get => _disableClanPartiesEating;
@@ -106,7 +119,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("All Items Weightless", Order = 8, RequireRestart = false)]
+        [SettingPropertyBool("All Items Weightless", Order = 9, RequireRestart = false)]
         public bool DisableItemWeight
         {
             get => _disableItemWeight;

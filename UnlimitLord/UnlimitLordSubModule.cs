@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Reflection;
 using HarmonyLib;
 using MCM.Abstractions.Settings.Base;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
@@ -78,6 +79,12 @@ namespace UnlimitLord
             {
                 harmony.Patch(typeof(DefaultPartyMoraleModel).GetMethod("GetEffectivePartyMorale"),
                     postfix: new HarmonyMethod(typeof(PartyMoraleOverride).GetMethod("Postfix")));
+            }
+
+            if (Math.Abs(mcmSettings.PartySpeed - -1.0f) > 0.005)
+            {
+                harmony.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("CalculateFinalSpeed"),
+                    postfix: new HarmonyMethod(typeof(PartySpeedOverride).GetMethod("Postfix")));
             }
 
             if (mcmSettings.DisableClanPartiesEating)
