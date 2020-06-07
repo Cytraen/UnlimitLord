@@ -232,6 +232,7 @@
     <Compile Include="McmSettings.cs" />
     <Compile Include="PartyAmountLimitOverride.cs" />
     <Compile Include="PartyDoesNotEatOverride.cs" />
+    <Compile Include="PartyMoraleOverride.cs" />
     <Compile Include="PartySizeLimitOverride.cs" />
     <Compile Include="PrisonerAmountLimitOverride.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
