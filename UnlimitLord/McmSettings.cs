@@ -1,5 +1,6 @@
 ﻿#if mcmMode
 
+using System;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Settings.Base.Global;
 
@@ -17,6 +18,7 @@ namespace UnlimitLord
         private int _partySize = -1;
         private int _numOfPrisoners = -1;
         private int _numOfWorkshops = -1;
+        private float _partyMorale = -1;
         private bool _disableClanPartiesEating = false;
         private bool _disableItemWeight = false;
 
@@ -80,7 +82,19 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("Disable Party Food Consumption", Order = 6, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Party Morale", -1.0f, 100.0f, Order = 6, RequireRestart = false, HintText = "-1 will disable this setting.")]
+        public float PartyMorale
+        {
+            get => _partyMorale;
+            set
+            {
+                if (Math.Abs(_partyMorale - value) < 0.0005f) return;
+                _partyMorale = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [SettingPropertyBool("Disable Party Food Consumption", Order = 7, RequireRestart = false)]
         public bool DisableClanPartiesEating
         {
             get => _disableClanPartiesEating;
@@ -92,7 +106,7 @@ namespace UnlimitLord
             }
         }
 
-        [SettingPropertyBool("All Items Weightless", Order = 7, RequireRestart = false)]
+        [SettingPropertyBool("All Items Weightless", Order = 8, RequireRestart = false)]
         public bool DisableItemWeight
         {
             get => _disableItemWeight;
