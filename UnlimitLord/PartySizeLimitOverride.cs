@@ -1,5 +1,6 @@
 ﻿using System.Reflection.Emit;
 using HarmonyLib;
+using MCM.Abstractions.Settings.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Localization;
@@ -18,7 +19,7 @@ namespace UnlimitLord
 
             var textObject = new TextObject("UnlimitLord");
 #if mcmMode
-            explainedNumber.Clamp(McmSettings.Instance.PartySize, McmSettings.Instance.PartySize);
+            explainedNumber.Clamp(GlobalSettings<McmSettings>.Instance.PartySize, McmSettings.Instance.PartySize);
 #else
             explainedNumber.Clamp(100000f, 100000f);
 #endif

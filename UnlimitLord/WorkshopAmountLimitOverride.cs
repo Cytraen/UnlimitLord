@@ -1,5 +1,6 @@
 ﻿using System.Reflection.Emit;
 using HarmonyLib;
+using MCM.Abstractions.Settings.Base.Global;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
 namespace UnlimitLord
@@ -10,7 +11,7 @@ namespace UnlimitLord
         public static int Postfix(int result)
         {
 #if mcmMode
-            return McmSettings.Instance.NumOfWorkshops;
+            return GlobalSettings<McmSettings>.Instance.NumOfWorkshops;
 #else
             return 100000;
 #endif
