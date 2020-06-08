@@ -1,0 +1,27 @@
+ <Module>
+     <Name value="UnlimitLord"/>
+     <Id value="UnlimitLord"/>
+     <Version value="v0.3.0"/>
+     <SingleplayerModule value="true"/>
+     <MultiplayerModule value="false"/>
+     <DependedModules>
+         <DependedModule Id="Native"/>
+         <DependedModule Id="SandBoxCore"/>
+         <DependedModule Id="Sandbox"/>
+         <DependedModule Id="CustomBattle"/>
+         <DependedModule Id="StoryMode" />
+         <DependedModule Id="Bannerlord.MBOptionScreen" />
+     </DependedModules>
+     <SubModules>
+         <SubModule>
+             <Name value="UnlimitLord"/>
+             <DLLName value="UnlimitLord.dll"/>
+             <SubModuleClassType value="UnlimitLord.UnlimitLordSubModule"/>
+             <Tags>
+                 <Tag key="DedicatedServerType" value="none" />
+                 <Tag key="IsNoRenderModeElement" value="false" />
+             </Tags>
+         </SubModule>
+     </SubModules>
+     <Xmls/>
+ </Module>
