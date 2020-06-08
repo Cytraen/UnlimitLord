@@ -123,6 +123,27 @@ namespace UnlimitLord
                 harmony.Patch(typeof(DefaultArmyManagementCalculationModel).GetMethod("CalculateCohesionChange"),
                     postfix: new HarmonyMethod(typeof(ArmyCohesionOverride).GetMethod("Postfix")));
             }
+
+            if (mcmSettings.ViewDistEnabled)
+            {
+                harmony.Patch(typeof(DefaultMapVisibilityModel).GetMethod("GetPartySpottingRange"),
+                    postfix: new HarmonyMethod(typeof(PartyViewDistanceOverride).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.PlayerHealthEnabled)
+            {
+                harmony.Patch(typeof(DefaultCharacterStatsModel).GetMethod("MaxHitpoints"),
+                    postfix: new HarmonyMethod(typeof(PlayerHealthOverride).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.PartyHealingEnabled)
+            {
+                harmony.Patch(typeof(DefaultPartyHealingModel).GetMethod("GetDailyHealingForRegulars"),
+                    postfix: new HarmonyMethod(typeof(PartyHealingRateOverrideTroops).GetMethod("Postfix")));
+
+                harmony.Patch(typeof(DefaultPartyHealingModel).GetMethod("GetDailyHealingHpForHeroes"),
+                    postfix: new HarmonyMethod(typeof(PartyHealingRateOverrideHeroes).GetMethod("Postfix")));
+            }
 #endif
         }
     }

@@ -231,6 +231,8 @@
     <Compile Include="ArmyCohesionOverride.cs" />
     <Compile Include="CompanionAmountLimitOverride.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="PartyViewDistanceOverride.cs" />
+    <Compile Include="PlayerHealthOverride.cs" />
     <Compile Include="Settings\Mcm\SettingArmyCohesion.cs" />
     <Compile Include="Settings\Mcm\SettingBoolLimits.cs" />
     <Compile Include="Settings\Mcm\SettingCompanionAmount.cs" />
@@ -243,12 +245,16 @@
     <Compile Include="PrisonerAmountLimitOverride.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\Mcm\SettingPartyAmount.cs" />
+    <Compile Include="Settings\Mcm\SettingPartyHealing.cs" />
     <Compile Include="Settings\Mcm\SettingPartyMorale.cs" />
     <Compile Include="Settings\Mcm\SettingPartySize.cs" />
     <Compile Include="Settings\Mcm\SettingPartySpeed.cs" />
+    <Compile Include="Settings\Mcm\SettingPlayerHealth.cs" />
     <Compile Include="Settings\Mcm\SettingPrisonerAmount.cs" />
     <Compile Include="Settings\Mcm\SettingSmithingStamina.cs" />
+    <Compile Include="Settings\Mcm\SettingViewDistance.cs" />
     <Compile Include="Settings\Mcm\SettingWorkshopAmount.cs" />
+    <Compile Include="PartyHealingRateOverride.cs" />
     <Compile Include="SmithingStaminaOverride.cs" />
     <Compile Include="UnlimitLordSubModule.cs" />
     <Compile Include="WeightlessItemsOverride.cs" />

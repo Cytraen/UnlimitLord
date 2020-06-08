@@ -23,7 +23,7 @@ namespace UnlimitLord
 #if mcmMode
             explainedNumber.Add(Helpers.ClampInt(result, McmSettings.Instance.MinPartySize, McmSettings.Instance.MaxPartySize) - result, textObject);
 #else
-            explainedNumber.Clamp(100000f, 100000f);
+            explainedNumber.Clamp(100000, 100000);
 #endif
             return (int)explainedNumber.ResultNumber;
         }
