@@ -1,4 +1,4 @@
-﻿using MCM.Abstractions.Settings.Base.Global;
+using MCM.Abstractions.Settings.Base.Global;
 
 namespace UnlimitLord.Settings
 {

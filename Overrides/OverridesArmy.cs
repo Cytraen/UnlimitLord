@@ -13,10 +13,11 @@ namespace UnlimitLord.Overrides
         {
             public static float Postfix(float result, Army army, StatExplainer explanation)
             {
+                var settings = McmSettings.Instance;
                 if (army.LeaderParty?.Leader != CharacterObject.PlayerCharacter)
                     return result;
 
-                return Helpers.ClampAndExplainFloat(result + army.Cohesion, explanation, McmSettings.Instance.MinCohesion, McmSettings.Instance.MaxCohesion);
+                return Helpers.ClampAndExplainFloat((result * settings.ArmyCohesionMultiplier) + army.Cohesion, explanation, settings.MinCohesion, settings.MaxCohesion);
             }
         }
     }

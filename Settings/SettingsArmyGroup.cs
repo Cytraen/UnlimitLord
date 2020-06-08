@@ -14,12 +14,16 @@ namespace UnlimitLord.Settings
         [SettingPropertyBool("Army Cohesion Enabled", RequireRestart = false)]
         public bool ArmyCohesionEnabled { get; set; } = false;
 
+        [SettingPropertyGroup("Army/Cohesion", IsMainToggle = true)]
+        [SettingPropertyFloatingInteger("Cohesion Change Multiplier", 0f, 10f, "00.00x", Order = 0, RequireRestart = false)]
+        public float ArmyCohesionMultiplier { get; set; } = 1f;
+
         [SettingPropertyGroup("Army/Cohesion")]
-        [SettingPropertyFloatingInteger("Min. Cohesion", 0f, 100f, Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Min. Cohesion", 0f, 100f, "00.00", Order = 1, RequireRestart = false)]
         public float MinCohesion { get; set; } = 0f;
 
         [SettingPropertyGroup("Army/Cohesion")]
-        [SettingPropertyFloatingInteger("Max. Cohesion", 0f, 100f, Order = 2, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Max. Cohesion", 0f, 100f, "00.00", Order = 2, RequireRestart = false)]
         public float MaxCohesion { get; set; } = 100f;
     }
 }
