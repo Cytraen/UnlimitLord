@@ -21,5 +21,27 @@ namespace UnlimitLord.Settings
         [SettingPropertyGroup("Clan/Number of Parties")]
         [SettingPropertyInteger("Max. Number of Parties", 0, 1000000, Order = 2, RequireRestart = false)]
         public int MaxNumOfParties { get; set; } = 1000000;
+
+        //
+
+        [SettingPropertyGroup("Clan/Garrison Size", IsMainToggle = true)]
+        [SettingPropertyBool("Garrison Size Enabled", RequireRestart = false)]
+        public bool GarrisonSizesEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Clan/Garrison Size")]
+        [SettingPropertyInteger("Min. Castle Garrison Size", 0, 1000000, Order = 0, RequireRestart = false)]
+        public int MinCastleGarrisonSize { get; set; } = 0;
+
+        [SettingPropertyGroup("Clan/Garrison Size")]
+        [SettingPropertyInteger("Max. Castle Garrison Size", 0, 1000000, Order = 1, RequireRestart = false)]
+        public int MaxCastleGarrisonSize { get; set; } = 1000000;
+
+        [SettingPropertyGroup("Clan/Garrison Size")]
+        [SettingPropertyInteger("Min. Town Garrison Size", 0, 1000000, Order = 2, RequireRestart = false)]
+        public int MinTownGarrisonSize { get; set; } = 0;
+
+        [SettingPropertyGroup("Clan/Garrison Size")]
+        [SettingPropertyInteger("Max. Town Garrison Size", 0, 1000000, Order = 3, RequireRestart = false)]
+        public int MaxTownGarrisonSize { get; set; } = 1000000;
     }
 }

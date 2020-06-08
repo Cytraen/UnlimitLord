@@ -40,6 +40,12 @@ namespace UnlimitLord
                     postfix: new HarmonyMethod(typeof(PartySizeLimitOverride).GetMethod("Postfix")));
             }
 
+            if (mcmSettings.GarrisonSizesEnabled)
+            {
+                harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyMemberSizeLimit"),
+                    postfix: new HarmonyMethod(typeof(GarrisonSizeLimitOverride).GetMethod("Postfix")));
+            }
+
             if (mcmSettings.PrisonerAmountEnabled)
             {
                 harmony.Patch(typeof(DefaultPartySizeLimitModel).GetMethod("GetPartyPrisonerSizeLimit"),
@@ -116,6 +122,12 @@ namespace UnlimitLord
 
                 harmony.Patch(typeof(DefaultPartyHealingModel).GetMethod("GetDailyHealingHpForHeroes"),
                     postfix: new HarmonyMethod(typeof(PartyHealingRateOverrideHeroes).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.TroopWageEnabled)
+            {
+                harmony.Patch(typeof(DefaultClanFinanceModel).GetMethod("CalculatePartyWage", BindingFlags.NonPublic | BindingFlags.Instance),
+                    postfix: new HarmonyMethod(typeof(PartyWageOverride).GetMethod("Postfix")));
             }
         }
     }

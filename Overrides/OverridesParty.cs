@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Localization;
@@ -123,6 +124,18 @@ namespace UnlimitLord.Overrides
             {
                 if (mobileParty.IsMainParty)
                     totalWeightCarried = 0;
+            }
+        }
+
+        [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
+        internal static class PartyWageOverride
+        {
+            public static int Postfix(int result, MobileParty mobileParty)
+            {
+                if (mobileParty.IsMainParty || (mobileParty?.LeaderHero?.Clan == Clan.PlayerClan && McmSettings.Instance.TroopWageAllParties))
+                    return (int)(result * McmSettings.Instance.TroopWageMultiplier);
+
+                return result;
             }
         }
     }

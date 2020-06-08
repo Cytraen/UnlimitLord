@@ -8,12 +8,6 @@ namespace UnlimitLord
 {
     internal class UnlimitLordSubModule : MBSubModuleBase
     {
-        protected override void OnSubModuleLoad()
-        {
-            base.OnSubModuleLoad();
-            InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
-        }
-
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
@@ -22,6 +16,8 @@ namespace UnlimitLord
                 McmSettings.Instance.PropertyChanged += MCMSettings_PropertyChanged;
 
             Patch.ApplyPatches(McmSettings.Instance);
+
+            InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
         }
 
         private static void MCMSettings_PropertyChanged(object sender, PropertyChangedEventArgs e)

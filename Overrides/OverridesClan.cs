@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Localization;
 using UnlimitLord.Settings;
 
@@ -15,6 +16,25 @@ namespace UnlimitLord.Overrides
             {
                 if (clan != Clan.PlayerClan) return result;
                 return Helpers.ClampInt(result, McmSettings.Instance.MinNumOfParties, McmSettings.Instance.MaxNumOfParties);
+            }
+        }
+
+        [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
+        internal static class GarrisonSizeLimitOverride
+        {
+            public static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            {
+                if (party.MobileParty?.IsGarrison != true || party.Owner != CharacterObject.PlayerCharacter.HeroObject)
+                    return result;
+
+                else if (party.MobileParty?.HomeSettlement?.IsCastle == true)
+                    return Helpers.ClampAndExplainInt(result, explanation, McmSettings.Instance.MinCastleGarrisonSize, McmSettings.Instance.MinCastleGarrisonSize);
+
+                else if (party.MobileParty?.HomeSettlement?.IsTown == true)
+                    return Helpers.ClampAndExplainInt(result, explanation, McmSettings.Instance.MinTownGarrisonSize, McmSettings.Instance.MinTownGarrisonSize);
+
+                else
+                    return result;
             }
         }
     }

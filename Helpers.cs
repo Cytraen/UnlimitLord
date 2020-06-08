@@ -33,13 +33,5 @@ namespace UnlimitLord
             explainedNumber.Add(ClampFloat(toClamp, min, max) - toClamp, textObject);
             return explainedNumber.ResultNumber;
         }
-
-        // MobileParty.MainParty = player party
-        // Hero.MainHero = player
-        // hero.IsHumanPlayerCharacter = player
-        // CharacterObject.PlayerCharacter = player
-        // presumably also PartyBase.MainParty = player party
-
-        // if (mobileParty.Army == null && mobileParty.IsActive && mobileParty.IsMainParty && mobileParty.Leader == CharacterObject.PlayerCharacter) { }
     }
 }

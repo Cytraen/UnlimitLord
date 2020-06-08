@@ -103,11 +103,25 @@ namespace UnlimitLord.Settings
         public bool ViewDistEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/View Distance")]
-        [SettingPropertyFloatingInteger("Min. View Distance", 0f, 1000f, Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Min. View Distance", 0f, 1000f, Order = 0, RequireRestart = false)]
         public float MinViewDist { get; set; } = 0f;
 
         [SettingPropertyGroup("Party/View Distance")]
-        [SettingPropertyFloatingInteger("Max. View Distance", 0f, 1000f, Order = 2, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Max. View Distance", 0f, 1000f, Order = 1, RequireRestart = false)]
         public float MaxViewDist { get; set; } = 75f;
+
+        //
+
+        [SettingPropertyGroup("Party/Party Wages", IsMainToggle = true)]
+        [SettingPropertyBool("Party Wages Enabled", RequireRestart = false)]
+        public bool TroopWageEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Party/Party Wages")]
+        [SettingPropertyBool("Applies to All Parties in Player's Clan", RequireRestart = false)]
+        public bool TroopWageAllParties { get; set; } = false;
+
+        [SettingPropertyGroup("Party/Party Wages")]
+        [SettingPropertyFloatingInteger("Party Wage Multiplier", 0f, 25f, Order = 1, RequireRestart = false)]
+        public float TroopWageMultiplier { get; set; } = 1f;
     }
 }
