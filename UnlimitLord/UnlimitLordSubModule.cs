@@ -1,6 +1,7 @@
 using HarmonyLib;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 
 #if mcmMode
 using MCM.Abstractions.Settings.Base;
@@ -103,6 +104,24 @@ namespace UnlimitLord
 
                 harmony.Patch(typeof(DefaultPartySpeedCalculatingModel).GetMethod("AddCargoStats", BindingFlags.NonPublic | BindingFlags.Static),
                     postfix: new HarmonyMethod(typeof(WeightlessItemsOverridePt2).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.InfiniteSmithStamina)
+            {
+                harmony.Patch(typeof(CraftingCampaignBehavior).GetMethod("GetHeroCraftingStamina"),
+                    postfix: new HarmonyMethod(typeof(SmithingStaminaAmountOverride).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.MaxSmithStaminaEnabled)
+            {
+                harmony.Patch(typeof(CraftingCampaignBehavior).GetMethod("GetMaxHeroCraftingStamina"),
+                    postfix: new HarmonyMethod(typeof(SmithingStaminaMaxOverride).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.ArmyCohesionEnabled)
+            {
+                harmony.Patch(typeof(DefaultArmyManagementCalculationModel).GetMethod("CalculateCohesionChange"),
+                    postfix: new HarmonyMethod(typeof(ArmyCohesionOverride).GetMethod("Postfix")));
             }
 #endif
         }

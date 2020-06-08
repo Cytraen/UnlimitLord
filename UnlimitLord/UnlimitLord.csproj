@@ -23,7 +23,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'McmRelease|x64'">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>C:\Users\Abdul\Desktop\unlimitLordBuild\mcm\UnlimitLord\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>..\..\..\Binaries\UnlimitLord\MCM\UnlimitLord\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>TRACE;mcmMode</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,7 +40,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'StandaloneRelease|x64' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>C:\Users\Abdul\Desktop\unlimitLordBuild\standalone\UnlimitLord\bin\Win64_Shipping_Client\</OutputPath>
+    <OutputPath>..\..\..\Binaries\UnlimitLord\Standalone\UnlimitLord\bin\Win64_Shipping_Client\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -228,8 +228,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArmyCohesionOverride.cs" />
     <Compile Include="CompanionAmountLimitOverride.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="Settings\Mcm\SettingArmyCohesion.cs" />
     <Compile Include="Settings\Mcm\SettingBoolLimits.cs" />
     <Compile Include="Settings\Mcm\SettingCompanionAmount.cs" />
     <Compile Include="Settings\Mcm\McmSettings.cs" />
@@ -245,7 +247,9 @@
     <Compile Include="Settings\Mcm\SettingPartySize.cs" />
     <Compile Include="Settings\Mcm\SettingPartySpeed.cs" />
     <Compile Include="Settings\Mcm\SettingPrisonerAmount.cs" />
+    <Compile Include="Settings\Mcm\SettingSmithingStamina.cs" />
     <Compile Include="Settings\Mcm\SettingWorkshopAmount.cs" />
+    <Compile Include="SmithingStaminaOverride.cs" />
     <Compile Include="UnlimitLordSubModule.cs" />
     <Compile Include="WeightlessItemsOverride.cs" />
     <Compile Include="WorkshopAmountLimitOverride.cs" />
