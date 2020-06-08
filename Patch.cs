@@ -129,6 +129,12 @@ namespace UnlimitLord
                 harmony.Patch(typeof(DefaultClanFinanceModel).GetMethod("CalculatePartyWage", BindingFlags.NonPublic | BindingFlags.Instance),
                     postfix: new HarmonyMethod(typeof(PartyWageOverride).GetMethod("Postfix")));
             }
+
+            if (mcmSettings.GarrisonWageEnabled)
+            {
+                harmony.Patch(typeof(DefaultClanFinanceModel).GetMethod("CalculatePartyWage", BindingFlags.NonPublic | BindingFlags.Instance),
+                    postfix: new HarmonyMethod(typeof(GarrisonWageOverride).GetMethod("Postfix")));
+            }
         }
     }
 }

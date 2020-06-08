@@ -37,5 +37,17 @@ namespace UnlimitLord.Overrides
                     return result;
             }
         }
+
+        [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
+        internal static class GarrisonWageOverride
+        {
+            public static int Postfix(int result, MobileParty mobileParty)
+            {
+                if (!mobileParty.IsGarrison || mobileParty.Party?.Owner?.Clan != Clan.PlayerClan)
+                    return result;
+
+                return (int)(result * McmSettings.Instance.GarrisonWageMultiplier);
+            }
+        }
     }
 }

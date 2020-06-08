@@ -132,10 +132,10 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, MobileParty mobileParty)
             {
-                if (mobileParty.IsMainParty || (mobileParty?.LeaderHero?.Clan == Clan.PlayerClan && McmSettings.Instance.TroopWageAllParties))
-                    return (int)(result * McmSettings.Instance.TroopWageMultiplier);
+                if (!mobileParty.IsMainParty && (mobileParty?.LeaderHero?.Clan != Clan.PlayerClan || !McmSettings.Instance.TroopWageAllParties))
+                    return result;
 
-                return result;
+                return (int)(result * McmSettings.Instance.TroopWageMultiplier);
             }
         }
     }

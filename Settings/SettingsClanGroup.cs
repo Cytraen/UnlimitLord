@@ -43,5 +43,15 @@ namespace UnlimitLord.Settings
         [SettingPropertyGroup("Clan/Garrison Size")]
         [SettingPropertyInteger("Max. Town Garrison Size", 0, 1000000, Order = 3, RequireRestart = false)]
         public int MaxTownGarrisonSize { get; set; } = 1000000;
+
+        //
+
+        [SettingPropertyGroup("Clan/Garrison Wages", IsMainToggle = true)]
+        [SettingPropertyBool("Garrison Wages Enabled", RequireRestart = false)]
+        public bool GarrisonWageEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Clan/Garrison Wages")]
+        [SettingPropertyFloatingInteger("Garrison Wage Multiplier", 0f, 25f, Order = 1, RequireRestart = false)]
+        public float GarrisonWageMultiplier { get; set; } = 1f;
     }
 }
