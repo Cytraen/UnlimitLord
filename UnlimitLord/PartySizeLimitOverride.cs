@@ -2,10 +2,7 @@
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 using TaleWorlds.Localization;
-
-#if mcmMode
 using UnlimitLord.Settings.Mcm;
-#endif
 
 namespace UnlimitLord
 {
@@ -20,11 +17,7 @@ namespace UnlimitLord
             var explainedNumber = new ExplainedNumber(result, explanation);
             var textObject = new TextObject("UnlimitLord");
 
-#if mcmMode
             explainedNumber.Add(Helpers.ClampInt(result, McmSettings.Instance.MinPartySize, McmSettings.Instance.MaxPartySize) - result, textObject);
-#else
-            explainedNumber.Clamp(100000, 100000);
-#endif
             return (int)explainedNumber.ResultNumber;
         }
     }

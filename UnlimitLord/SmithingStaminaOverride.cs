@@ -1,10 +1,7 @@
 ﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
-
-#if mcmMode
 using UnlimitLord.Settings.Mcm;
-#endif
 
 namespace UnlimitLord
 {
@@ -22,11 +19,7 @@ namespace UnlimitLord
     {
         public static int Postfix(int result, Hero hero)
         {
-#if mcmMode
             return McmSettings.Instance.MaxSmithStaminaAmount;
-#else
-            return 500;
-#endif
         }
     }
 }

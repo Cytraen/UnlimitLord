@@ -1,7 +1,4 @@
-﻿#if mcmMode
-
-using MCM.Abstractions.Attributes;
-using MCM.Abstractions.Attributes.v2;
+﻿using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Settings.Base.Global;
 
 namespace UnlimitLord.Settings.Mcm
@@ -26,5 +23,3 @@ namespace UnlimitLord.Settings.Mcm
         public bool ArmyCategory { get; set; }
     }
 }
-
-#endif

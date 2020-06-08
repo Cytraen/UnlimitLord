@@ -1,6 +1,4 @@
-﻿#if mcmMode
-
-using MCM.Abstractions.Attributes;
+﻿using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings.Mcm
@@ -28,5 +26,3 @@ namespace UnlimitLord.Settings.Mcm
         public float MaxHeroHealing { get; set; } = 1000000f;
     }
 }
-
-#endif

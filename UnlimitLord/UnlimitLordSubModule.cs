@@ -1,18 +1,15 @@
 using HarmonyLib;
-using TaleWorlds.Core;
-using TaleWorlds.MountAndBlade;
-using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
-
-#if mcmMode
 using MCM.Abstractions.Settings.Base;
 using System.ComponentModel;
 using System.Reflection;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
+using TaleWorlds.Core;
+using TaleWorlds.MountAndBlade;
 using UnlimitLord.Settings.Mcm;
-#endif
 
 namespace UnlimitLord
 {
@@ -21,10 +18,7 @@ namespace UnlimitLord
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
-#if !mcmMode
-            new Harmony("com.unlimitLord.patch").PatchAll();
-            InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
-#else
+
             if (McmSettings.Instance != null)
                 McmSettings.Instance.PropertyChanged += MCMSettings_PropertyChanged;
 
@@ -144,7 +138,6 @@ namespace UnlimitLord
                 harmony.Patch(typeof(DefaultPartyHealingModel).GetMethod("GetDailyHealingHpForHeroes"),
                     postfix: new HarmonyMethod(typeof(PartyHealingRateOverrideHeroes).GetMethod("Postfix")));
             }
-#endif
         }
     }
 }

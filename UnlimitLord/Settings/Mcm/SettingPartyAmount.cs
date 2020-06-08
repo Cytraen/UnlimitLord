@@ -1,6 +1,4 @@
-﻿#if mcmMode
-
-using MCM.Abstractions.Attributes;
+﻿using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings.Mcm
@@ -20,5 +18,3 @@ namespace UnlimitLord.Settings.Mcm
         public int MaxNumOfParties { get; set; } = 1000000;
     }
 }
-
-#endif
