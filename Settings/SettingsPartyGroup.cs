@@ -11,11 +11,11 @@ namespace UnlimitLord.Settings
         //
 
         [SettingPropertyGroup("Party")]
-        [SettingPropertyBool("Weightless Items", Order = 1, RequireRestart = false)]
+        [SettingPropertyBool("Weightless Items", Order = 0, RequireRestart = false)]
         public bool WeightlessItemsEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party")]
-        [SettingPropertyBool("Party Doesn't Need Food", Order = 2, RequireRestart = false)]
+        [SettingPropertyBool("Party Doesn't Eat Food", Order = 1, RequireRestart = false)]
         public bool FoodlessPartyEnabled { get; set; } = false;
 
         //
