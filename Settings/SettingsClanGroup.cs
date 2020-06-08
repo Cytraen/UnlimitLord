@@ -3,8 +3,13 @@ using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings
 {
-    internal partial class McmSettings
+    internal sealed partial class McmSettings
     {
+        [SettingPropertyGroup("Clan", GroupOrder = 2)]
+        public bool ClanCategory { get; set; }
+
+        //
+
         [SettingPropertyGroup("Clan/Number of Parties", IsMainToggle = true)]
         [SettingPropertyBool("Party Amount Enabled", RequireRestart = false)]
         public bool PartyAmountEnabled { get; set; } = false;

@@ -3,8 +3,13 @@ using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings
 {
-    internal partial class McmSettings
+    internal sealed partial class McmSettings
     {
+        [SettingPropertyGroup("Army", GroupOrder = 3)]
+        public bool ArmyCategory { get; set; }
+
+        //
+
         [SettingPropertyGroup("Army/Cohesion", IsMainToggle = true)]
         [SettingPropertyBool("Army Cohesion Enabled", RequireRestart = false)]
         public bool ArmyCohesionEnabled { get; set; } = false;
