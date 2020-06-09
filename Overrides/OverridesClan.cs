@@ -28,7 +28,7 @@ namespace UnlimitLord.Overrides
             public static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
                 var settings = McmSettings.Instance;
-                if (!party.IsGarrison() || !party.Owner.IsPlayer())
+                if (!party.IsGarrison() || !party.IsPlayerOwnedParty())
                     return result;
 
                 else if (party.PartyBelongsToCastle())

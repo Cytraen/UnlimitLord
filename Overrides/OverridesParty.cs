@@ -36,7 +36,7 @@ namespace UnlimitLord.Overrides
                     return result;
 
 
-                return Helpers.ClampAndExplain(-result, explainer, 0, 0);
+                return Helpers.ClampAndExplain(result, explainer, 0, 0);
             }
         }
 
