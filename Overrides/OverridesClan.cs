@@ -32,10 +32,10 @@ namespace UnlimitLord.Overrides
                     return result;
 
                 else if (party.MobileParty?.HomeSettlement?.IsCastle == true)
-                    return Helpers.ClampAndExplainInt((int)(result * settings.CastleGarrisonSizeMult), explanation, settings.MinCastleGarrisonSize, settings.MinCastleGarrisonSize);
+                    return Helpers.ClampAndExplainInt((int)(result * settings.CastleGarrisonSizeMult), explanation, settings.MinCastleGarrisonSize, settings.MaxCastleGarrisonSize);
 
                 else if (party.MobileParty?.HomeSettlement?.IsTown == true)
-                    return Helpers.ClampAndExplainInt((int)(result * settings.TownGarrisonSizeMult), explanation, settings.MinTownGarrisonSize, settings.MinTownGarrisonSize);
+                    return Helpers.ClampAndExplainInt((int)(result * settings.TownGarrisonSizeMult), explanation, settings.MinTownGarrisonSize, settings.MaxTownGarrisonSize);
 
                 else
                     return result;

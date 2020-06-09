@@ -1,4 +1,4 @@
-﻿using MCM.Abstractions.Attributes;
+using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings
@@ -14,7 +14,7 @@ namespace UnlimitLord.Settings
         [SettingPropertyBool("Army Cohesion Enabled", RequireRestart = false)]
         public bool ArmyCohesionEnabled { get; set; } = false;
 
-        [SettingPropertyGroup("Army/Cohesion", IsMainToggle = true)]
+        [SettingPropertyGroup("Army/Cohesion")]
         [SettingPropertyFloatingInteger("Cohesion Change Multiplier", 0f, 10f, "00.00x", Order = 0, RequireRestart = false)]
         public float ArmyCohesionMultiplier { get; set; } = 1f;
 

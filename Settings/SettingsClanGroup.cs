@@ -1,4 +1,4 @@
-﻿using MCM.Abstractions.Attributes;
+using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 
 namespace UnlimitLord.Settings
@@ -45,7 +45,7 @@ namespace UnlimitLord.Settings
         public int MaxCastleGarrisonSize { get; set; } = 1000000;
 
         [SettingPropertyGroup("Clan/Garrison Size")]
-        [SettingPropertyFloatingInteger("Castle Garrison Size Multiplier", 0f, 100f, "00.00x", Order = 3, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Town Garrison Size Multiplier", 0f, 100f, "00.00x", Order = 3, RequireRestart = false)]
         public float TownGarrisonSizeMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Clan/Garrison Size")]
@@ -71,7 +71,7 @@ namespace UnlimitLord.Settings
         public int MinGarrisonWage { get; set; } = 0;
 
         [SettingPropertyGroup("Clan/Garrison Wages")]
-        [SettingPropertyInteger("Min. Wage per Garrison", 0, 100000, Order = 2, RequireRestart = false)]
+        [SettingPropertyInteger("Max. Wage per Garrison", 0, 100000, Order = 2, RequireRestart = false)]
         public int MaxGarrisonWage { get; set; } = 100000;
     }
 }
