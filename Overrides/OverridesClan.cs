@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
@@ -52,6 +52,20 @@ namespace UnlimitLord.Overrides
                     return result;
 
                 return (int)Helpers.Clamp(result * settings.GarrisonWageMultiplier, settings.MinGarrisonWage, settings.MaxGarrisonWage);
+            }
+        }
+
+        [HarmonyPatch(typeof(DefaultSettlementFoodModel), "CalculateTownFoodStocksChange")]
+        internal static class GarrisonFoodConsumptionOverride
+        {
+            public static float Postfix(float result, Town town, StatExplainer explanation)
+            {
+                MobileParty garrisonParty = town?.GarrisonParty;
+
+                if (garrisonParty?.IsGarrison() == false || garrisonParty?.IsPlayerOwnedParty() == false)
+                    return result;
+
+                return Helpers.ClampAndExplain(((garrisonParty?.Party?.NumberOfAllMembers) ?? 0) / 20, explanation, 0, 1000000);
             }
         }
     }

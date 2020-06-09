@@ -73,7 +73,13 @@ namespace UnlimitLord
             if (mcmSettings.FoodlessPartyEnabled)
             {
                 harmony.Patch(typeof(DefaultMobilePartyFoodConsumptionModel).GetMethod("DoesPartyConsumeFood"),
-                    postfix: new HarmonyMethod(typeof(PartyDoesNotEatOverride).GetMethod("Postfix")));
+                    postfix: new HarmonyMethod(typeof(PartyDoesNotEatOverridePt1).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.FoodlessPartyEnabled)
+            {
+                harmony.Patch(typeof(DefaultMobilePartyFoodConsumptionModel).GetMethod("CalculateDailyFoodConsumptionf"),
+                    postfix: new HarmonyMethod(typeof(PartyDoesNotEatOverridePt2).GetMethod("Postfix")));
             }
 
             if (mcmSettings.WeightlessItemsEnabled)
@@ -134,6 +140,12 @@ namespace UnlimitLord
             {
                 harmony.Patch(typeof(DefaultClanFinanceModel).GetMethod("CalculatePartyWage", BindingFlags.NonPublic | BindingFlags.Instance),
                     postfix: new HarmonyMethod(typeof(GarrisonWageOverride).GetMethod("Postfix")));
+            }
+
+            if (mcmSettings.FoodlessGarrisonsEnabled)
+            {
+                harmony.Patch(typeof(DefaultSettlementFoodModel).GetMethod("CalculateTownFoodStocksChange"),
+                    postfix: new HarmonyMethod(typeof(GarrisonFoodConsumptionOverride).GetMethod("Postfix")));
             }
         }
     }

@@ -24,10 +24,6 @@ namespace UnlimitLord.Settings
         [SettingPropertyBool("Player's Clan's Parties Don't Eat Food", Order = 1, RequireRestart = false)]
         public bool FoodlessClanEnabled { get; set; } = false;
 
-        [SettingPropertyGroup("Party/Food")]
-        [SettingPropertyBool("Player's Garrisons Don't Eat Food", HintText = "This setting is experimental and may not work.", Order = 2, RequireRestart = false)]
-        public bool FoodlessGarrisonsEnabled { get; set; } = false;
-
         //
 
         [SettingPropertyGroup("Party/Healing", IsMainToggle = true)]

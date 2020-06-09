@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
@@ -11,14 +11,32 @@ namespace UnlimitLord.Overrides
     internal static partial class Overrides
     {
         [HarmonyPatch(typeof(DefaultMobilePartyFoodConsumptionModel), "DoesPartyConsumeFood")]
-        internal static class PartyDoesNotEatOverride
+        internal static class PartyDoesNotEatOverridePt1
         {
             public static bool Postfix(bool result, MobileParty mobileParty)
             {
+                var settings = McmSettings.Instance;
                 return !(!result || mobileParty.IsPlayersMainParty()
-                    || (mobileParty.IsPlayerClanOwnedParty() && McmSettings.Instance.FoodlessClanEnabled)
-                    || (mobileParty.IsGarrison() && McmSettings.Instance.FoodlessGarrisonsEnabled)
+                    || (mobileParty.IsPlayerClanOwnedParty() && settings.FoodlessClanEnabled)
+                    || (mobileParty.IsGarrison() && settings.FoodlessGarrisonsEnabled)
                     );
+            }
+        }
+
+        [HarmonyPatch(typeof(DefaultMobilePartyFoodConsumptionModel), "CalculateDailyFoodConsumptionf")]
+        internal static class PartyDoesNotEatOverridePt2
+        {
+            public static float Postfix(float result, MobileParty party, StatExplainer explainer)
+            {
+                var settings = McmSettings.Instance;
+                if (!party.IsPlayersMainParty()
+                    && (!party.IsPlayerClanOwnedParty() || !settings.FoodlessClanEnabled)
+                    && (!party.IsGarrison() || !settings.FoodlessGarrisonsEnabled)
+                    )
+                    return result;
+
+
+                return Helpers.ClampAndExplain(-result, explainer, 0, 0);
             }
         }
 
