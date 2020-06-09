@@ -15,7 +15,7 @@ namespace UnlimitLord.Settings
         public bool ArmyCohesionEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Army/Cohesion")]
-        [SettingPropertyFloatingInteger("Cohesion Change Multiplier", 0f, 10f, "00.00x", Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Cohesion Change Multiplier", 0f, 10f, "00.00x", Order = 0, RequireRestart = false, HintText = "Multiplies the cohesion CHANGE. Not the cohesion itself.")]
         public float ArmyCohesionMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Army/Cohesion")]

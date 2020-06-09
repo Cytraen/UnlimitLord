@@ -15,7 +15,10 @@ namespace UnlimitLord.Overrides
         {
             public static bool Postfix(bool result, MobileParty mobileParty)
             {
-                return !(!result || mobileParty.IsPlayersMainParty() || (mobileParty.IsPlayerClanOwnedParty() && McmSettings.Instance.FoodlessClanEnabled));
+                return !(!result || mobileParty.IsPlayersMainParty()
+                    || (mobileParty.IsPlayerClanOwnedParty() && McmSettings.Instance.FoodlessClanEnabled)
+                    || (mobileParty.IsGarrison() && McmSettings.Instance.FoodlessGarrisonsEnabled)
+                    );
             }
         }
 
@@ -28,7 +31,7 @@ namespace UnlimitLord.Overrides
                 if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplain(result, explanation, settings.MinTroopHealing, settings.MaxTroopHealing);
+                return Helpers.ClampAndExplain(result * settings.TroopHealingMult, explanation, settings.MinTroopHealing, settings.MaxTroopHealing);
             }
         }
 
@@ -41,7 +44,7 @@ namespace UnlimitLord.Overrides
                 if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplain(result, explanation, settings.MinHeroHealing, settings.MaxHeroHealing);
+                return Helpers.ClampAndExplain(result * settings.HeroHealingMult, explanation, settings.MinHeroHealing, settings.MaxHeroHealing);
             }
         }
 
@@ -54,7 +57,7 @@ namespace UnlimitLord.Overrides
                 if (!mobileParty.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplain(result, explanation, settings.MinPartyMorale, settings.MaxPartyMorale);
+                return Helpers.ClampAndExplain(result * settings.PartyMoraleMult, explanation, settings.MinPartyMorale, settings.MaxPartyMorale);
             }
         }
 
@@ -67,7 +70,7 @@ namespace UnlimitLord.Overrides
                 if (!party.IsPlayersMainParty())
                     return result;
 
-                return (int)Helpers.ClampAndExplain(result, explanation, settings.MinPartySize, settings.MaxPartySize);
+                return (int)Helpers.ClampAndExplain(result * settings.PartySizeMult, explanation, settings.MinPartySize, settings.MaxPartySize);
             }
         }
 
@@ -80,7 +83,7 @@ namespace UnlimitLord.Overrides
                 if (!mobileParty.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplain(result, explanation, settings.MinPartySpeed, settings.MaxPartySpeed);
+                return Helpers.ClampAndExplain(result * settings.PartySpeedMult, explanation, settings.MinPartySpeed, settings.MaxPartySpeed);
             }
         }
 
@@ -93,7 +96,7 @@ namespace UnlimitLord.Overrides
                 if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplain(result, explainer, settings.MinViewDist, settings.MaxViewDist);
+                return Helpers.ClampAndExplain(result * settings.ViewDistMult, explainer, settings.MinViewDist, settings.MaxViewDist);
             }
         }
 
@@ -106,7 +109,7 @@ namespace UnlimitLord.Overrides
                 if (!party.IsPlayersMainParty())
                     return result;
 
-                return (int)Helpers.ClampAndExplain(result, explanation, settings.MinNumOfPrisoners, settings.MaxNumOfPrisoners);
+                return (int)Helpers.ClampAndExplain(result * settings.NumOfPrisonersMult, explanation, settings.MinNumOfPrisoners, settings.MaxNumOfPrisoners);
             }
         }
 
@@ -143,7 +146,7 @@ namespace UnlimitLord.Overrides
                 if (!mobileParty.IsPlayersMainParty() && (!mobileParty.IsPlayerClanOwnedParty() || !settings.TroopWageAllParties))
                     return result;
 
-                return (int)(result * settings.TroopWageMultiplier);
+                return (int)Helpers.Clamp(result * settings.TroopWageMultiplier, settings.MinTroopWage, settings.MinTroopWage);
             }
         }
     }

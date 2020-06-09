@@ -1,4 +1,4 @@
-﻿using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem;
 using TaleWorlds.Localization;
 
 namespace UnlimitLord
@@ -12,8 +12,8 @@ namespace UnlimitLord
 
         public static float ClampAndExplain(float toClamp, StatExplainer explainer, float min, float max)
         {
-            var baseTextObject = new TextObject("Pre-UnlimitLord Total");
-            var unLimitTextObject = new TextObject("UnlimitLord");
+            var baseTextObject = new TextObject("Total After UL Multiplier");
+            var unLimitTextObject = new TextObject("UnlimitLord Clamp");
             var explainedNumber = new ExplainedNumber(toClamp, explainer, baseTextObject);
 
             explainedNumber.Add(Clamp(toClamp, min, max) - toClamp, unLimitTextObject);
