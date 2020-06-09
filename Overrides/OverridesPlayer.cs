@@ -15,7 +15,7 @@ namespace UnlimitLord.Overrides
             public static int Postfix(int result)
             {
                 var settings = McmSettings.Instance;
-                return (int)Helpers.Clamp(result, settings.MinNumOfCompanions, settings.MinNumOfCompanions);
+                return (int)Helpers.Clamp(result * settings.NumOfCompanionsMult, settings.MinNumOfCompanions, settings.MinNumOfCompanions);
             }
         }
 
@@ -24,10 +24,11 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, CharacterObject character, StatExplainer explanation)
             {
+                var settings = McmSettings.Instance;
                 if (!character.IsPlayer())
                     return result;
 
-                return (int)Helpers.ClampAndExplain(result, explanation, McmSettings.Instance.MinPlayerHealth, McmSettings.Instance.MaxPlayerHealth);
+                return (int)Helpers.ClampAndExplain(result * settings.PlayerHealthMult, explanation, settings.MinPlayerHealth, settings.MaxPlayerHealth);
             }
         }
 
@@ -45,10 +46,11 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, Hero hero)
             {
+                var settings = McmSettings.Instance;
                 if (!hero.IsPlayer())
                     return result;
 
-                return McmSettings.Instance.MaxSmithStaminaAmount;
+                return (int)Helpers.Clamp(result * settings.SmithStaminaMult, 0, settings.MaxSmithStaminaAmount);
             }
         }
 
@@ -58,7 +60,7 @@ namespace UnlimitLord.Overrides
             public static int Postfix(int result)
             {
                 var settings = McmSettings.Instance;
-                return (int)Helpers.Clamp(result, settings.MinNumOfWorkshops, settings.MaxNumOfWorkshops);
+                return (int)Helpers.Clamp(result * settings.NumOfWorkshopsMult, settings.MinNumOfWorkshops, settings.MaxNumOfWorkshops);
             }
         }
     }
