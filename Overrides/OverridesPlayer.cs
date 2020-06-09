@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
@@ -15,7 +15,7 @@ namespace UnlimitLord.Overrides
             public static int Postfix(int result)
             {
                 var settings = McmSettings.Instance;
-                return (int)Helpers.Clamp(result * settings.NumOfCompanionsMult, settings.MinNumOfCompanions, settings.MinNumOfCompanions);
+                return (int)Helpers.Clamp(result * settings.NumOfCompanionsMult, settings.MinNumOfCompanions, settings.MaxNumOfCompanions);
             }
         }
 

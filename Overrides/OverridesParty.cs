@@ -164,7 +164,7 @@ namespace UnlimitLord.Overrides
                 if (!mobileParty.IsPlayersMainParty() && (!mobileParty.IsPlayerClanOwnedParty() || !settings.TroopWageAllParties))
                     return result;
 
-                return (int)Helpers.Clamp(result * settings.TroopWageMultiplier, settings.MinTroopWage, settings.MinTroopWage);
+                return (int)Helpers.Clamp(result * settings.TroopWageMultiplier, settings.MinTroopWage, settings.MaxTroopWage);
             }
         }
     }
