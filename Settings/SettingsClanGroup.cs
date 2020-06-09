@@ -15,7 +15,7 @@ namespace UnlimitLord.Settings
         public bool PartyAmountEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Clan/Number of Parties")]
-        [SettingPropertyFloatingInteger("Number of Parties Multiplier", 0f, 100f, "00.00x", Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Number of Parties Multiplier", 0f, 100f, "##00.00x", Order = 0, RequireRestart = false)]
         public float NumOfPartiesMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Clan/Number of Parties")]
@@ -33,7 +33,7 @@ namespace UnlimitLord.Settings
         public bool GarrisonSizesEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Clan/Garrison Size")]
-        [SettingPropertyFloatingInteger("Castle Garrison Size Multiplier", 0f, 100f, "00.00x", Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Castle Garrison Size Multiplier", 0f, 100f, "##00.00x", Order = 0, RequireRestart = false)]
         public float CastleGarrisonSizeMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Clan/Garrison Size")]
@@ -45,7 +45,7 @@ namespace UnlimitLord.Settings
         public int MaxCastleGarrisonSize { get; set; } = 1000000;
 
         [SettingPropertyGroup("Clan/Garrison Size")]
-        [SettingPropertyFloatingInteger("Town Garrison Size Multiplier", 0f, 100f, "00.00x", Order = 3, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Town Garrison Size Multiplier", 0f, 100f, "##00.00x", Order = 3, RequireRestart = false)]
         public float TownGarrisonSizeMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Clan/Garrison Size")]
@@ -63,7 +63,7 @@ namespace UnlimitLord.Settings
         public bool GarrisonWageEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Clan/Garrison Wages")]
-        [SettingPropertyFloatingInteger("Garrison Wage Multiplier", 0f, 25f, "00.00x", Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Garrison Wage Multiplier", 0f, 25f, "##00.00x", Order = 0, RequireRestart = false)]
         public float GarrisonWageMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Clan/Garrison Wages")]

@@ -25,7 +25,7 @@ namespace UnlimitLord.Settings
         public bool FoodlessClanEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/Food")]
-        [SettingPropertyBool("Player's Garrisons Don't Eat Food", Order = 2, RequireRestart = false)]
+        [SettingPropertyBool("Player's Garrisons Don't Eat Food", HintText = "This setting is experimental and may not work.", Order = 2, RequireRestart = false)]
         public bool FoodlessGarrisonsEnabled { get; set; } = false;
 
         //
@@ -35,7 +35,7 @@ namespace UnlimitLord.Settings
         public bool PartyHealingEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/Healing")]
-        [SettingPropertyFloatingInteger("Troop Healing Rate Multiplier", 0f, 1000f, Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Troop Healing Rate Multiplier", 0f, 1000f, "##00.00x", Order = 0, RequireRestart = false)]
         public float TroopHealingMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/Healing")]
@@ -47,7 +47,7 @@ namespace UnlimitLord.Settings
         public float MaxTroopHealing { get; set; } = 1000000f;
 
         [SettingPropertyGroup("Party/Healing")]
-        [SettingPropertyFloatingInteger("Hero Healing Rate Multiplier", 0f, 1000f, Order = 3, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Hero Healing Rate Multiplier", 0f, 1000f, "##00.00x", Order = 3, RequireRestart = false)]
         public float HeroHealingMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/Healing")]
@@ -65,7 +65,7 @@ namespace UnlimitLord.Settings
         public bool PartyMoraleEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/Morale")]
-        [SettingPropertyFloatingInteger("Party Morale Mult", 0f, 25f, Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Party Morale Mult", 0f, 25f, "##00.00x", Order = 0, RequireRestart = false)]
         public float PartyMoraleMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/Morale")]
@@ -83,7 +83,7 @@ namespace UnlimitLord.Settings
         public bool PartySizeEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/Size")]
-        [SettingPropertyFloatingInteger("Party Size Mult", 0f, 1000f, Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Party Size Mult", 0f, 1000f, "##00.00x", Order = 0, RequireRestart = false)]
         public float PartySizeMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/Size")]
@@ -101,7 +101,7 @@ namespace UnlimitLord.Settings
         public bool PartySpeedEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/Movement Speed")]
-        [SettingPropertyFloatingInteger("Party Speed Mult", 0f, 25f, Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Party Speed Mult", 0f, 25f, "##00.00x", Order = 0, RequireRestart = false)]
         public float PartySpeedMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/Movement Speed")]
@@ -119,7 +119,7 @@ namespace UnlimitLord.Settings
         public bool PrisonerAmountEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/Prisoners")]
-        [SettingPropertyFloatingInteger("Number of Prisoners Mult", 0f, 1000f, Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Number of Prisoners Mult", 0f, 1000f, "##00.00x", Order = 0, RequireRestart = false)]
         public float NumOfPrisonersMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/Prisoners")]
@@ -137,7 +137,7 @@ namespace UnlimitLord.Settings
         public bool ViewDistEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party/View Distance")]
-        [SettingPropertyFloatingInteger("View Distance Mult", 0f, 100f, Order = 0, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("View Distance Mult", 0f, 100f, "##00.00x", Order = 0, RequireRestart = false)]
         public float ViewDistMult { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/View Distance")]
@@ -159,7 +159,7 @@ namespace UnlimitLord.Settings
         public bool TroopWageAllParties { get; set; } = false;
 
         [SettingPropertyGroup("Party/Party Wages")]
-        [SettingPropertyFloatingInteger("Party Wage Multiplier", 0f, 25f, Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Party Wage Multiplier", 0f, 25f, "##00.00x", Order = 1, RequireRestart = false)]
         public float TroopWageMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Party/Party Wages")]
