@@ -15,8 +15,12 @@ namespace UnlimitLord.Settings
         public bool WeightlessItemsEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Party")]
-        [SettingPropertyBool("Party Doesn't Eat Food", Order = 1, RequireRestart = false)]
+        [SettingPropertyBool("Player's Party Doesn't Eat Food", Order = 1, RequireRestart = false)]
         public bool FoodlessPartyEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Party")]
+        [SettingPropertyBool("Player's Clan's Parties Don't Eat Food", Order = 2, RequireRestart = false)]
+        public bool FoodlessClanEnabled { get; set; } = false;
 
         //
 

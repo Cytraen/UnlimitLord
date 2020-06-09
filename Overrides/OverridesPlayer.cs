@@ -14,7 +14,8 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result)
             {
-                return Helpers.ClampInt(result, McmSettings.Instance.MinNumOfCompanions, McmSettings.Instance.MinNumOfCompanions);
+                var settings = McmSettings.Instance;
+                return (int)Helpers.Clamp(result, settings.MinNumOfCompanions, settings.MinNumOfCompanions);
             }
         }
 
@@ -23,10 +24,10 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, CharacterObject character, StatExplainer explanation)
             {
-                if (character != CharacterObject.PlayerCharacter)
+                if (!character.IsPlayer())
                     return result;
 
-                return Helpers.ClampAndExplainInt(result, explanation, McmSettings.Instance.MinPlayerHealth, McmSettings.Instance.MaxPlayerHealth);
+                return (int)Helpers.ClampAndExplain(result, explanation, McmSettings.Instance.MinPlayerHealth, McmSettings.Instance.MaxPlayerHealth);
             }
         }
 
@@ -35,7 +36,7 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, Hero hero)
             {
-                return hero.IsHumanPlayerCharacter ? result : CampaignBehaviorBase.GetCampaignBehavior<CraftingCampaignBehavior>().GetMaxHeroCraftingStamina(hero);
+                return hero.IsPlayer() ? result : CampaignBehaviorBase.GetCampaignBehavior<CraftingCampaignBehavior>().GetMaxHeroCraftingStamina(hero);
             }
         }
 
@@ -44,6 +45,9 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, Hero hero)
             {
+                if (!hero.IsPlayer())
+                    return result;
+
                 return McmSettings.Instance.MaxSmithStaminaAmount;
             }
         }
@@ -53,7 +57,8 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result)
             {
-                return Helpers.ClampInt(result, McmSettings.Instance.MinNumOfWorkshops, McmSettings.Instance.MaxNumOfWorkshops);
+                var settings = McmSettings.Instance;
+                return (int)Helpers.Clamp(result, settings.MinNumOfWorkshops, settings.MaxNumOfWorkshops);
             }
         }
     }

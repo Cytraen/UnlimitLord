@@ -15,10 +15,10 @@ namespace UnlimitLord.Overrides
             public static int Postfix(int result, Clan clan)
             {
                 var settings = McmSettings.Instance;
-                if (clan != Clan.PlayerClan)
+                if (!clan.IsPlayerClan())
                     return result;
 
-                return Helpers.ClampInt((int)(result * settings.NumOfPartiesMult), settings.MinNumOfParties, settings.MaxNumOfParties);
+                return (int)Helpers.Clamp(result * settings.NumOfPartiesMult, settings.MinNumOfParties, settings.MaxNumOfParties);
             }
         }
 
@@ -28,14 +28,14 @@ namespace UnlimitLord.Overrides
             public static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
                 var settings = McmSettings.Instance;
-                if (party.MobileParty?.IsGarrison != true || party.Owner != CharacterObject.PlayerCharacter.HeroObject)
+                if (!party.IsGarrison() || !party.Owner.IsPlayer())
                     return result;
 
-                else if (party.MobileParty?.HomeSettlement?.IsCastle == true)
-                    return Helpers.ClampAndExplainInt((int)(result * settings.CastleGarrisonSizeMult), explanation, settings.MinCastleGarrisonSize, settings.MaxCastleGarrisonSize);
+                else if (party.PartyBelongsToCastle())
+                    return (int)Helpers.ClampAndExplain((int)(result * settings.CastleGarrisonSizeMult), explanation, settings.MinCastleGarrisonSize, settings.MaxCastleGarrisonSize);
 
-                else if (party.MobileParty?.HomeSettlement?.IsTown == true)
-                    return Helpers.ClampAndExplainInt((int)(result * settings.TownGarrisonSizeMult), explanation, settings.MinTownGarrisonSize, settings.MaxTownGarrisonSize);
+                else if (party.PartyBelongsToTown())
+                    return (int)Helpers.ClampAndExplain((int)(result * settings.TownGarrisonSizeMult), explanation, settings.MinTownGarrisonSize, settings.MaxTownGarrisonSize);
 
                 else
                     return result;
@@ -48,10 +48,10 @@ namespace UnlimitLord.Overrides
             public static int Postfix(int result, MobileParty mobileParty)
             {
                 var settings = McmSettings.Instance;
-                if (!mobileParty.IsGarrison || mobileParty.Party?.Owner?.Clan != Clan.PlayerClan)
+                if (!mobileParty.IsGarrison() || !mobileParty.IsPlayerOwnedParty())
                     return result;
 
-                return Helpers.ClampInt((int)(result * settings.GarrisonWageMultiplier), settings.MinGarrisonWage, settings.MaxGarrisonWage);
+                return (int)Helpers.Clamp(result * settings.GarrisonWageMultiplier, settings.MinGarrisonWage, settings.MaxGarrisonWage);
             }
         }
     }

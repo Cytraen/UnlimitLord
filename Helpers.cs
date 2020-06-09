@@ -1,36 +1,22 @@
-using TaleWorlds.CampaignSystem;
+﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.Localization;
-using UnlimitLord.Settings;
 
 namespace UnlimitLord
 {
     internal static class Helpers
     {
-        public static int ClampInt(int value, int min, int max)
+        public static float Clamp(float value, float min, float max)
         {
             return (value < min) ? min : (value > max) ? max : value;
         }
 
-        public static float ClampFloat(float value, float min, float max)
+        public static float ClampAndExplain(float toClamp, StatExplainer explainer, float min, float max)
         {
-            return (value < min) ? min : (value > max) ? max : value;
-        }
+            var baseTextObject = new TextObject("Pre-UnlimitLord Total");
+            var unLimitTextObject = new TextObject("UnlimitLord");
+            var explainedNumber = new ExplainedNumber(toClamp, explainer, baseTextObject);
 
-        public static int ClampAndExplainInt(int toClamp, StatExplainer explainer, int min, int max)
-        {
-            var explainedNumber = new ExplainedNumber(0.0f, explainer);
-            var textObject = new TextObject("UnlimitLord");
-
-            explainedNumber.Add(ClampInt(toClamp, min, max), textObject);
-            return (int)explainedNumber.ResultNumber;
-        }
-
-        public static float ClampAndExplainFloat(float toClamp, StatExplainer explainer, float min, float max)
-        {
-            var explainedNumber = new ExplainedNumber(0.0f, explainer);
-            var textObject = new TextObject("UnlimitLord");
-
-            explainedNumber.Add(ClampFloat(toClamp, min, max), textObject);
+            explainedNumber.Add(Clamp(toClamp, min, max) - toClamp, unLimitTextObject);
             return explainedNumber.ResultNumber;
         }
     }

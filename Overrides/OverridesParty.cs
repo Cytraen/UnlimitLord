@@ -15,7 +15,7 @@ namespace UnlimitLord.Overrides
         {
             public static bool Postfix(bool result, MobileParty mobileParty)
             {
-                return !(!result || mobileParty.IsMainParty);
+                return !(!result || mobileParty.IsPlayersMainParty() || (mobileParty.IsPlayerClanOwnedParty() && McmSettings.Instance.FoodlessClanEnabled));
             }
         }
 
@@ -24,10 +24,11 @@ namespace UnlimitLord.Overrides
         {
             public static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {
-                if (!party.IsMainParty)
+                var settings = McmSettings.Instance;
+                if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplainFloat(result, explanation, McmSettings.Instance.MinTroopHealing, McmSettings.Instance.MaxTroopHealing);
+                return Helpers.ClampAndExplain(result, explanation, settings.MinTroopHealing, settings.MaxTroopHealing);
             }
         }
 
@@ -36,10 +37,11 @@ namespace UnlimitLord.Overrides
         {
             public static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {
-                if (!party.IsMainParty)
+                var settings = McmSettings.Instance;
+                if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplainFloat(result, explanation, McmSettings.Instance.MinHeroHealing, McmSettings.Instance.MaxHeroHealing);
+                return Helpers.ClampAndExplain(result, explanation, settings.MinHeroHealing, settings.MaxHeroHealing);
             }
         }
 
@@ -48,10 +50,11 @@ namespace UnlimitLord.Overrides
         {
             public static float Postfix(float result, MobileParty mobileParty, StatExplainer explanation = null)
             {
-                if (!mobileParty.IsMainParty)
+                var settings = McmSettings.Instance;
+                if (!mobileParty.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplainFloat(result, explanation, McmSettings.Instance.MinPartyMorale, McmSettings.Instance.MaxPartyMorale);
+                return Helpers.ClampAndExplain(result, explanation, settings.MinPartyMorale, settings.MaxPartyMorale);
             }
         }
 
@@ -60,10 +63,11 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
-                if (party != PartyBase.MainParty)
+                var settings = McmSettings.Instance;
+                if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplainInt(result, explanation, McmSettings.Instance.MinPartySize, McmSettings.Instance.MaxPartySize);
+                return (int)Helpers.ClampAndExplain(result, explanation, settings.MinPartySize, settings.MaxPartySize);
             }
         }
 
@@ -72,10 +76,11 @@ namespace UnlimitLord.Overrides
         {
             public static float Postfix(float result, MobileParty mobileParty, StatExplainer explanation)
             {
-                if (!mobileParty.IsMainParty)
+                var settings = McmSettings.Instance;
+                if (!mobileParty.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplainFloat(result, explanation, McmSettings.Instance.MinPartySpeed, McmSettings.Instance.MaxPartySpeed);
+                return Helpers.ClampAndExplain(result, explanation, settings.MinPartySpeed, settings.MaxPartySpeed);
             }
         }
 
@@ -84,10 +89,11 @@ namespace UnlimitLord.Overrides
         {
             public static float Postfix(float result, MobileParty party, StatExplainer explainer)
             {
-                if (!party.IsMainParty)
+                var settings = McmSettings.Instance;
+                if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplainFloat(result, explainer, McmSettings.Instance.MinViewDist, McmSettings.Instance.MaxViewDist);
+                return Helpers.ClampAndExplain(result, explainer, settings.MinViewDist, settings.MaxViewDist);
             }
         }
 
@@ -96,10 +102,11 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
-                if (party != PartyBase.MainParty)
+                var settings = McmSettings.Instance;
+                if (!party.IsPlayersMainParty())
                     return result;
 
-                return Helpers.ClampAndExplainInt(result, explanation, McmSettings.Instance.MinNumOfPrisoners, McmSettings.Instance.MaxNumOfPrisoners);
+                return (int)Helpers.ClampAndExplain(result, explanation, settings.MinNumOfPrisoners, settings.MaxNumOfPrisoners);
             }
         }
 
@@ -109,7 +116,7 @@ namespace UnlimitLord.Overrides
         {
             public static float Postfix(float result, MobileParty mobileParty)
             {
-                if (!mobileParty.IsMainParty)
+                if (!mobileParty.IsPlayersMainParty())
                     return result;
 
                 return 0;
@@ -122,7 +129,7 @@ namespace UnlimitLord.Overrides
         {
             public static void Postfix(MobileParty mobileParty, ref float totalWeightCarried)
             {
-                if (mobileParty.IsMainParty)
+                if (mobileParty.IsPlayersMainParty())
                     totalWeightCarried = 0;
             }
         }
@@ -132,10 +139,11 @@ namespace UnlimitLord.Overrides
         {
             public static int Postfix(int result, MobileParty mobileParty)
             {
-                if (!mobileParty.IsMainParty && (mobileParty?.LeaderHero?.Clan != Clan.PlayerClan || !McmSettings.Instance.TroopWageAllParties))
+                var settings = McmSettings.Instance;
+                if (!mobileParty.IsPlayersMainParty() && (!mobileParty.IsPlayerClanOwnedParty() || !settings.TroopWageAllParties))
                     return result;
 
-                return (int)(result * McmSettings.Instance.TroopWageMultiplier);
+                return (int)(result * settings.TroopWageMultiplier);
             }
         }
     }
