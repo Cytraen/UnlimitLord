@@ -2,7 +2,6 @@ using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
-using TaleWorlds.Localization;
 using UnlimitLord.Settings;
 
 namespace UnlimitLord.Overrides
@@ -31,14 +30,13 @@ namespace UnlimitLord.Overrides
                 if (!party.IsGarrison() || !party.IsPlayerOwnedParty())
                     return result;
 
-                else if (party.PartyBelongsToCastle())
+                if (party.PartyBelongsToCastle())
                     return (int)Helpers.ClampAndExplain((int)(result * settings.CastleGarrisonSizeMult), explanation, settings.MinCastleGarrisonSize, settings.MaxCastleGarrisonSize);
 
-                else if (party.PartyBelongsToTown())
+                if (party.PartyBelongsToTown())
                     return (int)Helpers.ClampAndExplain((int)(result * settings.TownGarrisonSizeMult), explanation, settings.MinTownGarrisonSize, settings.MaxTownGarrisonSize);
 
-                else
-                    return result;
+                return result;
             }
         }
 
