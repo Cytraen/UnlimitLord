@@ -3,10 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<Platforms>x64</Platforms>
-		<Version>0.3.2</Version>
+		<Version>0.3.3</Version>
 		<Authors>ashakoor</Authors>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/ashakoor/UnlimitLord</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/ashakoor/UnlimitLord</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
@@ -26,7 +24,8 @@
 
 	<PropertyGroup>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-		<AssemblyVersion>0.3.2.0</AssemblyVersion>
+		<AssemblyVersion>0.3.3.0</AssemblyVersion>
+		<PackageLicenseFile>COPYING.md</PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -199,6 +198,13 @@
 			<HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mount &amp; Blade II Bannerlord\bin\Win64_Shipping_Client\TaleWorlds.TwoDimension.Standalone.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="COPYING.md">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
