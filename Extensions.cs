@@ -1,109 +1,186 @@
 ﻿/*
-   Copyright (C) 2020 ashakoor
+ Copyright (C) 2020 ashakoor
 
-   This program is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the
-   License or any later version.
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License,
+ or any later version.
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with this program. If not, see <https://www.gnu.org/licenses/>.
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+using System.Linq;
 using TaleWorlds.CampaignSystem;
 
 namespace UnlimitLord
 {
-    public static class Extensions
+    // For TaleWorlds.CampaignSystem.Hero
+    internal static partial class Extensions
     {
-        public static bool IsPlayer(this CharacterObject character)
+        public static bool IsThisHeroPlayerHero(this Hero hero)
         {
-            return character.IsPlayerCharacter;
+            return hero == Hero.MainHero;
         }
 
-        public static bool IsPlayer(this Hero hero)
+        public static bool IsThisHeroPlayerCompanion(this Hero hero)
         {
-            return hero.IsHumanPlayerCharacter;
+            return hero?.IsPlayerCompanion == true;
         }
 
-        public static bool IsPlayerOwnedParty(this PartyBase party)
+        public static bool IsThisHeroInPlayerClan(this Hero hero)
         {
-            return party.Owner?.IsPlayer() == true;
+            return hero?.Clan?.IsPlayerLeadingThisClan() == true;
         }
 
-        public static bool IsPlayerOwnedParty(this MobileParty party)
+        public static bool IsThisHeroInPlayerArmy(this Hero hero)
         {
-            return party.Party?.IsPlayerOwnedParty() == true;
+            return hero?.PartyBelongedTo?.Army?.IsPlayerInThisArmy() == true;
         }
 
-        public static bool IsPlayersMainParty(this MobileParty party)
+        public static bool IsThisHeroInPlayerKingdom(this Hero hero)
         {
-            return party.IsMainParty;
+            return hero?.Clan?.Kingdom?.IsPlayerInThisKingdom() == true;
+        }
+    }
+
+    // For TaleWorlds.CampaignSystem.PartyBase
+    internal static partial class Extensions
+    {
+        public static bool IsPlayerLeadingThisParty(this PartyBase partyBase)
+        {
+            return partyBase?.LeaderHero?.IsThisHeroPlayerHero() == true;
         }
 
-        public static bool IsPlayersMainParty(this PartyBase party)
+        public static bool IsThisPartyInPlayerClan(this PartyBase partyBase)
         {
-            return party.MobileParty?.IsPlayersMainParty() == true;
+            return partyBase?.LeaderHero?.Clan?.IsPlayerLeadingThisClan() == true;
         }
 
-        public static bool IsPlayerClan(this Clan clan)
+        public static bool IsThisPartyInPlayerArmy(this PartyBase partyBase)
         {
-            return clan == Clan.PlayerClan;
+            return partyBase?.MobileParty?.IsThisPartyInPlayerArmy() == true;
         }
 
-        public static bool IsPlayerClanOwnedParty(this PartyBase party)
+        public static bool IsThisPartyInPlayerKingdom(this PartyBase partyBase)
         {
-            return party.Owner?.Clan?.IsPlayerClan() == true;
+            return partyBase?.LeaderHero?.Clan?.Kingdom?.IsPlayerInThisKingdom() == true;
         }
 
-        public static bool IsPlayerClanOwnedParty(this MobileParty party)
+        public static bool IsThisPartyGarrison(this PartyBase party)
         {
-            return party.Party?.IsPlayerClanOwnedParty() == true;
+            return party?.MobileParty?.IsGarrison() == true;
         }
 
-        public static bool IsPlayerInArmy(this Army army)
+        public static bool IsPartyOwnedByPlayer(this PartyBase party)
         {
-            return army.Parties?.Contains(MobileParty.MainParty) == true;
+            return party?.Owner?.IsThisHeroPlayerHero() == true;
         }
 
-        public static bool IsPlayerLedArmy(this Army army)
+        public static bool DoesPartyBelongToCastle(this PartyBase party)
         {
-            return army.ArmyOwner?.IsHumanPlayerCharacter == true;
+            return party?.MobileParty?.DoesPartyBelongToCastle() == true;
         }
 
-        public static bool IsPlayerInKingdom(this Kingdom kingdom)
+        public static bool DoesPartyBelongToTown(this PartyBase party)
         {
-            return kingdom.Clans?.Contains(Clan.PlayerClan) == true;
+            return party?.MobileParty?.DoesPartyBelongToTown() == true;
+        }
+    }
+
+    // For TaleWorlds.CampaignSystem.MobileParty
+    internal static partial class Extensions
+    {
+        public static bool IsPlayerLeadingThisParty(this MobileParty mobileParty)
+        {
+            return mobileParty?.LeaderHero?.IsThisHeroPlayerHero() == true;
         }
 
-        public static bool IsPlayerRuledKingdom(this Kingdom kingdom)
+        public static bool IsThisPartyInPlayerClan(this MobileParty mobileParty)
         {
-            return kingdom.Leader?.IsPlayer() == true;
+            return mobileParty?.LeaderHero?.Clan?.IsPlayerLeadingThisClan() == true;
+        }
+
+        public static bool IsThisPartyInPlayerArmy(this MobileParty mobileParty)
+        {
+            return mobileParty?.Army?.IsPlayerInThisArmy() == true;
+        }
+
+        public static bool IsThisPartyInPlayerKingdom(this MobileParty mobileParty)
+        {
+            return mobileParty?.LeaderHero?.Clan?.Kingdom?.IsPlayerInThisKingdom() == true;
         }
 
         public static bool IsGarrison(this MobileParty party)
         {
-            return party.IsGarrison;
+            return party?.IsGarrison == true;
         }
 
-        public static bool IsGarrison(this PartyBase party)
+        public static bool IsPartyOwnedByPlayer(this MobileParty party)
         {
-            return party.MobileParty?.IsGarrison() == true;
+            return party?.Party?.IsPartyOwnedByPlayer() == true;
         }
 
-        public static bool PartyBelongsToCastle(this PartyBase party)
+        public static bool DoesPartyBelongToCastle(this MobileParty party)
         {
-            return party.MobileParty?.HomeSettlement?.IsCastle == true;
+            return party?.HomeSettlement?.IsCastle == true;
         }
 
-        public static bool PartyBelongsToTown(this PartyBase party)
+        public static bool DoesPartyBelongToTown(this MobileParty party)
         {
-            return party.MobileParty?.HomeSettlement?.IsTown == true;
+            return party?.HomeSettlement?.IsTown == true;
+        }
+    }
+
+    // For TaleWorlds.CampaignSystem.Clan
+    internal static partial class Extensions
+    {
+        public static bool IsPlayerLeadingThisClan(this Clan clan)
+        {
+            return clan?.Leader?.IsThisHeroPlayerHero() == true;
+        }
+
+        public static bool IsThisClanInPlayerKingdom(this Clan clan)
+        {
+            return clan?.Kingdom?.IsPlayerInThisKingdom() == true;
+        }
+    }
+
+    // For TaleWorlds.CampaignSystem.Army
+    internal static partial class Extensions
+    {
+        public static bool IsPlayerInThisArmy(this Army army)
+        {
+            return army?.Parties?.Contains(MobileParty.MainParty) == true;
+        }
+
+        public static bool IsPlayerLeadingThisArmy(this Army army)
+        {
+            return army?.LeaderParty?.LeaderHero?.IsThisHeroPlayerHero() == true;
+        }
+
+        public static bool IsThisArmyInPlayerKingdom(this Army army)
+        {
+            return army?.Kingdom?.IsPlayerInThisKingdom() == true;
+        }
+    }
+
+    // For TaleWorlds.CampaignSystem.Kingdom
+    internal static partial class Extensions
+    {
+        public static bool IsPlayerInThisKingdom(this Kingdom kingdom)
+        {
+            return kingdom?.Heroes?.Contains(Hero.MainHero) == true;
+        }
+
+        public static bool IsPlayerRulingThisKingdom(this Kingdom kingdom)
+        {
+            return kingdom?.Leader?.IsThisHeroPlayerHero() == true;
         }
     }
 }

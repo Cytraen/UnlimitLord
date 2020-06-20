@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<Platforms>x64</Platforms>
-		<Version>0.3.3</Version>
+		<Version>0.4.0</Version>
 		<Authors>ashakoor</Authors>
+		<Copyright>Copyright (C) 2020 ashakoor</Copyright>
+		<PackageLicenseFile>COPYING.md</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/ashakoor/UnlimitLord</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
@@ -17,20 +19,26 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-		<OutputPath>D:\Binaries\UnlimitLord\bin\Win64_Shipping_Client\</OutputPath>
+		<OutputPath>..\..\Binaries\UnlimitLord\bin\Win64_Shipping_Client\</OutputPath>
 		<DebugType>none</DebugType>
 		<DebugSymbols>false</DebugSymbols>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-		<AssemblyVersion>0.3.3.0</AssemblyVersion>
-		<PackageLicenseFile>COPYING.md</PackageLicenseFile>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Bannerlord.MCM" Version="3.1.9" />
 		<PackageReference Include="Lib.Harmony" Version="2.0.1" />
-		<PackageReference Include="Bannerlord.MCM" Version="3.1.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="COPYING.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -200,15 +208,8 @@
 		</Reference>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Include="COPYING.md">
-	    <Pack>True</Pack>
-	    <PackagePath></PackagePath>
-	  </None>
-	</ItemGroup>
-
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="copy &quot;$(SolutionDir)\SubModule.xml&quot; &quot;$(TargetDir)..\..\SubModule.xml&quot;" />
+		<Exec Command="copy &quot;$(SolutionDir)\SubModule.xml&quot; &quot;$(TargetDir)..\..\SubModule.xml&quot;" />
 	</Target>
 
 </Project>
