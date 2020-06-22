@@ -26,20 +26,20 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Castle
         {
-            public static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
                 var settings = Settings.Instance;
                 if (!party.IsThisPartyGarrison() || !WhoToApplyTo.DoesPatchApply(settings.CastleGarrisonSizeAppliesTo.SelectedValue.GetWho(), party))
                     return result;
 
-                if (party.DoesPartyBelongToCastle())
-                    return (int)Math.ClampAndExplain(
-                        result * settings.CastleGarrisonSizeMultiplier, explanation,
-                        settings.MinimumCastleGarrisonSize,
-                        settings.MaximumCastleGarrisonSize
-                        );
+                if (!party.DoesPartyBelongToCastle())
+                    return result;
 
-                return result;
+                return (int)Math.ClampAndExplain(
+                    result * settings.CastleGarrisonSizeMultiplier, explanation,
+                    settings.MinimumCastleGarrisonSize,
+                    settings.MaximumCastleGarrisonSize
+                    );
             }
 
             internal static bool Prepare()
@@ -51,20 +51,20 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Town
         {
-            public static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
                 var settings = Settings.Instance;
                 if (!party.IsThisPartyGarrison() || !WhoToApplyTo.DoesPatchApply(settings.TownGarrisonSizeAppliesTo.SelectedValue.GetWho(), party))
                     return result;
 
-                if (party.DoesPartyBelongToCastle())
-                    return (int)Math.ClampAndExplain(
-                        result * settings.TownGarrisonSizeMultiplier, explanation,
-                        settings.MinimumTownGarrisonSize,
-                        settings.MaximumTownGarrisonSize
-                        );
+                if (!party.DoesPartyBelongToCastle())
+                    return result;
 
-                return result;
+                return (int)Math.ClampAndExplain(
+                    result * settings.TownGarrisonSizeMultiplier, explanation,
+                    settings.MinimumTownGarrisonSize,
+                    settings.MaximumTownGarrisonSize
+                    );
             }
 
             internal static bool Prepare()

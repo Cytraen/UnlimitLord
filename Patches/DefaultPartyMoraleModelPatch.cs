@@ -24,7 +24,7 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultPartyMoraleModel), "GetEffectivePartyMorale")]
     internal static class DefaultPartyMoraleModelPatch
     {
-        public static float Postfix(float result, MobileParty mobileParty, StatExplainer explanation)
+        internal static float Postfix(float result, MobileParty mobileParty, StatExplainer explanation)
         {
             var settings = Settings.Instance;
             if (!WhoToApplyTo.DoesPatchApply(settings.MoraleAppliesTo.SelectedValue.GetWho(), mobileParty))

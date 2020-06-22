@@ -49,24 +49,24 @@ namespace UnlimitLord
         }, 0);
 
         [SettingPropertyGroup("Movement Speed")]
-        [SettingPropertyFloatingInteger("Movement Speed Multiplier", 0f, 25f, "###0.00x", Order = 1,
+        [SettingPropertyFloatingInteger("Movement Speed Multiplier", 0.01f, 1000000f, Order = 1,
             RequireRestart = false)]
         public float MovementSpeedMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Movement Speed")]
-        [SettingPropertyFloatingInteger("Minimum Speed", 0f, 250f, "###0.00", Order = 2, RequireRestart = false)]
-        public float MinimumMovementSpeed { get; set; } = 0f;
+        [SettingPropertyFloatingInteger("Minimum Speed", 0.01f, 1000000000f, Order = 2, RequireRestart = false)]
+        public float MinimumMovementSpeed { get; set; } = 1f;
 
         [SettingPropertyGroup("Movement Speed")]
-        [SettingPropertyFloatingInteger("Maximum Speed", 0f, 250f, "###0.00", Order = 3, RequireRestart = false)]
-        public float MaximumMovementSpeed { get; set; } = 50f;
+        [SettingPropertyFloatingInteger("Maximum Speed", 0.01f, 1000000000f, Order = 3, RequireRestart = false)]
+        public float MaximumMovementSpeed { get; set; } = 1000000000f;
     }
 
     // Troop healing settings
     internal sealed partial class Settings
     {
         [SettingPropertyGroup("Troop Healing", IsMainToggle = true)]
-        [SettingPropertyBool("Healing Rate Enabled", RequireRestart = false)]
+        [SettingPropertyBool("Troop Healing Rate Enabled", RequireRestart = false)]
         public bool TroopHealingRateEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Troop Healing")]
@@ -81,23 +81,23 @@ namespace UnlimitLord
         }, 0);
 
         [SettingPropertyGroup("Troop Healing")]
-        [SettingPropertyFloatingInteger("Troop Healing Rate Multiplier", 0f, 1000f, "###0.00x", Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Troop Healing Rate Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
         public float TroopHealingRateMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Troop Healing")]
-        [SettingPropertyFloatingInteger("Min. Troop Healing Rate", 0f, 1000000f, "###0.00", Order = 2, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Minimum Troop Healing Rate", 0f, 1000000000f, Order = 2, RequireRestart = false)]
         public float MinimumTroopHealingRate { get; set; } = 0f;
 
         [SettingPropertyGroup("Troop Healing")]
-        [SettingPropertyFloatingInteger("Max. Troop Healing Rate", 0f, 1000000f, "###0.00", Order = 3, RequireRestart = false)]
-        public float MaximumTroopHealingRate { get; set; } = 1000000f;
+        [SettingPropertyFloatingInteger("Maximum Troop Healing Rate", 0f, 1000000000f, Order = 3, RequireRestart = false)]
+        public float MaximumTroopHealingRate { get; set; } = 1000000000f;
     }
 
     // Hero healing settings
     internal sealed partial class Settings
     {
         [SettingPropertyGroup("Hero Healing", IsMainToggle = true)]
-        [SettingPropertyBool("Healing Rate Enabled", RequireRestart = false)]
+        [SettingPropertyBool("Hero Healing Rate Enabled", RequireRestart = false)]
         public bool HeroHealingRateEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Hero Healing")]
@@ -112,16 +112,16 @@ namespace UnlimitLord
         }, 0);
 
         [SettingPropertyGroup("Hero Healing")]
-        [SettingPropertyFloatingInteger("Hero Healing Rate Multiplier", 0f, 1000f, "###0.00x", Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Hero Healing Rate Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
         public float HeroHealingRateMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Hero Healing")]
-        [SettingPropertyFloatingInteger("Min. Hero Healing Rate", 0f, 1000000f, "###0.00", Order = 2, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Minimum Hero Healing Rate", 0f, 1000000000f, Order = 2, RequireRestart = false)]
         public float MinimumHeroHealingRate { get; set; } = 0f;
 
         [SettingPropertyGroup("Hero Healing")]
-        [SettingPropertyFloatingInteger("Max. Hero Healing Rate", 0f, 1000000f, "###0.00", Order = 3, RequireRestart = false)]
-        public float MaximumHeroHealingRate { get; set; } = 1000000f;
+        [SettingPropertyFloatingInteger("Maximum Hero Healing Rate", 0f, 1000000000f, Order = 3, RequireRestart = false)]
+        public float MaximumHeroHealingRate { get; set; } = 1000000000f;
     }
 
     // Morale settings
@@ -143,15 +143,15 @@ namespace UnlimitLord
         }, 0);
 
         [SettingPropertyGroup("Morale")]
-        [SettingPropertyFloatingInteger("Morale Multiplier", 0f, 10f, "#0.00x", Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Morale Multiplier", 0.01f, 100f, Order = 1, RequireRestart = false)]
         public float MoraleMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Morale")]
-        [SettingPropertyFloatingInteger("Minimum Morale", 0f, 100f, "##0.00", Order = 2, RequireRestart = false)]
-        public float MinimumMorale { get; set; } = 0f;
+        [SettingPropertyFloatingInteger("Minimum Morale", 0f, 100f, Order = 2, RequireRestart = false)]
+        public float MinimumMorale { get; set; } = 5f;
 
         [SettingPropertyGroup("Morale")]
-        [SettingPropertyFloatingInteger("Maximum Morale", 0f, 100f, "##0.00", Order = 3, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Maximum Morale", 0f, 100f, Order = 3, RequireRestart = false)]
         public float MaximumMorale { get; set; } = 100f;
     }
 
@@ -172,16 +172,16 @@ namespace UnlimitLord
         }, 0);
 
         [SettingPropertyGroup("Castle Garrison Size")]
-        [SettingPropertyFloatingInteger("Castle Garrison Size Multiplier", 0f, 1000f, "###0.00x", Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Castle Garrison Size Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
         public float CastleGarrisonSizeMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Castle Garrison Size")]
-        [SettingPropertyInteger("Minimum Castle Garrison Size", 0, 1000000, "#####00", Order = 2, RequireRestart = false)]
+        [SettingPropertyInteger("Minimum Castle Garrison Size", 0, 1000000000, Order = 2, RequireRestart = false)]
         public int MinimumCastleGarrisonSize { get; set; } = 0;
 
         [SettingPropertyGroup("Castle Garrison Size")]
-        [SettingPropertyInteger("Maximum Castle Garrison Size", 0, 1000000, "#####00", Order = 3, RequireRestart = false)]
-        public int MaximumCastleGarrisonSize { get; set; } = 1000000;
+        [SettingPropertyInteger("Maximum Castle Garrison Size", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumCastleGarrisonSize { get; set; } = 1000000000;
     }
 
     // Town garrison size settings
@@ -201,15 +201,93 @@ namespace UnlimitLord
         }, 0);
 
         [SettingPropertyGroup("Town Garrison Size")]
-        [SettingPropertyFloatingInteger("Town Garrison Size Multiplier", 0f, 1000f, "###0.00x", Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Town Garrison Size Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
         public float TownGarrisonSizeMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Town Garrison Size")]
-        [SettingPropertyInteger("Minimum Town Garrison Size", 0, 1000000, "#####00", Order = 2, RequireRestart = false)]
+        [SettingPropertyInteger("Minimum Town Garrison Size", 0, 1000000000, Order = 2, RequireRestart = false)]
         public int MinimumTownGarrisonSize { get; set; } = 0;
 
         [SettingPropertyGroup("Town Garrison Size")]
-        [SettingPropertyInteger("Maximum Town Garrison Size", 0, 1000000, "#####00", Order = 3, RequireRestart = false)]
-        public int MaximumTownGarrisonSize { get; set; } = 1000000;
+        [SettingPropertyInteger("Maximum Town Garrison Size", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumTownGarrisonSize { get; set; } = 1000000000;
+    }
+
+    // Garrison wage settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Garrison Wage", IsMainToggle = true)]
+        [SettingPropertyBool("Garrison Wage Enabled", RequireRestart = false)]
+        public bool GarrisonWageEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Garrison Wage")]
+        [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<WhoToApplyTo> GarrisonWageAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        {
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
+            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+        }, 0);
+
+        [SettingPropertyGroup("Garrison Wage")]
+        [SettingPropertyFloatingInteger("Town Garrison Size Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float GarrisonWageMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Garrison Wage")]
+        [SettingPropertyInteger("Minimum Town Garrison Size", 0, 1000000000, Order = 2, RequireRestart = false)]
+        public int MinimumGarrisonWage { get; set; } = 0;
+
+        [SettingPropertyGroup("Garrison Wage")]
+        [SettingPropertyInteger("Maximum Town Garrison Size", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumGarrisonWage { get; set; } = 1000000000;
+    }
+
+    // Party amount settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Party Amount", IsMainToggle = true)]
+        [SettingPropertyBool("Party Amount Enabled", RequireRestart = false)]
+        public bool PartyAmountEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Party Amount")]
+        [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<WhoToApplyTo> PartyAmountAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        {
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
+            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+        }, 0);
+
+        [SettingPropertyGroup("Party Amount")]
+        [SettingPropertyFloatingInteger("Party Amount Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float PartyAmountMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Party Amount")]
+        [SettingPropertyInteger("Minimum Party Amount", 0, 1000000000, Order = 2, RequireRestart = false)]
+        public int MinimumPartyAmount { get; set; } = 0;
+
+        [SettingPropertyGroup("Party Amount")]
+        [SettingPropertyInteger("Maximum Party Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumPartyAmount { get; set; } = 1000000000;
+    }
+
+    // Companion amount settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Companion Amount", IsMainToggle = true)]
+        [SettingPropertyBool("Companion Amount Enabled", RequireRestart = false)]
+        public bool CompanionAmountEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Companion Amount")]
+        [SettingPropertyFloatingInteger("Companion Amount Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float CompanionAmountMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Companion Amount")]
+        [SettingPropertyInteger("Minimum Companion Amount", 0, 1000000000, Order = 2, RequireRestart = false)]
+        public int MinimumCompanionAmount { get; set; } = 0;
+
+        [SettingPropertyGroup("Companion Amount")]
+        [SettingPropertyInteger("Maximum Companion Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumCompanionAmount { get; set; } = 1000000000;
     }
 }

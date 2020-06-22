@@ -22,12 +22,12 @@ namespace UnlimitLord
 {
     internal static class Math
     {
-        private static float Clamp(float value, float min, float max)
+        internal static float Clamp(float value, float min, float max)
         {
             return (value < min) ? min : (value > max) ? max : value;
         }
 
-        public static float ClampAndExplain(float toClamp, StatExplainer explain, float min, float max)
+        internal static float ClampAndExplain(float toClamp, StatExplainer explain, float min, float max)
         {
             var baseTextObject = new TextObject("Total after UL multiplier");
             var unLimitTextObject = new TextObject("UnlimitLord clamp");

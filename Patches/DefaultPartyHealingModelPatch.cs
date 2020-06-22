@@ -26,10 +26,10 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartyHealingModel), "GetDailyHealingForRegulars")]
         internal static class Troops
         {
-            public static float Postfix(float result, MobileParty party, StatExplainer explanation)
+            internal static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {
                 var settings = Settings.Instance;
-                if (WhoToApplyTo.DoesPatchApply(settings.TroopHealingRateAppliesTo.SelectedValue.GetWho(), party))
+                if (!WhoToApplyTo.DoesPatchApply(settings.TroopHealingRateAppliesTo.SelectedValue.GetWho(), party))
                     return result;
 
                 return Math.ClampAndExplain(
@@ -48,10 +48,10 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartyHealingModel), "GetDailyHealingHpForHeroes")]
         internal static class Heroes
         {
-            public static float Postfix(float result, MobileParty party, StatExplainer explanation)
+            internal static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {
                 var settings = Settings.Instance;
-                if (WhoToApplyTo.DoesPatchApply(settings.HeroHealingRateAppliesTo.SelectedValue.GetWho(), party))
+                if (!WhoToApplyTo.DoesPatchApply(settings.HeroHealingRateAppliesTo.SelectedValue.GetWho(), party))
                     return result;
 
                 return Math.ClampAndExplain(
