@@ -290,4 +290,88 @@ namespace UnlimitLord
         [SettingPropertyInteger("Maximum Companion Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
         public int MaximumCompanionAmount { get; set; } = 1000000000;
     }
+
+    // Crafting stamina settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Crafting Stamina")]
+        [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<WhoToApplyTo> CraftingStaminaAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        {
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerOnly),
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerCompanions)
+        }, 0);
+
+        [SettingPropertyGroup("Crafting Stamina")]
+        [SettingPropertyBool("Infinite Crafting Stamina Enabled", Order = 1, RequireRestart = false)]
+        public bool InfiniteCraftingStaminaEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Crafting Stamina")]
+        [SettingPropertyBool("Crafting Stamina Amount Enabled", Order = 2, RequireRestart = false)]
+        public bool CraftingStaminaAmountEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Crafting Stamina")]
+        [SettingPropertyFloatingInteger("Crafting Stamina Multiplier", 0.01f, 1000000f, Order = 3, RequireRestart = false)]
+        public float CraftingStaminaMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Crafting Stamina")]
+        [SettingPropertyInteger("Minimum Crafting Stamina", 0, 1000000000, Order = 4, RequireRestart = false)]
+        public int MinimumCraftingStamina { get; set; } = 0;
+
+        [SettingPropertyGroup("Crafting Stamina")]
+        [SettingPropertyInteger("Maximum Crafting Stamina", 0, 1000000000, Order = 5, RequireRestart = false)]
+        public int MaximumCraftingStamina { get; set; } = 1000000000;
+    }
+
+    // Workshop amount settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Workshop Amount", IsMainToggle = true)]
+        [SettingPropertyBool("Workshop Amount Enabled", RequireRestart = false)]
+        public bool WorkshopAmountEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Workshop Amount")]
+        [SettingPropertyFloatingInteger("Workshop Amount Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float WorkshopAmountMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Workshop Amount")]
+        [SettingPropertyInteger("Minimum Workshop Amount", 0, 1000000000, Order = 2, RequireRestart = false)]
+        public int MinimumWorkshopAmount { get; set; } = 0;
+
+        [SettingPropertyGroup("Workshop Amount")]
+        [SettingPropertyInteger("Maximum Workshop Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumWorkshopAmount { get; set; } = 1000000000;
+    }
+
+    // Hero health amount settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Hero Health Amount", IsMainToggle = true)]
+        [SettingPropertyBool("Hero Health Amount Enabled", RequireRestart = false)]
+        public bool HeroHealthAmountEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Hero Health Amount")]
+        [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<WhoToApplyTo> HeroHealthAmountAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        {
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerOnly),
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerCompanions),
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerArmy),
+            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
+            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+        }, 0);
+
+        [SettingPropertyGroup("Hero Health Amount")]
+        [SettingPropertyFloatingInteger("Hero Health Amount Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float HeroHealthAmountMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Hero Health Amount")]
+        [SettingPropertyInteger("Minimum Hero Health Amount", 0, 1000000000, Order = 2, RequireRestart = false)]
+        public int MinimumHeroHealthAmount { get; set; } = 0;
+
+        [SettingPropertyGroup("Hero Health Amount")]
+        [SettingPropertyInteger("Maximum Hero Health Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumHeroHealthAmount { get; set; } = 1000000000;
+    }
 }

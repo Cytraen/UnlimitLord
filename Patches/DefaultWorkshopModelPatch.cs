@@ -16,30 +16,21 @@
 */
 
 using HarmonyLib;
-using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
 namespace UnlimitLord.Patches
 {
-    [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
-    internal static class DefaultClanFinanceModelPatch
+    [HarmonyPatch(typeof(DefaultWorkshopModel), "GetMaxWorkshopCountForPlayer")]
+    internal static class DefaultWorkshopModelPatch
     {
-        internal static int Postfix(int result, MobileParty mobileParty)
+        internal static int Postfix(int result)
         {
             var settings = Settings.Instance;
-            if (!mobileParty.IsGarrison() || !WhoToApplyTo.DoesPatchApply(settings.GarrisonWageAppliesTo.SelectedValue.GetWho(), mobileParty))
-                return result;
-
             return (int)Math.Clamp(
-                result * settings.GarrisonWageMultiplier,
-                settings.MinimumGarrisonWage,
-                settings.MaximumGarrisonWage
+                result * settings.WorkshopAmountMultiplier,
+                settings.MinimumWorkshopAmount,
+                settings.MaximumWorkshopAmount
                 );
-        }
-
-        internal static bool Prepare()
-        {
-            return Settings.Instance.GarrisonWageEnabled;
         }
     }
 }

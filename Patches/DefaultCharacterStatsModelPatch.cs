@@ -21,25 +21,20 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
 namespace UnlimitLord.Patches
 {
-    [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
-    internal static class DefaultClanFinanceModelPatch
+    [HarmonyPatch(typeof(DefaultCharacterStatsModel), "MaxHitpoints")]
+    internal static class DefaultCharacterStatsModelPatch
     {
-        internal static int Postfix(int result, MobileParty mobileParty)
+        public static int Postfix(int result, CharacterObject character, StatExplainer explanation)
         {
             var settings = Settings.Instance;
-            if (!mobileParty.IsGarrison() || !WhoToApplyTo.DoesPatchApply(settings.GarrisonWageAppliesTo.SelectedValue.GetWho(), mobileParty))
+            if (!WhoToApplyTo.DoesPatchApply(settings.HeroHealthAmountAppliesTo.SelectedValue.GetWho(), character?.HeroObject))
                 return result;
 
-            return (int)Math.Clamp(
-                result * settings.GarrisonWageMultiplier,
-                settings.MinimumGarrisonWage,
-                settings.MaximumGarrisonWage
+            return (int)Math.ClampAndExplain(
+                result * settings.HeroHealthAmountMultiplier, explanation,
+                settings.MinimumHeroHealthAmount,
+                settings.MaximumHeroHealthAmount
                 );
-        }
-
-        internal static bool Prepare()
-        {
-            return Settings.Instance.GarrisonWageEnabled;
         }
     }
 }

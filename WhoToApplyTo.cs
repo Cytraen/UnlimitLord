@@ -76,11 +76,13 @@ namespace UnlimitLord
 
                 case WhoToApplyToEnum.PlayerParty:
                     goto default;
+
                 case WhoToApplyToEnum.PlayerClan:
                     return hero.IsThisHeroInPlayerClan();
 
                 case WhoToApplyToEnum.PlayerArmy:
-                    goto default;
+                    return hero.IsThisHeroInPlayerArmy();
+
                 case WhoToApplyToEnum.PlayerKingdom:
                     return hero.IsThisHeroInPlayerKingdom() || hero.IsThisHeroInPlayerClan();
 
