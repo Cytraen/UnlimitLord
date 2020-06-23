@@ -20,12 +20,41 @@ using TaleWorlds.CampaignSystem;
 
 namespace UnlimitLord
 {
+    // For TaleWorlds.CampaignSystem.CharacterObject
+    internal static partial class Extensions
+    {
+        public static bool IsThisCharacterPlayerCharacter(this CharacterObject character)
+        {
+            return character?.IsPlayerCharacter == true;
+        }
+
+        public static bool IsThisCharacterPlayerCompanion(this CharacterObject character)
+        {
+            return character?.HeroObject?.IsThisHeroPlayerCompanion() == true;
+        }
+
+        public static bool IsThisCharacterInPlayerClan(this CharacterObject character)
+        {
+            return character?.HeroObject?.IsThisHeroInPlayerClan() == true;
+        }
+
+        public static bool IsThisCharacterInPlayerArmy(this CharacterObject character)
+        {
+            return character?.HeroObject?.PartyBelongedTo?.Army?.IsPlayerInThisArmy() == true;
+        }
+
+        public static bool IsThisCharacterInPlayerKingdom(this CharacterObject character)
+        {
+            return character?.HeroObject?.Clan?.Kingdom?.IsPlayerInThisKingdom() == true;
+        }
+    }
+
     // For TaleWorlds.CampaignSystem.Hero
     internal static partial class Extensions
     {
         public static bool IsThisHeroPlayerHero(this Hero hero)
         {
-            return hero == Hero.MainHero;
+            return hero?.CharacterObject?.IsThisCharacterPlayerCharacter() == true;
         }
 
         public static bool IsThisHeroPlayerCompanion(this Hero hero)
