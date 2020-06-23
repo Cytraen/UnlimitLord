@@ -27,7 +27,7 @@ namespace UnlimitLord.Patches
         public static int Postfix(int result, CharacterObject character, StatExplainer explanation)
         {
             var settings = Settings.Instance;
-            if (!WhoToApplyTo.DoesPatchApply(settings.HeroHealthAmountAppliesTo.SelectedValue.GetWho(), character?.HeroObject))
+            if (!WhoToApplyTo.DoesPatchApply(settings.HeroHealthAmountAppliesTo.SelectedValue.GetWho(), character.HeroObject))
                 return result;
 
             return (int)Math.ClampAndExplain(

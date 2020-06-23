@@ -48,7 +48,7 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultClanTierModel), "GetCompanionLimitForTier")]
         internal static class Companion
         {
-            internal static int Postfix(int result, Clan clan)
+            internal static int Postfix(int result, int clanTier)
             {
                 var settings = Settings.Instance;
 
