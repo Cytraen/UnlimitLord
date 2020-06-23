@@ -32,5 +32,10 @@ namespace UnlimitLord.Patches
                 settings.MaximumWorkshopAmount
                 );
         }
+
+        internal static bool Prepare()
+        {
+            return Settings.Instance.WorkshopAmountEnabled;
+        }
     }
 }

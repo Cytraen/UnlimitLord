@@ -64,6 +64,36 @@ namespace UnlimitLord
             }
         }
 
+        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, CharacterObject character)
+        {
+            switch (applyToEnum)
+            {
+                case WhoToApplyToEnum.PlayerOnly:
+                    return character.IsThisCharacterPlayerCharacter();
+
+                case WhoToApplyToEnum.PlayerCompanions:
+                    return character.IsThisCharacterPlayerCompanion();
+
+                case WhoToApplyToEnum.PlayerParty:
+                    goto default;
+
+                case WhoToApplyToEnum.PlayerClan:
+                    return character.IsThisCharacterInPlayerClan();
+
+                case WhoToApplyToEnum.PlayerArmy:
+                    return character.IsThisCharacterInPlayerArmy();
+
+                case WhoToApplyToEnum.PlayerKingdom:
+                    return character.IsThisCharacterInPlayerKingdom() || character.IsThisCharacterInPlayerClan();
+
+                case WhoToApplyToEnum.Everyone:
+                    return true;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+            }
+        }
+
         public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, Hero hero)
         {
             switch (applyToEnum)

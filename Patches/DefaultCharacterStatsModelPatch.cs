@@ -24,7 +24,7 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultCharacterStatsModel), "MaxHitpoints")]
     internal static class DefaultCharacterStatsModelPatch
     {
-        public static int Postfix(int result, CharacterObject character, StatExplainer explanation)
+        internal static int Postfix(int result, CharacterObject character, StatExplainer explanation)
         {
             var settings = Settings.Instance;
             if (!WhoToApplyTo.DoesPatchApply(settings.HeroHealthAmountAppliesTo.SelectedValue.GetWho(), character.HeroObject))
@@ -35,6 +35,11 @@ namespace UnlimitLord.Patches
                 settings.MinimumHeroHealthAmount,
                 settings.MaximumHeroHealthAmount
                 );
+        }
+
+        internal static bool Prepare()
+        {
+            return Settings.Instance.HeroHealthAmountEnabled;
         }
     }
 }

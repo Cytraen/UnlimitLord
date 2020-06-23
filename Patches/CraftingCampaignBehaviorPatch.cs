@@ -38,6 +38,11 @@ namespace UnlimitLord.Patches
                     settings.MaximumCraftingStamina
                     );
             }
+
+            internal static bool Prepare()
+            {
+                return Settings.Instance.CraftingStaminaAmountEnabled;
+            }
         }
 
         [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetHeroCraftingStamina")]
@@ -52,6 +57,11 @@ namespace UnlimitLord.Patches
                     .GetCampaignBehavior<CraftingCampaignBehavior>()
                     .GetMaxHeroCraftingStamina(hero)
                     ;
+            }
+
+            internal static bool Prepare()
+            {
+                return Settings.Instance.InfiniteCraftingStaminaEnabled;
             }
         }
     }
