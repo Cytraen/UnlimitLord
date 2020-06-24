@@ -47,11 +47,11 @@ namespace UnlimitLord
             }
         }
 
-        private static void Patch(bool unpatch = false)
+        private static void Patch(bool unPatch = false)
         {
             var harmony = new Harmony(HarmonyId);
 
-            if (unpatch)
+            if (unPatch)
                 harmony.UnpatchAll(HarmonyId);
 
             harmony.PatchAll();

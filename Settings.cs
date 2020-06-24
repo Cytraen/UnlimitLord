@@ -230,15 +230,15 @@ namespace UnlimitLord
         }, 0);
 
         [SettingPropertyGroup("Garrison Wage")]
-        [SettingPropertyFloatingInteger("Town Garrison Size Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        [SettingPropertyFloatingInteger("Garrison Wage Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
         public float GarrisonWageMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("Garrison Wage")]
-        [SettingPropertyInteger("Minimum Town Garrison Size", 0, 1000000000, Order = 2, RequireRestart = false)]
+        [SettingPropertyInteger("Minimum Garrison Wage", 0, 1000000000, Order = 2, RequireRestart = false)]
         public int MinimumGarrisonWage { get; set; } = 0;
 
         [SettingPropertyGroup("Garrison Wage")]
-        [SettingPropertyInteger("Maximum Town Garrison Size", 0, 1000000000, Order = 3, RequireRestart = false)]
+        [SettingPropertyInteger("Maximum Garrison Wage", 0, 1000000000, Order = 3, RequireRestart = false)]
         public int MaximumGarrisonWage { get; set; } = 1000000000;
     }
 
@@ -373,5 +373,36 @@ namespace UnlimitLord
         [SettingPropertyGroup("Hero Health Amount")]
         [SettingPropertyInteger("Maximum Hero Health Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
         public int MaximumHeroHealthAmount { get; set; } = 1000000000;
+    }
+
+    // Party food consumption settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Party Food Consumption", IsMainToggle = true)]
+        [SettingPropertyBool("Party Food Consumption Enabled", RequireRestart = false)]
+        public bool PartyFoodConsumptionEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Party Food Consumption")]
+        [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<PatchAppliesTo> PartyFoodConsumptionAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        {
+            new PatchAppliesTo(AppliesToEnum.PlayerParty),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
+        }, 0);
+
+        [SettingPropertyGroup("Party Food Consumption")]
+        [SettingPropertyFloatingInteger("Party Food Consumption Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float PartyFoodConsumptionMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Party Food Consumption")]
+        [SettingPropertyFloatingInteger("Minimum Party Food Consumption", 0f, 1000000000f, Order = 2, RequireRestart = false)]
+        public float MinimumPartyFoodConsumption { get; set; } = 0f;
+
+        [SettingPropertyGroup("Party Food Consumption")]
+        [SettingPropertyFloatingInteger("Maximum Party Food Consumption", 0f, 1000000000f, Order = 3, RequireRestart = false)]
+        public float MaximumPartyFoodConsumption { get; set; } = 1000000000f;
     }
 }
