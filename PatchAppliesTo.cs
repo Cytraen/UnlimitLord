@@ -20,16 +20,16 @@ using TaleWorlds.CampaignSystem;
 
 namespace UnlimitLord
 {
-    public class WhoToApplyTo
+    public class PatchAppliesTo
     {
-        private readonly WhoToApplyToEnum _applyEnum;
+        private readonly AppliesToEnum _applyEnum;
 
-        public WhoToApplyTo(WhoToApplyToEnum applyEnum)
+        public PatchAppliesTo(AppliesToEnum applyEnum)
         {
             _applyEnum = applyEnum;
         }
 
-        public WhoToApplyToEnum GetWho()
+        public AppliesToEnum GetWho()
         {
             return _applyEnum;
         }
@@ -38,25 +38,25 @@ namespace UnlimitLord
         {
             switch (_applyEnum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     return "Player only";
 
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     return "Player and companions";
 
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     return "Player's party";
 
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     return "Player's clan";
 
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     return "Player's army";
 
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return "Player's kingdom";
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return "Everyone";
 
                 default:
@@ -64,201 +64,201 @@ namespace UnlimitLord
             }
         }
 
-        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, CharacterObject character)
+        public static bool DoesPatchApply(AppliesToEnum @enum, CharacterObject character)
         {
-            switch (applyToEnum)
+            switch (@enum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     return character.IsThisCharacterPlayerCharacter();
 
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     return character.IsThisCharacterPlayerCompanion();
 
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     goto default;
 
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     return character.IsThisCharacterInPlayerClan();
 
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     return character.IsThisCharacterInPlayerArmy();
 
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return character.IsThisCharacterInPlayerKingdom() || character.IsThisCharacterInPlayerClan();
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return true;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(@enum), @enum, null);
             }
         }
 
-        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, Hero hero)
+        public static bool DoesPatchApply(AppliesToEnum @enum, Hero hero)
         {
-            switch (applyToEnum)
+            switch (@enum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     return hero.IsThisHeroPlayerHero();
 
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     return hero.IsThisHeroPlayerCompanion();
 
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     goto default;
 
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     return hero.IsThisHeroInPlayerClan();
 
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     return hero.IsThisHeroInPlayerArmy();
 
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return hero.IsThisHeroInPlayerKingdom() || hero.IsThisHeroInPlayerClan();
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return true;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(@enum), @enum, null);
             }
         }
 
-        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, MobileParty party)
+        public static bool DoesPatchApply(AppliesToEnum @enum, MobileParty party)
         {
-            switch (applyToEnum)
+            switch (@enum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     goto default;
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     goto default;
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     return party.IsPlayerLeadingThisParty();
 
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     return party.IsThisPartyInPlayerClan();
 
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     return party.IsThisPartyInPlayerArmy() || party.IsPlayerLeadingThisParty();
 
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return party.IsThisPartyInPlayerKingdom() || party.IsThisPartyInPlayerClan();
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return true;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(@enum), @enum, null);
             }
         }
 
-        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, PartyBase party)
+        public static bool DoesPatchApply(AppliesToEnum @enum, PartyBase party)
         {
-            switch (applyToEnum)
+            switch (@enum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     goto default;
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     goto default;
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     return party.IsPlayerLeadingThisParty();
 
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     return party.IsThisPartyInPlayerClan();
 
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     return party.IsThisPartyInPlayerArmy() || party.IsPlayerLeadingThisParty();
 
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return party.IsThisPartyInPlayerKingdom() || party.IsThisPartyInPlayerClan();
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return true;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(@enum), @enum, null);
             }
         }
 
-        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, Clan clan)
+        public static bool DoesPatchApply(AppliesToEnum @enum, Clan clan)
         {
-            switch (applyToEnum)
+            switch (@enum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     goto default;
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     goto default;
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     goto default;
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     return clan.IsPlayerLeadingThisClan();
 
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     goto default;
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return clan.IsThisClanInPlayerKingdom() || clan.IsPlayerLeadingThisClan();
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return true;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(@enum), @enum, null);
             }
         }
 
-        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, Army army)
+        public static bool DoesPatchApply(AppliesToEnum @enum, Army army)
         {
-            switch (applyToEnum)
+            switch (@enum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     goto default;
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     goto default;
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     goto default;
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     goto default;
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     return army.IsPlayerInThisArmy();
 
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return army.IsThisArmyInPlayerKingdom();
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return true;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(@enum), @enum, null);
             }
         }
 
-        public static bool DoesPatchApply(WhoToApplyToEnum applyToEnum, Kingdom kingdom)
+        public static bool DoesPatchApply(AppliesToEnum @enum, Kingdom kingdom)
         {
-            switch (applyToEnum)
+            switch (@enum)
             {
-                case WhoToApplyToEnum.PlayerOnly:
+                case AppliesToEnum.PlayerOnly:
                     goto default;
-                case WhoToApplyToEnum.PlayerCompanions:
+                case AppliesToEnum.PlayerCompanions:
                     goto default;
-                case WhoToApplyToEnum.PlayerParty:
+                case AppliesToEnum.PlayerParty:
                     goto default;
-                case WhoToApplyToEnum.PlayerClan:
+                case AppliesToEnum.PlayerClan:
                     goto default;
-                case WhoToApplyToEnum.PlayerArmy:
+                case AppliesToEnum.PlayerArmy:
                     goto default;
-                case WhoToApplyToEnum.PlayerKingdom:
+                case AppliesToEnum.PlayerKingdom:
                     return kingdom.IsPlayerInThisKingdom();
 
-                case WhoToApplyToEnum.Everyone:
+                case AppliesToEnum.Everyone:
                     return true;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(applyToEnum), applyToEnum, null);
+                    throw new ArgumentOutOfRangeException(nameof(@enum), @enum, null);
             }
         }
     }
 
-    public enum WhoToApplyToEnum : byte
+    public enum AppliesToEnum : byte
     {
         PlayerOnly,
         PlayerCompanions,

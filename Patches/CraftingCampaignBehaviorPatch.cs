@@ -23,45 +23,49 @@ namespace UnlimitLord.Patches
 {
     internal static class CraftingCampaignBehaviorPatch
     {
+        public static Settings Setting => Settings.Instance;
+        public static AppliesToEnum AppliesTo => Setting.CraftingStaminaAppliesTo.SelectedValue.GetWho();
+
         [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetMaxHeroCraftingStamina")]
         internal static class MaximumStamina
         {
+            public static bool Enabled => Setting.CraftingStaminaAmountEnabled;
+            public static float Multiplier => Setting.CraftingStaminaMultiplier;
+            public static int Minimum => Setting.MinimumCraftingStamina;
+            public static int Maximum => Setting.MaximumCraftingStamina;
+
             internal static int Postfix(int result, Hero hero)
             {
-                var settings = Settings.Instance;
-                if (!WhoToApplyTo.DoesPatchApply(settings.CraftingStaminaAppliesTo.SelectedValue.GetWho(), hero))
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, hero))
                     return result;
 
-                return (int)Math.Clamp(
-                    result * settings.CraftingStaminaMultiplier,
-                    settings.MinimumCraftingStamina,
-                    settings.MaximumCraftingStamina
-                    );
+                return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.CraftingStaminaAmountEnabled;
+                return Enabled;
             }
         }
 
         [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetHeroCraftingStamina")]
         internal static class InfiniteStamina
         {
+            public static bool Enabled => Setting.InfiniteCraftingStaminaEnabled;
+
             internal static int Postfix(int result, Hero hero)
             {
-                if (!WhoToApplyTo.DoesPatchApply(Settings.Instance.CraftingStaminaAppliesTo.SelectedValue.GetWho(), hero))
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, hero))
                     return result;
 
                 return CampaignBehaviorBase
                     .GetCampaignBehavior<CraftingCampaignBehavior>()
-                    .GetMaxHeroCraftingStamina(hero)
-                    ;
+                    .GetMaxHeroCraftingStamina(hero);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.InfiniteCraftingStaminaEnabled;
+                return Enabled;
             }
         }
     }

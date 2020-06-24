@@ -39,13 +39,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Movement Speed")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> MovementSpeedAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> MovementSpeedAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerParty),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerArmy),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerParty),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Movement Speed")]
@@ -71,13 +71,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Troop Healing")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> TroopHealingRateAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> TroopHealingRateAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerParty),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerArmy),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerParty),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Troop Healing")]
@@ -102,13 +102,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Hero Healing")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> HeroHealingRateAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> HeroHealingRateAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerParty),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerArmy),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerParty),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Hero Healing")]
@@ -133,13 +133,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Morale")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> MoraleAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> MoraleAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerParty),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerArmy),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerParty),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Morale")]
@@ -164,11 +164,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Castle Garrison Size")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> CastleGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> CastleGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Castle Garrison Size")]
@@ -193,11 +193,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Town Garrison Size")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> TownGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> TownGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Town Garrison Size")]
@@ -222,11 +222,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Garrison Wage")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> GarrisonWageAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> GarrisonWageAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Garrison Wage")]
@@ -251,11 +251,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Party Amount")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> PartyAmountAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> PartyAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Party Amount")]
@@ -296,10 +296,10 @@ namespace UnlimitLord
     {
         [SettingPropertyGroup("Crafting Stamina")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> CraftingStaminaAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> CraftingStaminaAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerOnly),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerCompanions)
+            new PatchAppliesTo(AppliesToEnum.PlayerOnly),
+            new PatchAppliesTo(AppliesToEnum.PlayerCompanions)
         }, 0);
 
         [SettingPropertyGroup("Crafting Stamina")]
@@ -352,14 +352,14 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("Hero Health Amount")]
         [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<WhoToApplyTo> HeroHealthAmountAppliesTo { get; set; } = new DefaultDropdown<WhoToApplyTo>(new[]
+        public DefaultDropdown<PatchAppliesTo> HeroHealthAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
         {
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerOnly),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerCompanions),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerClan),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerArmy),
-            new WhoToApplyTo(WhoToApplyToEnum.PlayerKingdom),
-            new WhoToApplyTo(WhoToApplyToEnum.Everyone)
+            new PatchAppliesTo(AppliesToEnum.PlayerOnly),
+            new PatchAppliesTo(AppliesToEnum.PlayerCompanions),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
         }, 0);
 
         [SettingPropertyGroup("Hero Health Amount")]

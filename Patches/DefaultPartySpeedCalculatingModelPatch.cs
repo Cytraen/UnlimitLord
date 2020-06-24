@@ -24,23 +24,24 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultPartySpeedCalculatingModel), "CalculateFinalSpeed")]
     internal static class DefaultPartySpeedCalculatingModelPatch
     {
+        public static Settings Setting => Settings.Instance;
+        public static bool Enabled => Setting.MovementSpeedEnabled;
+        public static AppliesToEnum AppliesTo => Setting.MovementSpeedAppliesTo.SelectedValue.GetWho();
+        public static float Multiplier => Setting.MovementSpeedMultiplier;
+        public static float Minimum => Setting.MinimumMovementSpeed;
+        public static float Maximum => Setting.MaximumMovementSpeed;
+
         internal static float Postfix(float result, MobileParty mobileParty, StatExplainer explanation)
         {
-            var settings = Settings.Instance;
-
-            if (!WhoToApplyTo.DoesPatchApply(settings.MovementSpeedAppliesTo.SelectedValue.GetWho(), mobileParty))
+            if (!PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
                 return result;
 
-            return Math.ClampAndExplain(
-                result * settings.MovementSpeedMultiplier, explanation,
-                settings.MinimumMovementSpeed,
-                settings.MaximumMovementSpeed
-                );
+            return Math.ClampAndExplainFloat(result * Multiplier, explanation, Minimum, Maximum);
         }
 
         internal static bool Prepare()
         {
-            return Settings.Instance.MovementSpeedEnabled;
+            return Enabled;
         }
     }
 }

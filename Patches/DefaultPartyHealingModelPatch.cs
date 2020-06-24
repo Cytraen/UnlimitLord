@@ -23,47 +23,51 @@ namespace UnlimitLord.Patches
 {
     internal static class DefaultPartyHealingModelPatch
     {
+        public static Settings Setting => Settings.Instance;
+
         [HarmonyPatch(typeof(DefaultPartyHealingModel), "GetDailyHealingForRegulars")]
         internal static class Troops
         {
+            public static bool Enabled => Setting.TroopHealingRateEnabled;
+            public static AppliesToEnum AppliesTo => Setting.TroopHealingRateAppliesTo.SelectedValue.GetWho();
+            public static float Multiplier => Setting.TroopHealingRateMultiplier;
+            public static float Minimum => Setting.MinimumTroopHealingRate;
+            public static float Maximum => Setting.MaximumTroopHealingRate;
+
             internal static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {
-                var settings = Settings.Instance;
-                if (!WhoToApplyTo.DoesPatchApply(settings.TroopHealingRateAppliesTo.SelectedValue.GetWho(), party))
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
                     return result;
 
-                return Math.ClampAndExplain(
-                    result * settings.TroopHealingRateMultiplier, explanation,
-                    settings.MinimumTroopHealingRate,
-                    settings.MaximumTroopHealingRate
-                );
+                return Math.ClampAndExplainFloat(result * Multiplier, explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.TroopHealingRateEnabled;
+                return Enabled;
             }
         }
 
         [HarmonyPatch(typeof(DefaultPartyHealingModel), "GetDailyHealingHpForHeroes")]
         internal static class Heroes
         {
+            public static bool Enabled => Setting.HeroHealingRateEnabled;
+            public static AppliesToEnum AppliesTo => Setting.HeroHealingRateAppliesTo.SelectedValue.GetWho();
+            public static float Multiplier => Setting.HeroHealingRateMultiplier;
+            public static float Minimum => Setting.MinimumHeroHealingRate;
+            public static float Maximum => Setting.MaximumHeroHealingRate;
+
             internal static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {
-                var settings = Settings.Instance;
-                if (!WhoToApplyTo.DoesPatchApply(settings.HeroHealingRateAppliesTo.SelectedValue.GetWho(), party))
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
                     return result;
 
-                return Math.ClampAndExplain(
-                    result * settings.HeroHealingRateMultiplier, explanation,
-                    settings.MinimumHeroHealingRate,
-                    settings.MaximumHeroHealingRate
-                    );
+                return Math.ClampAndExplainFloat(result * Multiplier, explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.HeroHealingRateEnabled;
+                return Enabled;
             }
         }
     }

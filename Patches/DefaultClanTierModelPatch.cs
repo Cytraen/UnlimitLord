@@ -23,45 +23,47 @@ namespace UnlimitLord.Patches
 {
     internal static class DefaultClanTierModelPatch
     {
+        public static Settings Setting => Settings.Instance;
+
         [HarmonyPatch(typeof(DefaultClanTierModel), "GetPartyLimitForTier")]
         internal static class Party
         {
+            public static bool Enabled => Setting.PartyAmountEnabled;
+            public static AppliesToEnum AppliesTo => Setting.PartyAmountAppliesTo.SelectedValue.GetWho();
+            public static float Multiplier => Setting.PartyAmountMultiplier;
+            public static int Minimum => Setting.MinimumPartyAmount;
+            public static int Maximum => Setting.MaximumPartyAmount;
+
             internal static int Postfix(int result, Clan clan)
             {
-                var settings = Settings.Instance;
-                if (!WhoToApplyTo.DoesPatchApply(settings.PartyAmountAppliesTo.SelectedValue.GetWho(), clan))
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, clan))
                     return result;
 
-                return (int)Math.Clamp(
-                    result * settings.PartyAmountMultiplier,
-                    settings.MinimumPartyAmount,
-                    settings.MaximumPartyAmount
-                    );
+                return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.PartyAmountEnabled;
+                return Enabled;
             }
         }
 
         [HarmonyPatch(typeof(DefaultClanTierModel), "GetCompanionLimitForTier")]
         internal static class Companion
         {
+            public static bool Enabled => Setting.CompanionAmountEnabled;
+            public static float Multiplier => Setting.CompanionAmountMultiplier;
+            public static int Minimum => Setting.MinimumCompanionAmount;
+            public static int Maximum => Setting.MaximumCompanionAmount;
+
             internal static int Postfix(int result, int clanTier)
             {
-                var settings = Settings.Instance;
-
-                return (int)Math.Clamp(
-                    result * settings.CompanionAmountMultiplier,
-                    settings.MinimumCompanionAmount,
-                    settings.MaximumCompanionAmount
-                    );
+                return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.CompanionAmountEnabled;
+                return Enabled;
             }
         }
     }

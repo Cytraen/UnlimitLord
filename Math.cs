@@ -22,19 +22,34 @@ namespace UnlimitLord
 {
     internal static class Math
     {
-        internal static float Clamp(float value, float min, float max)
+        internal static float ClampFloat(float value, float minimum, float maximum)
         {
-            return (value < min) ? min : (value > max) ? max : value;
+            return value < minimum ? minimum : value > maximum ? maximum : value;
         }
 
-        internal static float ClampAndExplain(float toClamp, StatExplainer explain, float min, float max)
+        internal static int ClampInt(int value, int minimum, int maximum)
+        {
+            return value < minimum ? minimum : value > maximum ? maximum : value;
+        }
+
+        internal static float ClampAndExplainFloat(float toClamp, StatExplainer explain, float minimum, float maximum)
         {
             var baseTextObject = new TextObject("Total after UL multiplier");
             var unLimitTextObject = new TextObject("UnlimitLord clamp");
             var explainedNumber = new ExplainedNumber(toClamp, explain, baseTextObject);
 
-            explainedNumber.Add(Clamp(toClamp, min, max) - toClamp, unLimitTextObject);
+            explainedNumber.Add(ClampFloat(toClamp, minimum, maximum) - toClamp, unLimitTextObject);
             return explainedNumber.ResultNumber;
+        }
+
+        internal static int ClampAndExplainInt(int toClamp, StatExplainer explain, int minimum, int maximum)
+        {
+            var baseTextObject = new TextObject("Total after UL multiplier");
+            var unLimitTextObject = new TextObject("UnlimitLord clamp");
+            var explainedNumber = new ExplainedNumber(toClamp, explain, baseTextObject);
+
+            explainedNumber.Add(ClampInt(toClamp, minimum, maximum) - toClamp, unLimitTextObject);
+            return (int)explainedNumber.ResultNumber;
         }
     }
 }

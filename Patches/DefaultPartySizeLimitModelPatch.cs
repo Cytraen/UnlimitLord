@@ -23,53 +23,57 @@ namespace UnlimitLord.Patches
 {
     internal static class DefaultPartySizeLimitModelPatch
     {
+        public static Settings Setting => Settings.Instance;
+
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Castle
         {
+            public static bool Enabled => Setting.CastleGarrisonSizeEnabled;
+            public static AppliesToEnum AppliesTo => Setting.CastleGarrisonSizeAppliesTo.SelectedValue.GetWho();
+            public static float Multiplier => Setting.CastleGarrisonSizeMultiplier;
+            public static int Minimum => Setting.MinimumCastleGarrisonSize;
+            public static int Maximum => Setting.MaximumCastleGarrisonSize;
+
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
-                var settings = Settings.Instance;
-                if (!party.IsThisPartyGarrison() || !WhoToApplyTo.DoesPatchApply(settings.CastleGarrisonSizeAppliesTo.SelectedValue.GetWho(), party))
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
                     return result;
 
-                if (!party.DoesPartyBelongToCastle())
+                if (!party.IsThisPartyGarrison() || !party.DoesPartyBelongToCastle())
                     return result;
 
-                return (int)Math.ClampAndExplain(
-                    result * settings.CastleGarrisonSizeMultiplier, explanation,
-                    settings.MinimumCastleGarrisonSize,
-                    settings.MaximumCastleGarrisonSize
-                    );
+                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.CastleGarrisonSizeEnabled;
+                return Enabled;
             }
         }
 
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Town
         {
+            public static bool Enabled => Setting.TownGarrisonSizeEnabled;
+            public static AppliesToEnum AppliesTo => Setting.TownGarrisonSizeAppliesTo.SelectedValue.GetWho();
+            public static float Multiplier => Setting.TownGarrisonSizeMultiplier;
+            public static int Minimum => Setting.MinimumTownGarrisonSize;
+            public static int Maximum => Setting.MaximumTownGarrisonSize;
+
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
-                var settings = Settings.Instance;
-                if (!party.IsThisPartyGarrison() || !WhoToApplyTo.DoesPatchApply(settings.TownGarrisonSizeAppliesTo.SelectedValue.GetWho(), party))
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
                     return result;
 
-                if (!party.DoesPartyBelongToCastle())
+                if (!party.IsThisPartyGarrison() || !party.DoesPartyBelongToTown())
                     return result;
 
-                return (int)Math.ClampAndExplain(
-                    result * settings.TownGarrisonSizeMultiplier, explanation,
-                    settings.MinimumTownGarrisonSize,
-                    settings.MaximumTownGarrisonSize
-                    );
+                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
             {
-                return Settings.Instance.TownGarrisonSizeEnabled;
+                return Enabled;
             }
         }
     }
