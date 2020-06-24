@@ -76,5 +76,51 @@ namespace UnlimitLord.Patches
                 return Enabled;
             }
         }
+
+        [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
+        internal static class Troops
+        {
+            public static bool Enabled => Setting.PartyTroopAmountEnabled;
+            public static AppliesToEnum AppliesTo => Setting.PartyTroopAmountAppliesTo.SelectedValue.GetWho();
+            public static float Multiplier => Setting.PartyTroopAmountMultiplier;
+            public static int Minimum => Setting.MinimumPartyTroopAmount;
+            public static int Maximum => Setting.MaximumPartyTroopAmount;
+
+            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            {
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
+                    return result;
+
+                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+            }
+
+            internal static bool Prepare()
+            {
+                return Enabled;
+            }
+        }
+
+        [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyPrisonerSizeLimit")]
+        internal static class Prisoners
+        {
+            public static bool Enabled => Setting.PartyPrisonerAmountEnabled;
+            public static AppliesToEnum AppliesTo => Setting.PartyPrisonerAmountAppliesTo.SelectedValue.GetWho();
+            public static float Multiplier => Setting.PartyPrisonerAmountMultiplier;
+            public static int Minimum => Setting.MinimumPartyPrisonerAmount;
+            public static int Maximum => Setting.MaximumPartyPrisonerAmount;
+
+            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            {
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
+                    return result;
+
+                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+            }
+
+            internal static bool Prepare()
+            {
+                return Enabled;
+            }
+        }
     }
 }

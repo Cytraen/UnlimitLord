@@ -405,4 +405,66 @@ namespace UnlimitLord
         [SettingPropertyFloatingInteger("Maximum Party Food Consumption", 0f, 1000000000f, Order = 3, RequireRestart = false)]
         public float MaximumPartyFoodConsumption { get; set; } = 1000000000f;
     }
+
+    // Party troop amount settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Party Troops", IsMainToggle = true)]
+        [SettingPropertyBool("Party Troop Amount Enabled", RequireRestart = false)]
+        public bool PartyTroopAmountEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Party Troops")]
+        [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<PatchAppliesTo> PartyTroopAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        {
+            new PatchAppliesTo(AppliesToEnum.PlayerParty),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
+        }, 0);
+
+        [SettingPropertyGroup("Party Troops")]
+        [SettingPropertyFloatingInteger("Party Troop Amount Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float PartyTroopAmountMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Party Troops")]
+        [SettingPropertyInteger("Minimum Party Troop Amount", 0, 1000000000, Order = 2, RequireRestart = false)]
+        public int MinimumPartyTroopAmount { get; set; } = 0;
+
+        [SettingPropertyGroup("Party Troops")]
+        [SettingPropertyInteger("Maximum Party Troop Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumPartyTroopAmount { get; set; } = 1000000000;
+    }
+
+    // Party prisoner amount settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Party Prisoners", IsMainToggle = true)]
+        [SettingPropertyBool("Party Prisoner Amount Enabled", RequireRestart = false)]
+        public bool PartyPrisonerAmountEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Party Prisoners")]
+        [SettingPropertyDropdown("Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<PatchAppliesTo> PartyPrisonerAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        {
+            new PatchAppliesTo(AppliesToEnum.PlayerParty),
+            new PatchAppliesTo(AppliesToEnum.PlayerClan),
+            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
+            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
+            new PatchAppliesTo(AppliesToEnum.Everyone)
+        }, 0);
+
+        [SettingPropertyGroup("Party Prisoners")]
+        [SettingPropertyFloatingInteger("Party Prisoner Amount Multiplier", 0.01f, 1000000f, Order = 1, RequireRestart = false)]
+        public float PartyPrisonerAmountMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Party Prisoners")]
+        [SettingPropertyInteger("Minimum Party Prisoner Amount", 0, 1000000000, Order = 2, RequireRestart = false)]
+        public int MinimumPartyPrisonerAmount { get; set; } = 0;
+
+        [SettingPropertyGroup("Party Prisoners")]
+        [SettingPropertyInteger("Maximum Party Prisoner Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
+        public int MaximumPartyPrisonerAmount { get; set; } = 1000000000;
+    }
 }
