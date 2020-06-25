@@ -467,4 +467,24 @@ namespace UnlimitLord
         [SettingPropertyInteger("Maximum Party Prisoner Amount", 0, 1000000000, Order = 3, RequireRestart = false)]
         public int MaximumPartyPrisonerAmount { get; set; } = 1000000000;
     }
+
+    // Persuasion chance settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Persuasion", IsMainToggle = true)]
+        [SettingPropertyBool("Persuasion Chance Enabled", RequireRestart = false)]
+        public bool PersuasionChanceEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Persuasion")]
+        [SettingPropertyFloatingInteger("Success Chance Multiplier", 0.01f, 10f, Order = 0, RequireRestart = false)]
+        public float PersuasionSuccessMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Persuasion")]
+        [SettingPropertyInteger("Minimum Success Chance", 0, 100, "###%", Order = 1, RequireRestart = false)]
+        public int MinimumSuccessChance { get; set; } = 0;
+
+        [SettingPropertyGroup("Persuasion")]
+        [SettingPropertyInteger("Maximum Success Chance", 0, 100, "###%", Order = 2, RequireRestart = false)]
+        public int MaximumSuccessChance { get; set; } = 100;
+    }
 }
