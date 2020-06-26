@@ -17,7 +17,7 @@ namespace UnlimitLord.Patches
 
         internal static void Postfix(PersuasionOptionArgs optionArgs, ref float successChance, ref float critSuccessChance, ref float critFailChance, ref float failChance, float difficultyMultiplier)
         {
-            var totalSuccessChance = Math.ClampFloat(successChance + critSuccessChance, Minimum, Maximum);
+            var totalSuccessChance = Math.ClampFloat((successChance + critSuccessChance) * Multiplier, Minimum, Maximum);
             critSuccessChance = totalSuccessChance * SuccessRatio;
             successChance = totalSuccessChance * (1.0f - SuccessRatio);
 

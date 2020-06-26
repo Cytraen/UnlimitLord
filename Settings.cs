@@ -499,16 +499,16 @@ namespace UnlimitLord
     // Bartering settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("Bartering", IsMainToggle = true)]
-        [SettingPropertyBool("Barter Acceptance Enabled", RequireRestart = false)]
-        public bool BarterAcceptanceEnabled { get; set; } = false;
-
         [SettingPropertyGroup("Bartering")]
         [SettingPropertyBool("Barter Always Accepted", Order = 0, RequireRestart = false)]
         public bool BarterAlwaysAccepted { get; set; } = false;
 
         [SettingPropertyGroup("Bartering")]
-        [SettingPropertyFloatingInteger("Barter Success Multiplier", 0.01f, 100f, Order = 1, RequireRestart = false)]
+        [SettingPropertyBool("Barter Acceptance Enabled", Order = 1, RequireRestart = false)]
+        public bool BarterSuccessMultiplierEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Bartering")]
+        [SettingPropertyFloatingInteger("Barter Success Multiplier", 0.01f, 1000f, Order = 2, RequireRestart = false)]
         public float BarterSuccessMultiplier { get; set; } = 1f;
     }
 }
