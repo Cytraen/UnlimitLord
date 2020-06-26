@@ -34,8 +34,8 @@ namespace UnlimitLord
 
         internal static float ClampAndExplainFloat(float toClamp, StatExplainer explain, float minimum, float maximum)
         {
-            var baseTextObject = new TextObject("Total after UL multiplier");
-            var unLimitTextObject = new TextObject("UnlimitLord clamp");
+            var baseTextObject = new TextObject("{=2bAElQ6l7ita}Total after UL multiplier");
+            var unLimitTextObject = new TextObject("{=yLa9PdHUZB6l}UnlimitLord clamp");
             var explainedNumber = new ExplainedNumber(toClamp, explain, baseTextObject);
 
             explainedNumber.Add(ClampFloat(toClamp, minimum, maximum) - toClamp, unLimitTextObject);
@@ -44,8 +44,8 @@ namespace UnlimitLord
 
         internal static int ClampAndExplainInt(int toClamp, StatExplainer explain, int minimum, int maximum)
         {
-            var baseTextObject = new TextObject("Total after UL multiplier");
-            var unLimitTextObject = new TextObject("UnlimitLord clamp");
+            var baseTextObject = new TextObject("{=2bAElQ6l7ita}Total after UL multiplier");
+            var unLimitTextObject = new TextObject("{=yLa9PdHUZB6l}UnlimitLord clamp");
             var explainedNumber = new ExplainedNumber(toClamp, explain, baseTextObject);
 
             explainedNumber.Add(ClampInt(toClamp, minimum, maximum) - toClamp, unLimitTextObject);

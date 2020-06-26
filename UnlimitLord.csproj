@@ -208,8 +208,12 @@
 		</Reference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Languages\" />
+	</ItemGroup>
+
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="copy &quot;$(SolutionDir)\SubModule.xml&quot; &quot;$(TargetDir)..\..\SubModule.xml&quot;" />
+		<Exec Command="xcopy &quot;$(SolutionDir)\SubModule.xml&quot; &quot;$(TargetDir)..\..\SubModule.xml&quot; /s /y&#xD;&#xA;xcopy &quot;$(SolutionDir)\Languages&quot; &quot;$(TargetDir)..\..\ModuleData\Languages\&quot; /e /y" />
 	</Target>
 
 </Project>

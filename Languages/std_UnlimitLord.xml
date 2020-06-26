@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+	<tags>
+		<tag language="English" />
+	</tags>
+	<strings>
+		<!--Properties-->
+		<string id="QdjFJY1jTXY2" text="Enabled" />
+		<string id="Jn6KV7vNzCVC" text="Who is affected" />
+		<string id="CCmuVoB3sOUO" text="Multiplier" />
+		<string id="RkptUH9teOPo" text="Minimum" />
+		<string id="3YOggkouIghy" text="Maximum" />
+		<string id="hNX8v28ZXvze" text="Infinite" />
+		<string id="aqxVE21dUdtU" text="Modify Amount" />
+		<string id="NVJNs9zD1d9t" text="Critical Success Ratio" />
+		<string id="kwRxutt05AYT" text="Critical Failure Ratio" />
+		<string id="bK6jMmtByOF2" text="Always Accepted" />
+		<string id="a64AJwEQvEde" text="Set Cooldown" />
+		<string id="q3KigaRis8Ny" text="Cooldown Days" />
+		<string id="0IMbmCXRtEPk" text="Enable Value Multiplier" />
+
+		<!--Groups/Categories-->
+		<string id="D78DVfmutxZX" text="Movement Speed" />
+		<string id="hHROV0BkMDfG" text="Troop Healing Rate" />
+		<string id="uvIPiQqsx5Qb" text="Hero Healing Rate" />
+		<string id="DB1kpsmAAIky" text="Morale" />
+		<string id="SrBxpWv16oRJ" text="Castle Garrison Size" />
+		<string id="9hYB9kzrN9Qs" text="Town Garrison Size" />
+		<string id="tVYKb9VGO56w" text="Garrison Wages" />
+		<string id="oP25rddkklhH" text="Number of Parties" />
+		<string id="H540pvwooRpm" text="Number of Companions" />
+		<string id="pQH0InUHZa2K" text="Crafting Stamina" />
+		<string id="jgc6D8GTmLHr" text="Number of Workshops" />
+		<string id="k7zNutD2MZWa" text="Hero Health Amount" />
+		<string id="MBgE3OOCyUw0" text="Party Food Consumption" />
+		<string id="hBEXh7AijM7I" text="Maximum Party Troops" />
+		<string id="PTj8sDnBew21" text="Maximum Party Prisoners" />
+		<string id="mEIXrv2G7tCv" text="Persuasion Chance" />
+		<string id="vPepJOx8OW1k" text="Barter Acceptance" />
+		<string id="FAz1UWhX6HOt" text="Disguise Chance" />
+		
+		<!--Explanations-->
+		<string id="2bAElQ6l7ita" text="Total after UL multiplier" />
+		<string id="yLa9PdHUZB6l" text="UnlimitLord Clamp" />
+	</strings>
+</base>
