@@ -510,5 +510,13 @@ namespace UnlimitLord
         [SettingPropertyGroup("Bartering")]
         [SettingPropertyFloatingInteger("Barter Success Multiplier", 0.01f, 1000f, Order = 2, RequireRestart = false)]
         public float BarterSuccessMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Bartering")]
+        [SettingPropertyBool("Barter Cooldown Enabled", Order = 3, RequireRestart = false)]
+        public bool BarterCooldownEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Bartering")]
+        [SettingPropertyInteger("Number of Days Between Barters", 0, 120, Order = 4, RequireRestart = false)]
+        public int BarterCooldownDays { get; set; } = 3;
     }
 }

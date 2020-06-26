@@ -1,4 +1,4 @@
-/*
+﻿/*
  Copyright (C) 2020 ashakoor
 
  This program is free software: you can redistribute it and/or modify
@@ -16,28 +16,25 @@
 */
 
 using HarmonyLib;
-using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
 namespace UnlimitLord.Patches
 {
-    [HarmonyPatch(typeof(Barterable), "GetValueForFaction")]
-    internal static class BarterablePatch
+    [HarmonyPatch(typeof(DefaultBarterModel), "BarterCooldownWithHeroInDays")]
+    internal static class DefaultBarterModelPatch
     {
         public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.BarterSuccessMultiplierEnabled;
-        public static float Multiplier => Setting.BarterSuccessMultiplier;
+        public static bool Enabled => Setting.BarterCooldownEnabled;
+        public static int Cooldown => Setting.BarterCooldownDays;
 
-        internal static int Postfix(int result, IFaction faction)
+        internal static int Postfix(int result)
         {
-            if (result >= 0)
-                return (int)(result * Multiplier);
-
-            return result;
+            return Cooldown;
         }
 
-        internal static bool Prepare()
-        {
-            return Enabled;
-        }
+        // internal static bool Prepare()
+        // {
+        //     return Enabled;
+        // }
     }
 }
