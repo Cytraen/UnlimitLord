@@ -24,12 +24,12 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
     internal static class DefaultClanFinanceModelPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.GarrisonWageEnabled;
-        public static AppliesToEnum AppliesTo => Setting.GarrisonWageAppliesTo.SelectedValue.GetWho();
-        public static float Multiplier => Setting.GarrisonWageMultiplier;
-        public static int Minimum => Setting.MinimumGarrisonWage;
-        public static int Maximum => Setting.MaximumGarrisonWage;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.GarrisonWageEnabled;
+        private static AppliesToEnum AppliesTo => Setting.GarrisonWageAppliesTo.SelectedValue.GetWho();
+        private static float Multiplier => Setting.GarrisonWageMultiplier;
+        private static int Minimum => Setting.MinimumGarrisonWage;
+        private static int Maximum => Setting.MaximumGarrisonWage;
 
         internal static int Postfix(int result, MobileParty mobileParty)
         {

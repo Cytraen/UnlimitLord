@@ -23,11 +23,11 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultWorkshopModel), "GetMaxWorkshopCountForPlayer")]
     internal static class DefaultWorkshopModelPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.WorkshopAmountEnabled;
-        public static float Multiplier => Setting.WorkshopAmountMultiplier;
-        public static int Minimum => Setting.MinimumWorkshopAmount;
-        public static int Maximum => Setting.MaximumWorkshopAmount;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.WorkshopAmountEnabled;
+        private static float Multiplier => Setting.WorkshopAmountMultiplier;
+        private static int Minimum => Setting.MinimumWorkshopAmount;
+        private static int Maximum => Setting.MaximumWorkshopAmount;
 
         internal static int Postfix(int result)
         {

@@ -26,12 +26,12 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultMobilePartyFoodConsumptionModel), "CalculateDailyFoodConsumptionf")]
         internal static class Party
         {
-            public static Settings Setting => Settings.Instance;
-            public static bool Enabled => Setting.PartyFoodConsumptionEnabled;
-            public static AppliesToEnum AppliesTo => Setting.PartyFoodConsumptionAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.PartyFoodConsumptionMultiplier;
-            public static float Minimum => Setting.MinimumPartyFoodConsumption;
-            public static float Maximum => Setting.MaximumPartyFoodConsumption;
+            private static Settings Setting => Settings.Instance;
+            private static bool Enabled => Setting.PartyFoodConsumptionEnabled;
+            private static AppliesToEnum AppliesTo => Setting.PartyFoodConsumptionAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.PartyFoodConsumptionMultiplier;
+            private static float Minimum => Setting.MinimumPartyFoodConsumption;
+            private static float Maximum => Setting.MaximumPartyFoodConsumption;
 
             internal static float Postfix(float result, MobileParty party, StatExplainer explainer)
             {

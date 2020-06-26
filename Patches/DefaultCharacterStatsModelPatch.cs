@@ -24,12 +24,12 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultCharacterStatsModel), "MaxHitpoints")]
     internal static class DefaultCharacterStatsModelPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.HeroHealthAmountEnabled;
-        public static AppliesToEnum AppliesTo => Setting.HeroHealthAmountAppliesTo.SelectedValue.GetWho();
-        public static float Multiplier => Setting.HeroHealthAmountMultiplier;
-        public static int Minimum => Setting.MinimumHeroHealthAmount;
-        public static int Maximum => Setting.MaximumHeroHealthAmount;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.HeroHealthAmountEnabled;
+        private static AppliesToEnum AppliesTo => Setting.HeroHealthAmountAppliesTo.SelectedValue.GetWho();
+        private static float Multiplier => Setting.HeroHealthAmountMultiplier;
+        private static int Minimum => Setting.MinimumHeroHealthAmount;
+        private static int Maximum => Setting.MaximumHeroHealthAmount;
 
         internal static int Postfix(int result, CharacterObject character, StatExplainer explanation)
         {

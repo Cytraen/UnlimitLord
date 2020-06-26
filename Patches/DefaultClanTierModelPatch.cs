@@ -23,16 +23,16 @@ namespace UnlimitLord.Patches
 {
     internal static class DefaultClanTierModelPatch
     {
-        public static Settings Setting => Settings.Instance;
+        private static Settings Setting => Settings.Instance;
 
         [HarmonyPatch(typeof(DefaultClanTierModel), "GetPartyLimitForTier")]
         internal static class Party
         {
-            public static bool Enabled => Setting.PartyAmountEnabled;
-            public static AppliesToEnum AppliesTo => Setting.PartyAmountAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.PartyAmountMultiplier;
-            public static int Minimum => Setting.MinimumPartyAmount;
-            public static int Maximum => Setting.MaximumPartyAmount;
+            private static bool Enabled => Setting.PartyAmountEnabled;
+            private static AppliesToEnum AppliesTo => Setting.PartyAmountAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.PartyAmountMultiplier;
+            private static int Minimum => Setting.MinimumPartyAmount;
+            private static int Maximum => Setting.MaximumPartyAmount;
 
             internal static int Postfix(int result, Clan clan)
             {
@@ -51,10 +51,10 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultClanTierModel), "GetCompanionLimitForTier")]
         internal static class Companion
         {
-            public static bool Enabled => Setting.CompanionAmountEnabled;
-            public static float Multiplier => Setting.CompanionAmountMultiplier;
-            public static int Minimum => Setting.MinimumCompanionAmount;
-            public static int Maximum => Setting.MaximumCompanionAmount;
+            private static bool Enabled => Setting.CompanionAmountEnabled;
+            private static float Multiplier => Setting.CompanionAmountMultiplier;
+            private static int Minimum => Setting.MinimumCompanionAmount;
+            private static int Maximum => Setting.MaximumCompanionAmount;
 
             internal static int Postfix(int result, int clanTier)
             {

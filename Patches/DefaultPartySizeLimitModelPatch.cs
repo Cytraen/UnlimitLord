@@ -23,16 +23,16 @@ namespace UnlimitLord.Patches
 {
     internal static class DefaultPartySizeLimitModelPatch
     {
-        public static Settings Setting => Settings.Instance;
+        private static Settings Setting => Settings.Instance;
 
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Castle
         {
-            public static bool Enabled => Setting.CastleGarrisonSizeEnabled;
-            public static AppliesToEnum AppliesTo => Setting.CastleGarrisonSizeAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.CastleGarrisonSizeMultiplier;
-            public static int Minimum => Setting.MinimumCastleGarrisonSize;
-            public static int Maximum => Setting.MaximumCastleGarrisonSize;
+            private static bool Enabled => Setting.CastleGarrisonSizeEnabled;
+            private static AppliesToEnum AppliesTo => Setting.CastleGarrisonSizeAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.CastleGarrisonSizeMultiplier;
+            private static int Minimum => Setting.MinimumCastleGarrisonSize;
+            private static int Maximum => Setting.MaximumCastleGarrisonSize;
 
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
@@ -54,11 +54,11 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Town
         {
-            public static bool Enabled => Setting.TownGarrisonSizeEnabled;
-            public static AppliesToEnum AppliesTo => Setting.TownGarrisonSizeAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.TownGarrisonSizeMultiplier;
-            public static int Minimum => Setting.MinimumTownGarrisonSize;
-            public static int Maximum => Setting.MaximumTownGarrisonSize;
+            private static bool Enabled => Setting.TownGarrisonSizeEnabled;
+            private static AppliesToEnum AppliesTo => Setting.TownGarrisonSizeAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.TownGarrisonSizeMultiplier;
+            private static int Minimum => Setting.MinimumTownGarrisonSize;
+            private static int Maximum => Setting.MaximumTownGarrisonSize;
 
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
@@ -80,11 +80,11 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Troops
         {
-            public static bool Enabled => Setting.PartyTroopAmountEnabled;
-            public static AppliesToEnum AppliesTo => Setting.PartyTroopAmountAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.PartyTroopAmountMultiplier;
-            public static int Minimum => Setting.MinimumPartyTroopAmount;
-            public static int Maximum => Setting.MaximumPartyTroopAmount;
+            private static bool Enabled => Setting.PartyTroopAmountEnabled;
+            private static AppliesToEnum AppliesTo => Setting.PartyTroopAmountAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.PartyTroopAmountMultiplier;
+            private static int Minimum => Setting.MinimumPartyTroopAmount;
+            private static int Maximum => Setting.MaximumPartyTroopAmount;
 
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
@@ -103,11 +103,11 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyPrisonerSizeLimit")]
         internal static class Prisoners
         {
-            public static bool Enabled => Setting.PartyPrisonerAmountEnabled;
-            public static AppliesToEnum AppliesTo => Setting.PartyPrisonerAmountAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.PartyPrisonerAmountMultiplier;
-            public static int Minimum => Setting.MinimumPartyPrisonerAmount;
-            public static int Maximum => Setting.MaximumPartyPrisonerAmount;
+            private static bool Enabled => Setting.PartyPrisonerAmountEnabled;
+            private static AppliesToEnum AppliesTo => Setting.PartyPrisonerAmountAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.PartyPrisonerAmountMultiplier;
+            private static int Minimum => Setting.MinimumPartyPrisonerAmount;
+            private static int Maximum => Setting.MaximumPartyPrisonerAmount;
 
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {

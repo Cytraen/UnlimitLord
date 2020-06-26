@@ -23,9 +23,9 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(Barterable), "GetValueForFaction")]
     internal static class BarterablePatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.BarterSuccessMultiplierEnabled;
-        public static float Multiplier => Setting.BarterSuccessMultiplier;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.BarterSuccessMultiplierEnabled;
+        private static float Multiplier => Setting.BarterSuccessMultiplier;
 
         internal static int Postfix(int result, IFaction faction)
         {

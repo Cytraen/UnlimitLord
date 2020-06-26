@@ -23,16 +23,16 @@ namespace UnlimitLord.Patches
 {
     internal static class CraftingCampaignBehaviorPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static AppliesToEnum AppliesTo => Setting.CraftingStaminaAppliesTo.SelectedValue.GetWho();
+        private static Settings Setting => Settings.Instance;
+        private static AppliesToEnum AppliesTo => Setting.CraftingStaminaAppliesTo.SelectedValue.GetWho();
 
         [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetMaxHeroCraftingStamina")]
         internal static class MaximumStamina
         {
-            public static bool Enabled => Setting.CraftingStaminaAmountEnabled;
-            public static float Multiplier => Setting.CraftingStaminaMultiplier;
-            public static int Minimum => Setting.MinimumCraftingStamina;
-            public static int Maximum => Setting.MaximumCraftingStamina;
+            private static bool Enabled => Setting.CraftingStaminaAmountEnabled;
+            private static float Multiplier => Setting.CraftingStaminaMultiplier;
+            private static int Minimum => Setting.MinimumCraftingStamina;
+            private static int Maximum => Setting.MaximumCraftingStamina;
 
             internal static int Postfix(int result, Hero hero)
             {
@@ -51,7 +51,7 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetHeroCraftingStamina")]
         internal static class InfiniteStamina
         {
-            public static bool Enabled => Setting.InfiniteCraftingStaminaEnabled;
+            private static bool Enabled => Setting.InfiniteCraftingStaminaEnabled;
 
             internal static int Postfix(int result, Hero hero)
             {

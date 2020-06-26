@@ -24,12 +24,12 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultPartyMoraleModel), "GetEffectivePartyMorale")]
     internal static class DefaultPartyMoraleModelPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.MoraleEnabled;
-        public static AppliesToEnum AppliesTo => Setting.MoraleAppliesTo.SelectedValue.GetWho();
-        public static float Multiplier => Setting.MoraleMultiplier;
-        public static float Minimum => Setting.MinimumMorale;
-        public static float Maximum => Setting.MaximumMorale;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.MoraleEnabled;
+        private static AppliesToEnum AppliesTo => Setting.MoraleAppliesTo.SelectedValue.GetWho();
+        private static float Multiplier => Setting.MoraleMultiplier;
+        private static float Minimum => Setting.MinimumMorale;
+        private static float Maximum => Setting.MaximumMorale;
 
         internal static float Postfix(float result, MobileParty mobileParty, StatExplainer explanation)
         {

@@ -23,8 +23,8 @@ namespace UnlimitLord.Patches
 {
     internal static class BarterManagerPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.BarterAlwaysAccepted;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.BarterAlwaysAccepted;
 
         [HarmonyPatch(typeof(BarterManager), "IsOfferAcceptable", typeof(IEnumerable<Barterable>), typeof(Hero), typeof(PartyBase))]
         internal static class BarterGuaranteedPt1

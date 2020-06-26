@@ -23,9 +23,9 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultBarterModel), "get_BarterCooldownWithHeroInDays")]
     internal static class DefaultBarterModelPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.BarterCooldownEnabled;
-        public static int Cooldown => Setting.BarterCooldownDays;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.BarterCooldownEnabled;
+        private static int Cooldown => Setting.BarterCooldownDays;
 
         internal static int Postfix(int result)
         {

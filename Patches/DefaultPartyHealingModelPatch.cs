@@ -23,16 +23,16 @@ namespace UnlimitLord.Patches
 {
     internal static class DefaultPartyHealingModelPatch
     {
-        public static Settings Setting => Settings.Instance;
+        private static Settings Setting => Settings.Instance;
 
         [HarmonyPatch(typeof(DefaultPartyHealingModel), "GetDailyHealingForRegulars")]
         internal static class Troops
         {
-            public static bool Enabled => Setting.TroopHealingRateEnabled;
-            public static AppliesToEnum AppliesTo => Setting.TroopHealingRateAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.TroopHealingRateMultiplier;
-            public static float Minimum => Setting.MinimumTroopHealingRate;
-            public static float Maximum => Setting.MaximumTroopHealingRate;
+            private static bool Enabled => Setting.TroopHealingRateEnabled;
+            private static AppliesToEnum AppliesTo => Setting.TroopHealingRateAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.TroopHealingRateMultiplier;
+            private static float Minimum => Setting.MinimumTroopHealingRate;
+            private static float Maximum => Setting.MaximumTroopHealingRate;
 
             internal static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {
@@ -51,11 +51,11 @@ namespace UnlimitLord.Patches
         [HarmonyPatch(typeof(DefaultPartyHealingModel), "GetDailyHealingHpForHeroes")]
         internal static class Heroes
         {
-            public static bool Enabled => Setting.HeroHealingRateEnabled;
-            public static AppliesToEnum AppliesTo => Setting.HeroHealingRateAppliesTo.SelectedValue.GetWho();
-            public static float Multiplier => Setting.HeroHealingRateMultiplier;
-            public static float Minimum => Setting.MinimumHeroHealingRate;
-            public static float Maximum => Setting.MaximumHeroHealingRate;
+            private static bool Enabled => Setting.HeroHealingRateEnabled;
+            private static AppliesToEnum AppliesTo => Setting.HeroHealingRateAppliesTo.SelectedValue.GetWho();
+            private static float Multiplier => Setting.HeroHealingRateMultiplier;
+            private static float Minimum => Setting.MinimumHeroHealingRate;
+            private static float Maximum => Setting.MaximumHeroHealingRate;
 
             internal static float Postfix(float result, MobileParty party, StatExplainer explanation)
             {

@@ -24,13 +24,13 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultPersuasionModel), "GetChances")]
     internal static class DefaultPersuasionModelPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.PersuasionChanceEnabled;
-        public static float Multiplier => Setting.PersuasionSuccessMultiplier;
-        public static float Minimum => Setting.MinimumSuccessChance;
-        public static float Maximum => Setting.MaximumSuccessChance;
-        public static float SuccessRatio => Setting.CriticalSuccessChance;
-        public static float FailureRatio => Setting.CriticalFailureChance;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.PersuasionChanceEnabled;
+        private static float Multiplier => Setting.PersuasionSuccessMultiplier;
+        private static float Minimum => Setting.MinimumSuccessChance;
+        private static float Maximum => Setting.MaximumSuccessChance;
+        private static float SuccessRatio => Setting.CriticalSuccessChance;
+        private static float FailureRatio => Setting.CriticalFailureChance;
 
         internal static void Postfix(PersuasionOptionArgs optionArgs, ref float successChance, ref float critSuccessChance, ref float critFailChance, ref float failChance, float difficultyMultiplier)
         {

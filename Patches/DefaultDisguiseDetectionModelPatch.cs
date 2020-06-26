@@ -24,11 +24,11 @@ namespace UnlimitLord.Patches
     [HarmonyPatch(typeof(DefaultDisguiseDetectionModel), "CalculateDisguiseDetectionProbability")]
     internal class DefaultDisguiseDetectionModelPatch
     {
-        public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.DisguiseChanceEnabled;
-        public static float Multiplier => Setting.DisguiseChanceMultiplier;
-        public static float Minimum => Setting.MinimumDisguiseChance;
-        public static float Maximum => Setting.MaximumDisguiseChance;
+        private static Settings Setting => Settings.Instance;
+        private static bool Enabled => Setting.DisguiseChanceEnabled;
+        private static float Multiplier => Setting.DisguiseChanceMultiplier;
+        private static float Minimum => Setting.MinimumDisguiseChance;
+        private static float Maximum => Setting.MaximumDisguiseChance;
 
         internal static float Postfix(float result, Settlement settlement)
         {
