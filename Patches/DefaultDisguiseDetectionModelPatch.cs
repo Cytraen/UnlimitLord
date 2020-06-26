@@ -16,20 +16,23 @@
 */
 
 using HarmonyLib;
-using TaleWorlds.CampaignSystem.SandBox.GameComponents;
+using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.SandBox.GameComponents.Map;
 
 namespace UnlimitLord.Patches
 {
-    [HarmonyPatch(typeof(DefaultBarterModel), "get_BarterCooldownWithHeroInDays")]
-    internal static class DefaultBarterModelPatch
+    [HarmonyPatch(typeof(DefaultDisguiseDetectionModel), "CalculateDisguiseDetectionProbability")]
+    internal class DefaultDisguiseDetectionModelPatch
     {
         public static Settings Setting => Settings.Instance;
-        public static bool Enabled => Setting.BarterCooldownEnabled;
-        public static int Cooldown => Setting.BarterCooldownDays;
+        public static bool Enabled => Setting.DisguiseChanceEnabled;
+        public static float Multiplier => Setting.DisguiseChanceMultiplier;
+        public static float Minimum => Setting.MinimumDisguiseChance;
+        public static float Maximum => Setting.MaximumDisguiseChance;
 
-        internal static int Postfix(int result)
+        internal static float Postfix(float result, Settlement settlement)
         {
-            return Cooldown;
+            return Math.ClampFloat(result * Multiplier, Minimum, Maximum);
         }
 
         internal static bool Prepare()

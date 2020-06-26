@@ -504,7 +504,7 @@ namespace UnlimitLord
         public bool BarterAlwaysAccepted { get; set; } = false;
 
         [SettingPropertyGroup("Bartering")]
-        [SettingPropertyBool("Barter Acceptance Enabled", Order = 1, RequireRestart = false)]
+        [SettingPropertyBool("Barter Success Enabled", Order = 1, RequireRestart = false)]
         public bool BarterSuccessMultiplierEnabled { get; set; } = false;
 
         [SettingPropertyGroup("Bartering")]
@@ -518,5 +518,25 @@ namespace UnlimitLord
         [SettingPropertyGroup("Bartering")]
         [SettingPropertyInteger("Number of Days Between Barters", 0, 120, Order = 4, RequireRestart = false)]
         public int BarterCooldownDays { get; set; } = 3;
+    }
+
+    // Disguise settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("Disguise", IsMainToggle = true)]
+        [SettingPropertyBool("Disguise Chance Enabled", RequireRestart = false)]
+        public bool DisguiseChanceEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("Disguise")]
+        [SettingPropertyFloatingInteger("Disguise Chance Multiplier", 0.01f, 25f, Order = 1, RequireRestart = false)]
+        public float DisguiseChanceMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("Disguise")]
+        [SettingPropertyFloatingInteger("Minimum Disguise Chance", 0f, 1f, "P", Order = 2, RequireRestart = false)]
+        public float MinimumDisguiseChance { get; set; } = 0f;
+
+        [SettingPropertyGroup("Disguise")]
+        [SettingPropertyFloatingInteger("Maximum Disguise Chance", 0f, 1f, "P", Order = 3, RequireRestart = false)]
+        public float MaximumDisguiseChance { get; set; } = 1f;
     }
 }
