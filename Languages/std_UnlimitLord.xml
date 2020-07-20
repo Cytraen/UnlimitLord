@@ -14,10 +14,11 @@
 		<string id="aqxVE21dUdtU" text="Modify Amount" />
 		<string id="NVJNs9zD1d9t" text="Critical Success Ratio" />
 		<string id="kwRxutt05AYT" text="Critical Failure Ratio" />
-		<string id="bK6jMmtByOF2" text="Always Accepted" />
+		<string id="bK6jMmtByOF2" text="Barter Always Accepted" />
 		<string id="a64AJwEQvEde" text="Set Cooldown" />
 		<string id="q3KigaRis8Ny" text="Cooldown Days" />
-		<string id="0IMbmCXRtEPk" text="Enable Value Multiplier" />
+		<string id="0IMbmCXRtEPk" text="Enable Item Value Multiplier" />
+		<string id="Iz3Nk98BIiOO" text="Player Item Value Multiplier" />
 
 		<!--Groups/Categories-->
 		<string id="D78DVfmutxZX" text="Movement Speed" />
@@ -36,8 +37,9 @@
 		<string id="hBEXh7AijM7I" text="Maximum Party Troops" />
 		<string id="PTj8sDnBew21" text="Maximum Party Prisoners" />
 		<string id="mEIXrv2G7tCv" text="Persuasion Chance" />
-		<string id="vPepJOx8OW1k" text="Barter Acceptance" />
+		<string id="vPepJOx8OW1k" text="Bartering" />
 		<string id="FAz1UWhX6HOt" text="Disguise Chance" />
+		<string id="Mb5ywYiZva1Y" text="View Distance" />
 		
 		<!--Explanations-->
 		<string id="2bAElQ6l7ita" text="Total after UL multiplier" />

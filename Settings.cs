@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (C) 2020 ashakoor
 
  This program is free software: you can redistribute it and/or modify
@@ -499,23 +499,23 @@ namespace UnlimitLord
     // Barter acceptance settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=vPepJOx8OW1k}Barter Acceptance")]
-        [SettingPropertyBool("{=bK6jMmtByOF2}Always Accepted", Order = 0, RequireRestart = false)]
+        [SettingPropertyGroup("{=vPepJOx8OW1k}Bartering")]
+        [SettingPropertyBool("{=bK6jMmtByOF2}Barter Always Accepted", Order = 0, RequireRestart = false)]
         public bool BarterAlwaysAccepted { get; set; } = false;
 
-        [SettingPropertyGroup("{=vPepJOx8OW1k}Barter Acceptance")]
-        [SettingPropertyBool("{=0IMbmCXRtEPk}Enable Value Multiplier", Order = 1, RequireRestart = false)]
+        [SettingPropertyGroup("{=vPepJOx8OW1k}Bartering")]
+        [SettingPropertyBool("{=0IMbmCXRtEPk}Enable Barter Item Value Multiplier", Order = 1, RequireRestart = false)]
         public bool BarterSuccessMultiplierEnabled { get; set; } = false;
 
-        [SettingPropertyGroup("{=vPepJOx8OW1k}Barter Acceptance")]
-        [SettingPropertyFloatingInteger("{=CCmuVoB3sOUO}Multiplier", 0.01f, 1000f, Order = 2, RequireRestart = false)]
+        [SettingPropertyGroup("{=vPepJOx8OW1k}Bartering")]
+        [SettingPropertyFloatingInteger("{=Iz3Nk98BIiOO}Player Item Value Multiplier", 0.01f, 1000f, Order = 2, RequireRestart = false)]
         public float BarterSuccessMultiplier { get; set; } = 1f;
 
-        [SettingPropertyGroup("{=vPepJOx8OW1k}Barter Acceptance")]
+        [SettingPropertyGroup("{=vPepJOx8OW1k}Bartering")]
         [SettingPropertyBool("{=a64AJwEQvEde}Set Cooldown", Order = 3, RequireRestart = false)]
         public bool BarterCooldownEnabled { get; set; } = false;
 
-        [SettingPropertyGroup("{=vPepJOx8OW1k}Barter Acceptance")]
+        [SettingPropertyGroup("{=vPepJOx8OW1k}Bartering")]
         [SettingPropertyInteger("{=q3KigaRis8Ny}Cooldown Days", 0, 120, Order = 4, RequireRestart = false)]
         public int BarterCooldownDays { get; set; } = 3;
     }
@@ -538,5 +538,25 @@ namespace UnlimitLord
         [SettingPropertyGroup("{=FAz1UWhX6HOt}Disguise Chance")]
         [SettingPropertyFloatingInteger("{=3YOggkouIghy}Maximum", 0f, 1f, "P", Order = 3, RequireRestart = false)]
         public float MaximumDisguiseChance { get; set; } = 1f;
+    }
+
+    // View distance settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("{=Mb5ywYiZva1Y}View Distance", IsMainToggle = true)]
+        [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
+        public bool ViewDistanceEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("{=Mb5ywYiZva1Y}View Distance")]
+        [SettingPropertyFloatingInteger("{=CCmuVoB3sOUO}Multiplier", 0.01f, 50f, Order = 1, RequireRestart = false)]
+        public float ViewDistanceMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("{=Mb5ywYiZva1Y}View Distance")]
+        [SettingPropertyFloatingInteger("{=RkptUH9teOPo}Minimum", 0f, 500f, Order = 2, RequireRestart = false)]
+        public float MinimumViewDistance { get; set; } = 5f;
+
+        [SettingPropertyGroup("{=Mb5ywYiZva1Y}View Distance")]
+        [SettingPropertyFloatingInteger("{=3YOggkouIghy}Maximum", 0f, 500f, Order = 3, RequireRestart = false)]
+        public float MaximumViewDistance { get; set; } = 75f;
     }
 }
