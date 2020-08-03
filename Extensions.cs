@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (C) 2020 ashakoor
 
  This program is free software: you can redistribute it and/or modify
@@ -40,12 +40,12 @@ namespace UnlimitLord
 
         public static bool IsThisCharacterInPlayerArmy(this CharacterObject character)
         {
-            return character?.HeroObject?.PartyBelongedTo?.Army?.IsPlayerInThisArmy() == true;
+            return character?.HeroObject?.IsThisHeroInPlayerArmy() == true;
         }
 
         public static bool IsThisCharacterInPlayerKingdom(this CharacterObject character)
         {
-            return character?.HeroObject?.Clan?.Kingdom?.IsPlayerInThisKingdom() == true;
+            return character?.HeroObject?.Clan?.IsThisClanInPlayerKingdom() == true;
         }
     }
 
@@ -54,7 +54,7 @@ namespace UnlimitLord
     {
         public static bool IsThisHeroPlayerHero(this Hero hero)
         {
-            return hero?.CharacterObject?.IsThisCharacterPlayerCharacter() == true;
+            return hero?.IsHumanPlayerCharacter == true;
         }
 
         public static bool IsThisHeroPlayerCompanion(this Hero hero)
@@ -69,7 +69,7 @@ namespace UnlimitLord
 
         public static bool IsThisHeroInPlayerArmy(this Hero hero)
         {
-            return hero?.PartyBelongedTo?.Army?.IsPlayerInThisArmy() == true;
+            return hero?.PartyBelongedTo?.IsThisPartyInPlayerArmy() == true;
         }
 
         public static bool IsThisHeroInPlayerKingdom(this Hero hero)
@@ -83,12 +83,12 @@ namespace UnlimitLord
     {
         public static bool IsPlayerLeadingThisParty(this PartyBase partyBase)
         {
-            return partyBase?.LeaderHero?.IsThisHeroPlayerHero() == true;
+            return partyBase?.MobileParty?.IsPlayerLeadingThisParty() == true;
         }
 
         public static bool IsThisPartyInPlayerClan(this PartyBase partyBase)
         {
-            return partyBase?.LeaderHero?.Clan?.IsPlayerLeadingThisClan() == true;
+            return partyBase?.Owner?.IsThisHeroPlayerHero() == true;
         }
 
         public static bool IsThisPartyInPlayerArmy(this PartyBase partyBase)
@@ -98,12 +98,12 @@ namespace UnlimitLord
 
         public static bool IsThisPartyInPlayerKingdom(this PartyBase partyBase)
         {
-            return partyBase?.LeaderHero?.Clan?.Kingdom?.IsPlayerInThisKingdom() == true;
+            return partyBase?.Owner?.IsThisHeroInPlayerKingdom() == true;
         }
 
         public static bool IsThisPartyGarrison(this PartyBase party)
         {
-            return party?.MobileParty?.IsGarrison() == true;
+            return party?.MobileParty?.IsThisPartyGarrison() == true;
         }
 
         public static bool IsPartyOwnedByPlayer(this PartyBase party)
@@ -132,7 +132,7 @@ namespace UnlimitLord
 
         public static bool IsThisPartyInPlayerClan(this MobileParty mobileParty)
         {
-            return mobileParty?.LeaderHero?.Clan?.IsPlayerLeadingThisClan() == true;
+            return mobileParty?.LeaderHero?.IsThisHeroInPlayerClan() == true;
         }
 
         public static bool IsThisPartyInPlayerArmy(this MobileParty mobileParty)
@@ -142,10 +142,10 @@ namespace UnlimitLord
 
         public static bool IsThisPartyInPlayerKingdom(this MobileParty mobileParty)
         {
-            return mobileParty?.LeaderHero?.Clan?.Kingdom?.IsPlayerInThisKingdom() == true;
+            return mobileParty?.Party?.IsThisPartyInPlayerKingdom() == true;
         }
 
-        public static bool IsGarrison(this MobileParty party)
+        public static bool IsThisPartyGarrison(this MobileParty party)
         {
             return party?.IsGarrison == true;
         }
@@ -190,7 +190,7 @@ namespace UnlimitLord
 
         public static bool IsPlayerLeadingThisArmy(this Army army)
         {
-            return army?.LeaderParty?.LeaderHero?.IsThisHeroPlayerHero() == true;
+            return army?.LeaderParty?.IsPlayerLeadingThisParty() == true;
         }
 
         public static bool IsThisArmyInPlayerKingdom(this Army army)

@@ -22,48 +22,6 @@ namespace UnlimitLord
 {
     public class PatchAppliesTo
     {
-        private readonly AppliesToEnum _applyEnum;
-
-        public PatchAppliesTo(AppliesToEnum applyEnum)
-        {
-            _applyEnum = applyEnum;
-        }
-
-        public AppliesToEnum GetWho()
-        {
-            return _applyEnum;
-        }
-
-        public override string ToString()
-        {
-            switch (_applyEnum)
-            {
-                case AppliesToEnum.PlayerOnly:
-                    return "Player only";
-
-                case AppliesToEnum.PlayerCompanions:
-                    return "Player and companions";
-
-                case AppliesToEnum.PlayerParty:
-                    return "Player's party";
-
-                case AppliesToEnum.PlayerClan:
-                    return "Player's clan";
-
-                case AppliesToEnum.PlayerArmy:
-                    return "Player's army";
-
-                case AppliesToEnum.PlayerKingdom:
-                    return "Player's kingdom";
-
-                case AppliesToEnum.Everyone:
-                    return "Everyone";
-
-                default:
-                    throw new NotSupportedException();
-            }
-        }
-
         public static bool DoesPatchApply(AppliesToEnum @enum, CharacterObject character)
         {
             switch (@enum)

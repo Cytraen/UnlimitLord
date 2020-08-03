@@ -26,7 +26,7 @@ namespace UnlimitLord.Patches
     {
         private static Settings Setting => Settings.Instance;
         private static bool Enabled => Setting.MoraleEnabled;
-        private static AppliesToEnum AppliesTo => Setting.MoraleAppliesTo.SelectedValue.GetWho();
+        private static AppliesToEnum AppliesTo => Setting.MoraleAppliesTo.SelectedValue;
         private static float Multiplier => Setting.MoraleMultiplier;
         private static float Minimum => Setting.MinimumMorale;
         private static float Maximum => Setting.MaximumMorale;

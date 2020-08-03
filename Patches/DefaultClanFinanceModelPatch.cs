@@ -26,14 +26,14 @@ namespace UnlimitLord.Patches
     {
         private static Settings Setting => Settings.Instance;
         private static bool Enabled => Setting.GarrisonWageEnabled;
-        private static AppliesToEnum AppliesTo => Setting.GarrisonWageAppliesTo.SelectedValue.GetWho();
+        private static AppliesToEnum AppliesTo => Setting.GarrisonWageAppliesTo.SelectedValue;
         private static float Multiplier => Setting.GarrisonWageMultiplier;
         private static int Minimum => Setting.MinimumGarrisonWage;
         private static int Maximum => Setting.MaximumGarrisonWage;
 
         internal static int Postfix(int result, MobileParty mobileParty)
         {
-            if (!mobileParty.IsGarrison() || !PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
+            if (!mobileParty.IsThisPartyGarrison() || !PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
                 return result;
 
             return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);

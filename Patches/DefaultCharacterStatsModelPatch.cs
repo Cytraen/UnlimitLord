@@ -26,7 +26,7 @@ namespace UnlimitLord.Patches
     {
         private static Settings Setting => Settings.Instance;
         private static bool Enabled => Setting.HeroHealthAmountEnabled;
-        private static AppliesToEnum AppliesTo => Setting.HeroHealthAmountAppliesTo.SelectedValue.GetWho();
+        private static AppliesToEnum AppliesTo => Setting.HeroHealthAmountAppliesTo.SelectedValue;
         private static float Multiplier => Setting.HeroHealthAmountMultiplier;
         private static int Minimum => Setting.MinimumHeroHealthAmount;
         private static int Maximum => Setting.MaximumHeroHealthAmount;

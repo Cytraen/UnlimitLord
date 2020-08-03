@@ -29,7 +29,7 @@ namespace UnlimitLord.Patches
         internal static class Castle
         {
             private static bool Enabled => Setting.CastleGarrisonSizeEnabled;
-            private static AppliesToEnum AppliesTo => Setting.CastleGarrisonSizeAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.CastleGarrisonSizeAppliesTo.SelectedValue;
             private static float Multiplier => Setting.CastleGarrisonSizeMultiplier;
             private static int Minimum => Setting.MinimumCastleGarrisonSize;
             private static int Maximum => Setting.MaximumCastleGarrisonSize;
@@ -55,7 +55,7 @@ namespace UnlimitLord.Patches
         internal static class Town
         {
             private static bool Enabled => Setting.TownGarrisonSizeEnabled;
-            private static AppliesToEnum AppliesTo => Setting.TownGarrisonSizeAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.TownGarrisonSizeAppliesTo.SelectedValue;
             private static float Multiplier => Setting.TownGarrisonSizeMultiplier;
             private static int Minimum => Setting.MinimumTownGarrisonSize;
             private static int Maximum => Setting.MaximumTownGarrisonSize;
@@ -81,7 +81,7 @@ namespace UnlimitLord.Patches
         internal static class Troops
         {
             private static bool Enabled => Setting.PartyTroopAmountEnabled;
-            private static AppliesToEnum AppliesTo => Setting.PartyTroopAmountAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.PartyTroopAmountAppliesTo.SelectedValue;
             private static float Multiplier => Setting.PartyTroopAmountMultiplier;
             private static int Minimum => Setting.MinimumPartyTroopAmount;
             private static int Maximum => Setting.MaximumPartyTroopAmount;
@@ -89,6 +89,9 @@ namespace UnlimitLord.Patches
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
+                    return result;
+
+                if (party.IsThisPartyGarrison())
                     return result;
 
                 return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
@@ -104,7 +107,7 @@ namespace UnlimitLord.Patches
         internal static class Prisoners
         {
             private static bool Enabled => Setting.PartyPrisonerAmountEnabled;
-            private static AppliesToEnum AppliesTo => Setting.PartyPrisonerAmountAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.PartyPrisonerAmountAppliesTo.SelectedValue;
             private static float Multiplier => Setting.PartyPrisonerAmountMultiplier;
             private static int Minimum => Setting.MinimumPartyPrisonerAmount;
             private static int Maximum => Setting.MaximumPartyPrisonerAmount;
@@ -112,6 +115,9 @@ namespace UnlimitLord.Patches
             internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
+                    return result;
+
+                if (party.IsThisPartyGarrison())
                     return result;
 
                 return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);

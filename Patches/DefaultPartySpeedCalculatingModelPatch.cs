@@ -26,7 +26,7 @@ namespace UnlimitLord.Patches
     {
         private static Settings Setting => Settings.Instance;
         private static bool Enabled => Setting.MovementSpeedEnabled;
-        private static AppliesToEnum AppliesTo => Setting.MovementSpeedAppliesTo.SelectedValue.GetWho();
+        private static AppliesToEnum AppliesTo => Setting.MovementSpeedAppliesTo.SelectedValue;
         private static float Multiplier => Setting.MovementSpeedMultiplier;
         private static float Minimum => Setting.MinimumMovementSpeed;
         private static float Maximum => Setting.MaximumMovementSpeed;

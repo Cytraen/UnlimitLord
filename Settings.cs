@@ -19,6 +19,7 @@ using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Data;
 using MCM.Abstractions.Settings.Base.Global;
+using UnlimitLord;
 
 namespace UnlimitLord
 {
@@ -39,13 +40,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=D78DVfmutxZX}Movement Speed")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> MovementSpeedAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> MovementSpeedAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerParty),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerParty,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=D78DVfmutxZX}Movement Speed")]
@@ -71,13 +72,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=hHROV0BkMDfG}Troop Healing Rate")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> TroopHealingRateAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> TroopHealingRateAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerParty),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerParty,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=hHROV0BkMDfG}Troop Healing Rate")]
@@ -102,13 +103,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=uvIPiQqsx5Qb}Hero Healing Rate")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> HeroHealingRateAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> HeroHealingRateAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerParty),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerParty,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=uvIPiQqsx5Qb}Hero Healing Rate")]
@@ -133,13 +134,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=DB1kpsmAAIky}Morale")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> MoraleAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> MoraleAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerParty),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerParty,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=DB1kpsmAAIky}Morale")]
@@ -164,11 +165,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=SrBxpWv16oRJ}Castle Garrison Size")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> CastleGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> CastleGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=SrBxpWv16oRJ}Castle Garrison Size")]
@@ -181,7 +182,7 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=SrBxpWv16oRJ}Castle Garrison Size")]
         [SettingPropertyInteger("{=3YOggkouIghy}Maximum", 0, 100000, Order = 3, RequireRestart = false)]
-        public int MaximumCastleGarrisonSize { get; set; } = 1000000000;
+        public int MaximumCastleGarrisonSize { get; set; } = 100000;
     }
 
     // Town garrison size settings
@@ -193,11 +194,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=9hYB9kzrN9Qs}Town Garrison Size")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> TownGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> TownGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=9hYB9kzrN9Qs}Town Garrison Size")]
@@ -222,11 +223,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=tVYKb9VGO56w}Garrison Wages")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> GarrisonWageAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> GarrisonWageAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=tVYKb9VGO56w}Garrison Wages")]
@@ -251,11 +252,11 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=oP25rddkklhH}Number of Parties")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> PartyAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> PartyAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=oP25rddkklhH}Number of Parties")]
@@ -296,10 +297,10 @@ namespace UnlimitLord
     {
         [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> CraftingStaminaAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> CraftingStaminaAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerOnly),
-            new PatchAppliesTo(AppliesToEnum.PlayerCompanions)
+            AppliesToEnum.PlayerOnly,
+            AppliesToEnum.PlayerCompanions
         }, 0);
 
         [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
@@ -352,14 +353,14 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=k7zNutD2MZWa}Hero Health Amount")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> HeroHealthAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> HeroHealthAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerOnly),
-            new PatchAppliesTo(AppliesToEnum.PlayerCompanions),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerOnly,
+            AppliesToEnum.PlayerCompanions,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=k7zNutD2MZWa}Hero Health Amount")]
@@ -384,13 +385,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=MBgE3OOCyUw0}Party Food Consumption")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> PartyFoodConsumptionAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> PartyFoodConsumptionAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerParty),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerParty,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=MBgE3OOCyUw0}Party Food Consumption")]
@@ -415,13 +416,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=hBEXh7AijM7I}Maximum Party Troops")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> PartyTroopAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> PartyTroopAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerParty),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerParty,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=hBEXh7AijM7I}Maximum Party Troops")]
@@ -446,13 +447,13 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=PTj8sDnBew21}Maximum Party Prisoners")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<PatchAppliesTo> PartyPrisonerAmountAppliesTo { get; set; } = new DefaultDropdown<PatchAppliesTo>(new[]
+        public DefaultDropdown<AppliesToEnum> PartyPrisonerAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
         {
-            new PatchAppliesTo(AppliesToEnum.PlayerParty),
-            new PatchAppliesTo(AppliesToEnum.PlayerClan),
-            new PatchAppliesTo(AppliesToEnum.PlayerArmy),
-            new PatchAppliesTo(AppliesToEnum.PlayerKingdom),
-            new PatchAppliesTo(AppliesToEnum.Everyone)
+            AppliesToEnum.PlayerParty,
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerArmy,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
         }, 0);
 
         [SettingPropertyGroup("{=PTj8sDnBew21}Maximum Party Prisoners")]
@@ -460,12 +461,12 @@ namespace UnlimitLord
         public float PartyPrisonerAmountMultiplier { get; set; } = 1f;
 
         [SettingPropertyGroup("{=PTj8sDnBew21}Maximum Party Prisoners")]
-        [SettingPropertyInteger("{=RkptUH9teOPo}Minimum", 0, 500000, Order = 2, RequireRestart = false)]
+        [SettingPropertyInteger("{=RkptUH9teOPo}Minimum", 0, 50000, Order = 2, RequireRestart = false)]
         public int MinimumPartyPrisonerAmount { get; set; } = 5;
 
         [SettingPropertyGroup("{=PTj8sDnBew21}Maximum Party Prisoners")]
-        [SettingPropertyInteger("{=3YOggkouIghy}Maximum", 0, 500000, Order = 3, RequireRestart = false)]
-        public int MaximumPartyPrisonerAmount { get; set; } = 100000;
+        [SettingPropertyInteger("{=3YOggkouIghy}Maximum", 0, 50000, Order = 3, RequireRestart = false)]
+        public int MaximumPartyPrisonerAmount { get; set; } = 50000;
     }
 
     // Persuasion chance settings

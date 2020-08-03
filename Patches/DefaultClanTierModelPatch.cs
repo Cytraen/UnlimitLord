@@ -29,7 +29,7 @@ namespace UnlimitLord.Patches
         internal static class Party
         {
             private static bool Enabled => Setting.PartyAmountEnabled;
-            private static AppliesToEnum AppliesTo => Setting.PartyAmountAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.PartyAmountAppliesTo.SelectedValue;
             private static float Multiplier => Setting.PartyAmountMultiplier;
             private static int Minimum => Setting.MinimumPartyAmount;
             private static int Maximum => Setting.MaximumPartyAmount;

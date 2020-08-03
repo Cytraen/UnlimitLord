@@ -29,7 +29,7 @@ namespace UnlimitLord.Patches
         internal static class Troops
         {
             private static bool Enabled => Setting.TroopHealingRateEnabled;
-            private static AppliesToEnum AppliesTo => Setting.TroopHealingRateAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.TroopHealingRateAppliesTo.SelectedValue;
             private static float Multiplier => Setting.TroopHealingRateMultiplier;
             private static float Minimum => Setting.MinimumTroopHealingRate;
             private static float Maximum => Setting.MaximumTroopHealingRate;
@@ -52,7 +52,7 @@ namespace UnlimitLord.Patches
         internal static class Heroes
         {
             private static bool Enabled => Setting.HeroHealingRateEnabled;
-            private static AppliesToEnum AppliesTo => Setting.HeroHealingRateAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.HeroHealingRateAppliesTo.SelectedValue;
             private static float Multiplier => Setting.HeroHealingRateMultiplier;
             private static float Minimum => Setting.MinimumHeroHealingRate;
             private static float Maximum => Setting.MaximumHeroHealingRate;

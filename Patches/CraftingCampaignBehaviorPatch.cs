@@ -24,7 +24,7 @@ namespace UnlimitLord.Patches
     internal static class CraftingCampaignBehaviorPatch
     {
         private static Settings Setting => Settings.Instance;
-        private static AppliesToEnum AppliesTo => Setting.CraftingStaminaAppliesTo.SelectedValue.GetWho();
+        private static AppliesToEnum AppliesTo => Setting.CraftingStaminaAppliesTo.SelectedValue;
 
         [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetMaxHeroCraftingStamina")]
         internal static class MaximumStamina

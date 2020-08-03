@@ -28,7 +28,7 @@ namespace UnlimitLord.Patches
         {
             private static Settings Setting => Settings.Instance;
             private static bool Enabled => Setting.PartyFoodConsumptionEnabled;
-            private static AppliesToEnum AppliesTo => Setting.PartyFoodConsumptionAppliesTo.SelectedValue.GetWho();
+            private static AppliesToEnum AppliesTo => Setting.PartyFoodConsumptionAppliesTo.SelectedValue;
             private static float Multiplier => Setting.PartyFoodConsumptionMultiplier;
             private static float Minimum => Setting.MinimumPartyFoodConsumption;
             private static float Maximum => Setting.MaximumPartyFoodConsumption;
