@@ -32,7 +32,7 @@ namespace UnlimitLord.Patches
 
         internal static float Postfix(float result, Settlement settlement)
         {
-            return Math.ClampFloat(result * Multiplier, Minimum, Maximum);
+            return MathHelper.ClampFloat(result * Multiplier, Minimum, Maximum);
         }
 
         internal static bool Prepare()

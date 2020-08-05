@@ -31,7 +31,7 @@ namespace UnlimitLord.Patches
 
         internal static int Postfix(int result)
         {
-            return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+            return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
         }
 
         internal static bool Prepare()

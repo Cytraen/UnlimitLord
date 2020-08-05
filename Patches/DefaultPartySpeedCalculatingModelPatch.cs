@@ -36,7 +36,7 @@ namespace UnlimitLord.Patches
             if (!PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
                 return result;
 
-            return Math.ClampAndExplainFloat(result * Multiplier, explanation, Minimum, Maximum);
+            return MathHelper.ClampAndExplainFloat(result * Multiplier, explanation, Minimum, Maximum);
         }
 
         internal static bool Prepare()

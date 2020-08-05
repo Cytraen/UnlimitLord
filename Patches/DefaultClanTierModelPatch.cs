@@ -39,7 +39,7 @@ namespace UnlimitLord.Patches
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, clan))
                     return result;
 
-                return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+                return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -58,7 +58,7 @@ namespace UnlimitLord.Patches
 
             internal static int Postfix(int result, int clanTier)
             {
-                return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+                return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
             }
 
             internal static bool Prepare()

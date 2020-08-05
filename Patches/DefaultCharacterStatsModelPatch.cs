@@ -36,7 +36,7 @@ namespace UnlimitLord.Patches
             if (!PatchAppliesTo.DoesPatchApply(AppliesTo, character))
                 return result;
 
-            return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+            return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
         }
 
         internal static bool Prepare()

@@ -26,6 +26,7 @@ namespace UnlimitLord
     internal class SubModule : MBSubModuleBase
     {
         private const string HarmonyId = "com.unlimitlord.patch";
+        Harmony HarmonyPatcher = new Harmony(HarmonyId);
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
@@ -39,7 +40,7 @@ namespace UnlimitLord
             InformationManager.DisplayMessage(new InformationMessage("UnlimitLord loaded!"));
         }
 
-        private static void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (sender is Settings && e.PropertyName == BaseSettings.SaveTriggered)
             {
@@ -47,14 +48,12 @@ namespace UnlimitLord
             }
         }
 
-        private static void Patch(bool unPatch = false)
+        private void Patch(bool unPatch = false)
         {
-            var harmony = new Harmony(HarmonyId);
-
             if (unPatch)
-                harmony.UnpatchAll(HarmonyId);
+                HarmonyPatcher.UnpatchAll(HarmonyId);
 
-            harmony.PatchAll();
+            HarmonyPatcher.PatchAll();
         }
     }
 }

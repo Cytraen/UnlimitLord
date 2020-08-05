@@ -20,7 +20,7 @@ using TaleWorlds.Localization;
 
 namespace UnlimitLord
 {
-    internal static class Math
+    internal static class MathHelper
     {
         internal static float ClampFloat(float value, float minimum, float maximum)
         {

@@ -26,28 +26,6 @@ namespace UnlimitLord.Patches
         private static Settings Setting => Settings.Instance;
         private static AppliesToEnum AppliesTo => Setting.CraftingStaminaAppliesTo.SelectedValue;
 
-        [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetMaxHeroCraftingStamina")]
-        internal static class MaximumStamina
-        {
-            private static bool Enabled => Setting.CraftingStaminaAmountEnabled;
-            private static float Multiplier => Setting.CraftingStaminaMultiplier;
-            private static int Minimum => Setting.MinimumCraftingStamina;
-            private static int Maximum => Setting.MaximumCraftingStamina;
-
-            internal static int Postfix(int result, Hero hero)
-            {
-                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, hero))
-                    return result;
-
-                return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
-            }
-
-            internal static bool Prepare()
-            {
-                return Enabled;
-            }
-        }
-
         [HarmonyPatch(typeof(CraftingCampaignBehavior), "GetHeroCraftingStamina")]
         internal static class InfiniteStamina
         {

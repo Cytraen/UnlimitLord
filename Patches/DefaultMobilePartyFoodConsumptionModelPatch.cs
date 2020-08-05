@@ -38,7 +38,7 @@ namespace UnlimitLord.Patches
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
                     return result;
 
-                return Math.ClampAndExplainFloat(result * Multiplier, explainer, -Minimum, -Maximum);
+                return MathHelper.ClampAndExplainFloat(result * Multiplier, explainer, -Minimum, -Maximum);
             }
 
             internal static bool Prepare()

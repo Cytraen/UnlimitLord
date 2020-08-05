@@ -306,22 +306,6 @@ namespace UnlimitLord
         [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
         [SettingPropertyBool("{=hNX8v28ZXvze}Infinite", Order = 1, RequireRestart = false)]
         public bool InfiniteCraftingStaminaEnabled { get; set; } = false;
-
-        [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
-        [SettingPropertyBool("{=aqxVE21dUdtU}Modify Amount", Order = 2, RequireRestart = false)]
-        public bool CraftingStaminaAmountEnabled { get; set; } = false;
-
-        [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
-        [SettingPropertyFloatingInteger("{=CCmuVoB3sOUO}Multiplier", 0.01f, 100f, Order = 3, RequireRestart = false)]
-        public float CraftingStaminaMultiplier { get; set; } = 1f;
-
-        [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
-        [SettingPropertyInteger("{=RkptUH9teOPo}Minimum", 0, 10000, Order = 4, RequireRestart = false)]
-        public int MinimumCraftingStamina { get; set; } = 50;
-
-        [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
-        [SettingPropertyInteger("{=3YOggkouIghy}Maximum", 0, 10000, Order = 5, RequireRestart = false)]
-        public int MaximumCraftingStamina { get; set; } = 10000;
     }
 
     // Number of workshops settings

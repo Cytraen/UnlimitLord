@@ -36,7 +36,7 @@ namespace UnlimitLord.Patches
             if (!mobileParty.IsThisPartyGarrison() || !PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
                 return result;
 
-            return Math.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+            return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
         }
 
         internal static bool Prepare()

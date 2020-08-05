@@ -42,7 +42,7 @@ namespace UnlimitLord.Patches
                 if (!party.IsThisPartyGarrison() || !party.DoesPartyBelongToCastle())
                     return result;
 
-                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -68,7 +68,7 @@ namespace UnlimitLord.Patches
                 if (!party.IsThisPartyGarrison() || !party.DoesPartyBelongToTown())
                     return result;
 
-                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -94,7 +94,7 @@ namespace UnlimitLord.Patches
                 if (party.IsThisPartyGarrison())
                     return result;
 
-                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -120,7 +120,7 @@ namespace UnlimitLord.Patches
                 if (party.IsThisPartyGarrison())
                     return result;
 
-                return Math.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
             }
 
             internal static bool Prepare()
