@@ -137,7 +137,7 @@ namespace UnlimitLord
 
         public static bool IsThisPartyInPlayerClan(this MobileParty mobileParty)
         {
-            return mobileParty?.LeaderHero?.IsThisHeroInPlayerClan() == true;
+            return mobileParty?.LeaderHero?.IsThisHeroInPlayerClan() == true || mobileParty?.Party?.IsPartyOwnedByPlayer() == true;
         }
 
         public static bool IsThisPartyInPlayerArmy(this MobileParty mobileParty)
