@@ -211,7 +211,65 @@ namespace UnlimitLord
 
         [SettingPropertyGroup("{=9hYB9kzrN9Qs}Town Garrison Size")]
         [SettingPropertyInteger("{=3YOggkouIghy}Maximum", 0, 100000, Order = 3, RequireRestart = false)]
-        public int MaximumTownGarrisonSize { get; set; } = 10000;
+        public int MaximumTownGarrisonSize { get; set; } = 100000;
+    }
+
+    // Caravan size settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size", IsMainToggle = true)]
+        [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
+        public bool CaravanSizeEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size")]
+        [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<AppliesToEnum> CaravanSizeAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        {
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
+        }, 0);
+
+        [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size")]
+        [SettingPropertyFloatingInteger("{=CCmuVoB3sOUO}Multiplier", 0.01f, 1000f, Order = 1, RequireRestart = false)]
+        public float CaravanSizeMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size")]
+        [SettingPropertyInteger("{=RkptUH9teOPo}Minimum", 0, 100000, Order = 2, RequireRestart = false)]
+        public int MinimumCaravanSize { get; set; } = 10;
+
+        [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size")]
+        [SettingPropertyInteger("{=3YOggkouIghy}Maximum", 0, 100000, Order = 3, RequireRestart = false)]
+        public int MaximumCaravanSize { get; set; } = 100000;
+    }
+
+    // Party wage settings
+    internal sealed partial class Settings
+    {
+        [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages", IsMainToggle = true)]
+        [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
+        public bool PartyWageEnabled { get; set; } = false;
+
+        [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages")]
+        [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
+        public DefaultDropdown<AppliesToEnum> PartyWageAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        {
+            AppliesToEnum.PlayerClan,
+            AppliesToEnum.PlayerKingdom,
+            AppliesToEnum.Everyone
+        }, 0);
+
+        [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages")]
+        [SettingPropertyFloatingInteger("{=CCmuVoB3sOUO}Multiplier", 0.01f, 5000f, Order = 1, RequireRestart = false)]
+        public float PartyWageMultiplier { get; set; } = 1f;
+
+        [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages")]
+        [SettingPropertyInteger("{=RkptUH9teOPo}Minimum", 0, 500000, Order = 2, RequireRestart = false)]
+        public int MinimumPartyWage { get; set; } = 0;
+
+        [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages")]
+        [SettingPropertyInteger("{=3YOggkouIghy}Maximum", 0, 500000, Order = 3, RequireRestart = false)]
+        public int MaximumPartyWage { get; set; } = 500000;
     }
 
     // Garrison wage settings

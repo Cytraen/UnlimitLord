@@ -78,6 +78,32 @@ namespace UnlimitLord.Patches
         }
 
         [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
+        internal static class Caravan
+        {
+            private static bool Enabled => Setting.CaravanSizeEnabled;
+            private static AppliesToEnum AppliesTo => Setting.CaravanSizeAppliesTo.SelectedValue;
+            private static float Multiplier => Setting.CaravanSizeMultiplier;
+            private static int Minimum => Setting.MinimumCaravanSize;
+            private static int Maximum => Setting.MaximumCaravanSize;
+
+            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            {
+                if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
+                    return result;
+
+                if (!party.IsThisPartyCaravan())
+                    return result;
+
+                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+            }
+
+            internal static bool Prepare()
+            {
+                return Enabled;
+            }
+        }
+
+        [HarmonyPatch(typeof(DefaultPartySizeLimitModel), "GetPartyMemberSizeLimit")]
         internal static class Troops
         {
             private static bool Enabled => Setting.PartyTroopAmountEnabled;
@@ -91,7 +117,7 @@ namespace UnlimitLord.Patches
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
                     return result;
 
-                if (party.IsThisPartyGarrison())
+                if (party.IsThisPartyGarrison() || party.IsThisPartyCaravan())
                     return result;
 
                 return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);

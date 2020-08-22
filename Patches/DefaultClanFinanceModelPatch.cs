@@ -21,27 +21,54 @@ using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
 namespace UnlimitLord.Patches
 {
-    [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
     internal static class DefaultClanFinanceModelPatch
     {
         private static Settings Setting => Settings.Instance;
-        private static bool Enabled => Setting.GarrisonWageEnabled;
-        private static AppliesToEnum AppliesTo => Setting.GarrisonWageAppliesTo.SelectedValue;
-        private static float Multiplier => Setting.GarrisonWageMultiplier;
-        private static int Minimum => Setting.MinimumGarrisonWage;
-        private static int Maximum => Setting.MaximumGarrisonWage;
 
-        internal static int Postfix(int result, MobileParty mobileParty)
+        [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
+        internal static class Party
         {
-            if (!mobileParty.IsThisPartyGarrison() || !PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
-                return result;
+            private static bool Enabled => Setting.PartyWageEnabled;
+            private static AppliesToEnum AppliesTo => Setting.PartyWageAppliesTo.SelectedValue;
+            private static float Multiplier => Setting.PartyWageMultiplier;
+            private static int Minimum => Setting.MinimumPartyWage;
+            private static int Maximum => Setting.MaximumPartyWage;
 
-            return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+            internal static int Postfix(int result, MobileParty mobileParty)
+            {
+                if (mobileParty.IsThisPartyGarrison() || !PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
+                    return result;
+
+                return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+            }
+
+            internal static bool Prepare()
+            {
+                return Enabled;
+            }
         }
 
-        internal static bool Prepare()
+        [HarmonyPatch(typeof(DefaultClanFinanceModel), "CalculatePartyWage")]
+        internal static class Garrison
         {
-            return Enabled;
+            private static bool Enabled => Setting.GarrisonWageEnabled;
+            private static AppliesToEnum AppliesTo => Setting.GarrisonWageAppliesTo.SelectedValue;
+            private static float Multiplier => Setting.GarrisonWageMultiplier;
+            private static int Minimum => Setting.MinimumGarrisonWage;
+            private static int Maximum => Setting.MaximumGarrisonWage;
+
+            internal static int Postfix(int result, MobileParty mobileParty)
+            {
+                if (!mobileParty.IsThisPartyGarrison() || !PatchAppliesTo.DoesPatchApply(AppliesTo, mobileParty))
+                    return result;
+
+                return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+            }
+
+            internal static bool Prepare()
+            {
+                return Enabled;
+            }
         }
     }
 }

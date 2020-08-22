@@ -30,7 +30,7 @@ namespace UnlimitLord
                     return character.IsThisCharacterPlayerCharacter();
 
                 case AppliesToEnum.PlayerCompanions:
-                    return character.IsThisCharacterPlayerCompanion();
+                    return character.IsThisCharacterPlayerCompanion() || character.IsThisCharacterPlayerCharacter();
 
                 case AppliesToEnum.PlayerParty:
                     goto default;
@@ -60,7 +60,7 @@ namespace UnlimitLord
                     return hero.IsThisHeroPlayerHero();
 
                 case AppliesToEnum.PlayerCompanions:
-                    return hero.IsThisHeroPlayerCompanion();
+                    return hero.IsThisHeroPlayerCompanion() || hero.IsThisHeroPlayerHero();
 
                 case AppliesToEnum.PlayerParty:
                     goto default;

@@ -106,6 +106,11 @@ namespace UnlimitLord
             return party?.MobileParty?.IsThisPartyGarrison() == true;
         }
 
+        public static bool IsThisPartyCaravan(this PartyBase party)
+        {
+            return party?.MobileParty?.IsThisPartyCaravan() == true;
+        }
+
         public static bool IsPartyOwnedByPlayer(this PartyBase party)
         {
             return party?.Owner?.IsThisHeroPlayerHero() == true;
@@ -148,6 +153,11 @@ namespace UnlimitLord
         public static bool IsThisPartyGarrison(this MobileParty party)
         {
             return party?.IsGarrison == true;
+        }
+
+        public static bool IsThisPartyCaravan(this MobileParty party)
+        {
+            return party?.IsCaravan == true;
         }
 
         public static bool IsPartyOwnedByPlayer(this MobileParty party)
