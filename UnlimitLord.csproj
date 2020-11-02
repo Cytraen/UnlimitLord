@@ -30,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Bannerlord.MCM" Version="4.0.7" />
+		<PackageReference Include="Bannerlord.MCM" Version="4.1.1" />
 		<PackageReference Include="Lib.Harmony" Version="2.0.2" />
 	</ItemGroup>
 
