@@ -1,21 +1,4 @@
-﻿/*
- Copyright (C) 2020 ashakoor
-
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License,
- or any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
-using HarmonyLib;
+﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents.Party;
 
@@ -34,15 +17,15 @@ namespace UnlimitLord.Patches
             private static int Minimum => Setting.MinimumCastleGarrisonSize;
             private static int Maximum => Setting.MaximumCastleGarrisonSize;
 
-            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            internal static void Postfix(ref ExplainedNumber __result, PartyBase party, bool includeDescriptions = false)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
-                    return result;
+                    return;
 
                 if (!party.IsThisPartyGarrison() || !party.DoesPartyBelongToCastle())
-                    return result;
+                    return;
 
-                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                MathHelper.ClampExplain(ref __result, Multiplier, Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -60,15 +43,15 @@ namespace UnlimitLord.Patches
             private static int Minimum => Setting.MinimumTownGarrisonSize;
             private static int Maximum => Setting.MaximumTownGarrisonSize;
 
-            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            internal static void Postfix(ref ExplainedNumber __result, PartyBase party, bool includeDescriptions = false)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
-                    return result;
+                    return;
 
                 if (!party.IsThisPartyGarrison() || !party.DoesPartyBelongToTown())
-                    return result;
+                    return;
 
-                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                MathHelper.ClampExplain(ref __result, Multiplier, Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -86,15 +69,15 @@ namespace UnlimitLord.Patches
             private static int Minimum => Setting.MinimumCaravanSize;
             private static int Maximum => Setting.MaximumCaravanSize;
 
-            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            internal static void Postfix(ref ExplainedNumber __result, PartyBase party, bool includeDescriptions = false)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
-                    return result;
+                    return;
 
                 if (!party.IsThisPartyCaravan())
-                    return result;
+                    return;
 
-                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                MathHelper.ClampExplain(ref __result, Multiplier, Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -112,15 +95,15 @@ namespace UnlimitLord.Patches
             private static int Minimum => Setting.MinimumPartyTroopAmount;
             private static int Maximum => Setting.MaximumPartyTroopAmount;
 
-            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            internal static void Postfix(ref ExplainedNumber __result, PartyBase party, bool includeDescriptions = false)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
-                    return result;
+                    return;
 
                 if (party.IsThisPartyGarrison() || party.IsThisPartyCaravan())
-                    return result;
+                    return;
 
-                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                MathHelper.ClampExplain(ref __result, Multiplier, Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -138,15 +121,15 @@ namespace UnlimitLord.Patches
             private static int Minimum => Setting.MinimumPartyPrisonerAmount;
             private static int Maximum => Setting.MaximumPartyPrisonerAmount;
 
-            internal static int Postfix(int result, PartyBase party, StatExplainer explanation)
+            internal static void Postfix(ref ExplainedNumber __result, PartyBase party, bool includeDescriptions = false)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, party))
-                    return result;
+                    return;
 
                 if (party.IsThisPartyGarrison())
-                    return result;
+                    return;
 
-                return MathHelper.ClampAndExplainInt((int)(result * Multiplier), explanation, Minimum, Maximum);
+                MathHelper.ClampExplain(ref __result, Multiplier, Minimum, Maximum);
             }
 
             internal static bool Prepare()

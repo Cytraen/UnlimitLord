@@ -30,8 +30,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Bannerlord.MCM" Version="4.0.7" />
-		<PackageReference Include="Lib.Harmony" Version="2.0.2" />
+		<PackageReference Include="Bannerlord.ButterLib" Version="1.0.21">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Bannerlord.MCM" Version="4.3.7" />
+		<PackageReference Include="Lib.Harmony" Version="2.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

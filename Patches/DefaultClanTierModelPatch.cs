@@ -1,21 +1,4 @@
-﻿/*
- Copyright (C) 2020 ashakoor
-
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License,
- or any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
-using HarmonyLib;
+﻿using HarmonyLib;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.SandBox.GameComponents;
 
@@ -34,12 +17,12 @@ namespace UnlimitLord.Patches
             private static int Minimum => Setting.MinimumPartyAmount;
             private static int Maximum => Setting.MaximumPartyAmount;
 
-            internal static int Postfix(int result, Clan clan)
+            internal static void Postfix(ref int __result, Clan clan)
             {
                 if (!PatchAppliesTo.DoesPatchApply(AppliesTo, clan))
-                    return result;
+                    return;
 
-                return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+                __result = MathHelper.ClampInt((int)(__result * Multiplier), Minimum, Maximum);
             }
 
             internal static bool Prepare()
@@ -48,7 +31,7 @@ namespace UnlimitLord.Patches
             }
         }
 
-        [HarmonyPatch(typeof(DefaultClanTierModel), "GetCompanionLimitForTier")]
+        [HarmonyPatch(typeof(DefaultClanTierModel), "GetCompanionLimit")]
         internal static class Companion
         {
             private static bool Enabled => Setting.CompanionAmountEnabled;
@@ -56,9 +39,12 @@ namespace UnlimitLord.Patches
             private static int Minimum => Setting.MinimumCompanionAmount;
             private static int Maximum => Setting.MaximumCompanionAmount;
 
-            internal static int Postfix(int result, int clanTier)
+            internal static void Postfix(ref int __result, Clan clan)
             {
-                return MathHelper.ClampInt((int)(result * Multiplier), Minimum, Maximum);
+                // if (!PatchAppliesTo.DoesPatchApply(AppliesTo, clan))
+                //     return;
+
+                __result = MathHelper.ClampInt((int)(__result * Multiplier), Minimum, Maximum);
             }
 
             internal static bool Prepare()

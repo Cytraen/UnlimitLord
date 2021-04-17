@@ -1,25 +1,7 @@
-/*
- Copyright (C) 2020 ashakoor
-
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License,
- or any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
 using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
-using MCM.Abstractions.Data;
+using MCM.Abstractions.Dropdown;
 using MCM.Abstractions.Settings.Base.Global;
-using UnlimitLord;
 
 namespace UnlimitLord
 {
@@ -28,19 +10,19 @@ namespace UnlimitLord
         public override string Id => "UnlimitLord.Settings_v2";
         public override string DisplayName => "UnlimitLord " + typeof(Settings).Assembly.GetName().Version.ToString(3);
         public override string FolderName => "UnlimitLord";
-        public override string Format => "json";
+        public override string FormatType => "json";
     }
 
     // Movement speed settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=D78DVfmutxZX}Movement Speed", IsMainToggle = true)]
+        [SettingPropertyGroup("{=D78DVfmutxZX}Movement Speed")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool MovementSpeedEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=D78DVfmutxZX}Movement Speed")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> MovementSpeedAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> MovementSpeedAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerParty,
             AppliesToEnum.PlayerClan,
@@ -66,13 +48,13 @@ namespace UnlimitLord
     // Troop healing rate settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=hHROV0BkMDfG}Troop Healing Rate", IsMainToggle = true)]
+        [SettingPropertyGroup("{=hHROV0BkMDfG}Troop Healing Rate")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool TroopHealingRateEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=hHROV0BkMDfG}Troop Healing Rate")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> TroopHealingRateAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> TroopHealingRateAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerParty,
             AppliesToEnum.PlayerClan,
@@ -97,13 +79,13 @@ namespace UnlimitLord
     // Hero healing rate settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=uvIPiQqsx5Qb}Hero Healing Rate", IsMainToggle = true)]
+        [SettingPropertyGroup("{=uvIPiQqsx5Qb}Hero Healing Rate")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool HeroHealingRateEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=uvIPiQqsx5Qb}Hero Healing Rate")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> HeroHealingRateAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> HeroHealingRateAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerParty,
             AppliesToEnum.PlayerClan,
@@ -128,13 +110,13 @@ namespace UnlimitLord
     // Morale settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=DB1kpsmAAIky}Morale", IsMainToggle = true)]
+        [SettingPropertyGroup("{=DB1kpsmAAIky}Morale")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool MoraleEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=DB1kpsmAAIky}Morale")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> MoraleAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> MoraleAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerParty,
             AppliesToEnum.PlayerClan,
@@ -159,13 +141,13 @@ namespace UnlimitLord
     // Castle garrison size settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=SrBxpWv16oRJ}Castle Garrison Size", IsMainToggle = true)]
+        [SettingPropertyGroup("{=SrBxpWv16oRJ}Castle Garrison Size")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool CastleGarrisonSizeEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=SrBxpWv16oRJ}Castle Garrison Size")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> CastleGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> CastleGarrisonSizeAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerClan,
             AppliesToEnum.PlayerKingdom,
@@ -188,13 +170,13 @@ namespace UnlimitLord
     // Town garrison size settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=9hYB9kzrN9Qs}Town Garrison Size", IsMainToggle = true)]
+        [SettingPropertyGroup("{=9hYB9kzrN9Qs}Town Garrison Size")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool TownGarrisonSizeEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=9hYB9kzrN9Qs}Town Garrison Size")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> TownGarrisonSizeAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> TownGarrisonSizeAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerClan,
             AppliesToEnum.PlayerKingdom,
@@ -217,13 +199,13 @@ namespace UnlimitLord
     // Caravan size settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size", IsMainToggle = true)]
+        [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool CaravanSizeEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=Fn3jRf9vQr7c}Caravan Size")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> CaravanSizeAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> CaravanSizeAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerClan,
             AppliesToEnum.PlayerKingdom,
@@ -246,13 +228,13 @@ namespace UnlimitLord
     // Party wage settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages", IsMainToggle = true)]
+        [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool PartyWageEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=ibM41IqxC0Vq}Party Wages")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> PartyWageAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> PartyWageAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerClan,
             AppliesToEnum.PlayerKingdom,
@@ -275,13 +257,13 @@ namespace UnlimitLord
     // Garrison wage settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=tVYKb9VGO56w}Garrison Wages", IsMainToggle = true)]
+        [SettingPropertyGroup("{=tVYKb9VGO56w}Garrison Wages")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool GarrisonWageEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=tVYKb9VGO56w}Garrison Wages")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> GarrisonWageAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> GarrisonWageAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerClan,
             AppliesToEnum.PlayerKingdom,
@@ -304,13 +286,13 @@ namespace UnlimitLord
     // Number of parties settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=oP25rddkklhH}Number of Parties", IsMainToggle = true)]
+        [SettingPropertyGroup("{=oP25rddkklhH}Number of Parties")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool PartyAmountEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=oP25rddkklhH}Number of Parties")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> PartyAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> PartyAmountAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerClan,
             AppliesToEnum.PlayerKingdom,
@@ -333,7 +315,7 @@ namespace UnlimitLord
     // Number of companions settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=H540pvwooRpm}Number of Companions", IsMainToggle = true)]
+        [SettingPropertyGroup("{=H540pvwooRpm}Number of Companions")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool CompanionAmountEnabled { get; set; } = false;
 
@@ -355,7 +337,7 @@ namespace UnlimitLord
     {
         [SettingPropertyGroup("{=pQH0InUHZa2K}Crafting Stamina")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> CraftingStaminaAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> CraftingStaminaAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerOnly,
             AppliesToEnum.PlayerCompanions
@@ -369,7 +351,7 @@ namespace UnlimitLord
     // Number of workshops settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=jgc6D8GTmLHr}Number of Workshops", IsMainToggle = true)]
+        [SettingPropertyGroup("{=jgc6D8GTmLHr}Number of Workshops")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool WorkshopAmountEnabled { get; set; } = false;
 
@@ -389,13 +371,13 @@ namespace UnlimitLord
     // Hero health amount settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=k7zNutD2MZWa}Hero Health Amount", IsMainToggle = true)]
+        [SettingPropertyGroup("{=k7zNutD2MZWa}Hero Health Amount")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool HeroHealthAmountEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=k7zNutD2MZWa}Hero Health Amount")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> HeroHealthAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> HeroHealthAmountAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerOnly,
             AppliesToEnum.PlayerCompanions,
@@ -421,13 +403,13 @@ namespace UnlimitLord
     // Party food consumption settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=MBgE3OOCyUw0}Party Food Consumption", IsMainToggle = true)]
+        [SettingPropertyGroup("{=MBgE3OOCyUw0}Party Food Consumption")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool PartyFoodConsumptionEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=MBgE3OOCyUw0}Party Food Consumption")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> PartyFoodConsumptionAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> PartyFoodConsumptionAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerParty,
             AppliesToEnum.PlayerClan,
@@ -452,13 +434,13 @@ namespace UnlimitLord
     // Maximum party troops settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=hBEXh7AijM7I}Maximum Party Troops", IsMainToggle = true)]
+        [SettingPropertyGroup("{=hBEXh7AijM7I}Maximum Party Troops")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool PartyTroopAmountEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=hBEXh7AijM7I}Maximum Party Troops")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> PartyTroopAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> PartyTroopAmountAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerParty,
             AppliesToEnum.PlayerClan,
@@ -483,13 +465,13 @@ namespace UnlimitLord
     // Maximum party prisoners settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=PTj8sDnBew21}Maximum Party Prisoners", IsMainToggle = true)]
+        [SettingPropertyGroup("{=PTj8sDnBew21}Maximum Party Prisoners")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool PartyPrisonerAmountEnabled { get; set; } = false;
 
         [SettingPropertyGroup("{=PTj8sDnBew21}Maximum Party Prisoners")]
         [SettingPropertyDropdown("{=Jn6KV7vNzCVC}Who is affected", Order = 0, RequireRestart = false)]
-        public DefaultDropdown<AppliesToEnum> PartyPrisonerAmountAppliesTo { get; set; } = new DefaultDropdown<AppliesToEnum>(new[]
+        public DropdownDefault<AppliesToEnum> PartyPrisonerAmountAppliesTo { get; set; } = new DropdownDefault<AppliesToEnum>(new[]
         {
             AppliesToEnum.PlayerParty,
             AppliesToEnum.PlayerClan,
@@ -514,7 +496,7 @@ namespace UnlimitLord
     // Persuasion chance settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=mEIXrv2G7tCv}Persuasion Chance", IsMainToggle = true)]
+        [SettingPropertyGroup("{=mEIXrv2G7tCv}Persuasion Chance")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool PersuasionChanceEnabled { get; set; } = false;
 
@@ -566,7 +548,7 @@ namespace UnlimitLord
     // Disguise chance settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=FAz1UWhX6HOt}Disguise Chance", IsMainToggle = true)]
+        [SettingPropertyGroup("{=FAz1UWhX6HOt}Disguise Chance")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool DisguiseChanceEnabled { get; set; } = false;
 
@@ -586,7 +568,7 @@ namespace UnlimitLord
     // View distance settings
     internal sealed partial class Settings
     {
-        [SettingPropertyGroup("{=Mb5ywYiZva1Y}View Distance", IsMainToggle = true)]
+        [SettingPropertyGroup("{=Mb5ywYiZva1Y}View Distance")]
         [SettingPropertyBool("{=QdjFJY1jTXY2}Enabled", RequireRestart = false)]
         public bool ViewDistanceEnabled { get; set; } = false;
 
