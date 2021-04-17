@@ -17,13 +17,19 @@ namespace UnlimitLord
 
         internal static void ClampExplain(ref ExplainedNumber __result, float multiplier, int minimum, int maximum)
         {
-            __result.AddFactor(multiplier, new TextObject("UnlimitLord"));
+            var desiredNumber = ClampInt((int)(__result.ResultNumber * multiplier), minimum, maximum);
+            var difference = desiredNumber - __result.ResultNumber;
+
+            __result.Add(difference, new TextObject("UnlimitLord"));
             __result.Clamp(minimum, maximum);
         }
 
         internal static void ClampExplain(ref ExplainedNumber __result, float multiplier, float minimum, float maximum)
         {
-            __result.AddFactor(multiplier, new TextObject("UnlimitLord"));
+            var desiredNumber = ClampFloat(__result.ResultNumber * multiplier, minimum, maximum);
+            var difference = desiredNumber - __result.ResultNumber;
+
+            __result.Add(difference, new TextObject("UnlimitLord"));
             __result.Clamp(minimum, maximum);
         }
     }
