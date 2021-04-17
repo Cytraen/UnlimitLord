@@ -3,9 +3,9 @@
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
 		<Platforms>x64</Platforms>
-		<Version>0.4.3</Version>
+		<Version>0.5.0</Version>
 		<Authors>ashakoor</Authors>
-		<Copyright>Copyright (C) 2020 ashakoor</Copyright>
+		<Copyright>Copyright (C) 2020-2021 ashakoor</Copyright>
 		<PackageLicenseFile>COPYING.md</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/ashakoor/UnlimitLord</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
